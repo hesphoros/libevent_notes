@@ -46,21 +46,9 @@
               "icon": "lucide-image",
               "title": "event_states"
             }
-          },
-          {
-            "id": "5b37e4264959c52e",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.7.4"
-              },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.4"
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -91,10 +79,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reactor pattern.md"
+                "file": "libevent-book/event_states.svg"
               },
               "icon": "lucide-list",
-              "title": "Reactor pattern 的大纲"
+              "title": "event_states 的大纲"
             }
           },
           {
@@ -144,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reactor pattern.md",
+                "file": "libevent-book/event_states.svg",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +142,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Reactor pattern 的反向链接列表"
+              "title": "event_states 的反向链接列表"
             }
           },
           {
@@ -163,12 +151,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reactor pattern.md",
+                "file": "libevent-book/event_states.svg",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Reactor pattern 的出链列表"
+              "title": "event_states 的出链列表"
             }
           },
           {
@@ -190,10 +178,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reactor pattern.md"
+                "file": "libevent-book/event_states.svg"
               },
               "icon": "lucide-list",
-              "title": "Reactor pattern 的大纲"
+              "title": "event_states 的大纲"
             }
           },
           {
@@ -247,7 +235,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "5b37e4264959c52e",
+  "active": "56fd4ab71a5860a1",
   "lastOpenFiles": [
     "Variadic function.md",
     "Reactor pattern.md",
