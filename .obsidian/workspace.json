@@ -16,7 +16,9 @@
                 "file": "Reactor pattern.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Reactor pattern"
             }
           },
           {
@@ -28,7 +30,9 @@
                 "file": "Helper types and functions.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Helper types and functions"
             }
           },
           {
@@ -38,10 +42,25 @@
               "type": "image",
               "state": {
                 "file": "libevent-book/event_states.svg"
-              }
+              },
+              "icon": "lucide-image",
+              "title": "event_states"
+            }
+          },
+          {
+            "id": "5b37e4264959c52e",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.4"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.4"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -61,7 +80,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "byModifiedTime"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
             }
           },
           {
@@ -71,7 +92,9 @@
               "type": "outline",
               "state": {
                 "file": "Reactor pattern.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Reactor pattern 的大纲"
             }
           },
           {
@@ -86,7 +109,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
             }
           },
           {
@@ -94,7 +119,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
             }
           }
         ]
@@ -125,7 +152,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Reactor pattern 的反向链接列表"
             }
           },
           {
@@ -137,7 +166,9 @@
                 "file": "Reactor pattern.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Reactor pattern 的出链列表"
             }
           },
           {
@@ -148,7 +179,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
             }
           },
           {
@@ -158,7 +191,9 @@
               "type": "outline",
               "state": {
                 "file": "Reactor pattern.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Reactor pattern 的大纲"
             }
           },
           {
@@ -166,7 +201,9 @@
             "type": "leaf",
             "state": {
               "type": "todo",
-              "state": {}
+              "state": {},
+              "icon": "checkmark",
+              "title": "Todo List"
             }
           },
           {
@@ -174,7 +211,9 @@
             "type": "leaf",
             "state": {
               "type": "calendar",
-              "state": {}
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
             }
           },
           {
@@ -182,7 +221,9 @@
             "type": "leaf",
             "state": {
               "type": "advanced-tables-toolbar",
-              "state": {}
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
             }
           }
         ]
@@ -206,7 +247,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "e35340117c9e52e1",
+  "active": "5b37e4264959c52e",
   "lastOpenFiles": [
     "Variadic function.md",
     "Reactor pattern.md",
