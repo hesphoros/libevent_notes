@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Event loop.md",
+                "file": "Helper types and functions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Event loop"
+              "title": "Helper types and functions"
             }
           }
         ],
@@ -239,18 +239,18 @@
   },
   "active": "56fd4ab71a5860a1",
   "lastOpenFiles": [
-    "Reactor pattern.md",
-    "libevent-book/event_states.svg",
     "Variadic function.md",
-    "Helper types and functions.md",
     "libevent_structure.md",
+    "Reactor pattern.md",
+    "Event loop.md",
+    "libevent-book/event_states.svg",
+    "Helper types and functions.md",
     "libevent-book/event_states.png",
     "Memory management.md",
     "Macro definition.md",
     "word.md",
     "TODO Lists.md",
     "evbuffer.md",
-    "Event loop.md",
     "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg",
     "evconnlistener.md",
     "DNS with libevent.md",
