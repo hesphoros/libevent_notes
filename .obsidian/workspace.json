@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Reactor pattern.md",
+                "file": "Event loop.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Reactor pattern"
+              "title": "Event loop"
             }
           }
         ],
@@ -81,10 +81,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reactor pattern.md"
+                "file": "Event loop.md"
               },
               "icon": "lucide-list",
-              "title": "Reactor pattern 的大纲"
+              "title": "Event loop 的大纲"
             }
           },
           {
@@ -114,8 +114,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -135,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reactor pattern.md",
+                "file": "Event loop.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +144,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Reactor pattern 的反向链接列表"
+              "title": "Event loop 的反向链接列表"
             }
           },
           {
@@ -154,12 +153,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reactor pattern.md",
+                "file": "Event loop.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Reactor pattern 的出链列表"
+              "title": "Event loop 的出链列表"
             }
           },
           {
@@ -181,10 +180,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reactor pattern.md"
+                "file": "Event loop.md"
               },
               "icon": "lucide-list",
-              "title": "Reactor pattern 的大纲"
+              "title": "Event loop 的大纲"
             }
           },
           {
@@ -238,11 +237,11 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "db730313e0ffb1b4",
+  "active": "56fd4ab71a5860a1",
   "lastOpenFiles": [
+    "Reactor pattern.md",
     "libevent-book/event_states.svg",
     "Variadic function.md",
-    "Reactor pattern.md",
     "Helper types and functions.md",
     "libevent_structure.md",
     "libevent-book/event_states.png",
