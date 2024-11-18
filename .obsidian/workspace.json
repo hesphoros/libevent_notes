@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Reactor pattern.md",
+                "file": "Reactor模式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Reactor pattern"
+              "title": "Reactor模式"
             }
           }
         ],
@@ -267,8 +267,8 @@
   },
   "active": "08822fde902dfb38",
   "lastOpenFiles": [
-    "Reactor模式.md",
     "Reactor pattern.md",
+    "Reactor模式.md",
     "Helper types and functions.md",
     "Variadic function.md",
     "libevent_structure.md",
