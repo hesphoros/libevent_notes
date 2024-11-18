@@ -48,9 +48,21 @@
               "icon": "lucide-file",
               "title": "Event loop"
             }
+          },
+          {
+            "id": "7a3e11ec1a33e53a",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.5"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.5"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -237,7 +249,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "56fd4ab71a5860a1",
+  "active": "7a3e11ec1a33e53a",
   "lastOpenFiles": [
     "Helper types and functions.md",
     "Variadic function.md",
