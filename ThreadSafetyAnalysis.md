@@ -75,3 +75,26 @@ void test() {
 
 
 如果没有参数传递给 <font color="#8064a2">ACQUIRE</font> 或 <font color="#8064a2">RELEASE</font>，则参数被假定为 this，并且分析不会检查函数体。此模式旨在供将锁定细节隐藏在抽象接口后面的类使用。例如
+~~~c
+template <class T>
+class CAPABILITY("mutex") Container 
+{
+private:
+  Mutex mu;
+  T* data;
+
+public:
+  // Hide mu from public interface.
+  void Lock()   ACQUIRE() { mu.Lock(); }
+  void Unlock() RELEASE() { mu.Unlock(); }
+
+  T& getElem(int i) { return data[i]; }
+};
+
+void test() {
+  Container<int> c;
+  c.Lock();
+  int i = c.getElem(0);
+  c.Unlock();
+}
+~~~
