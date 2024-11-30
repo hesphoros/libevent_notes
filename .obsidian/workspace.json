@@ -57,12 +57,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ThreadSafetyAnalysis.md",
+                "file": "Event loop.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ThreadSafetyAnalysis"
+              "title": "Event loop"
             }
           }
         ],
@@ -97,10 +97,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ThreadSafetyAnalysis.md"
+                "file": "Event loop.md"
               },
               "icon": "lucide-list",
-              "title": "ThreadSafetyAnalysis 的大纲"
+              "title": "Event loop 的大纲"
             }
           },
           {
@@ -130,8 +130,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -254,13 +253,15 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "db730313e0ffb1b4",
+  "active": "6d913beb98d02d86",
   "lastOpenFiles": [
+    "Bufferevent and SSL.md",
+    "Reactor模式.md",
+    "ThreadSafetyAnalysis.md",
     "Reactor pattern.md",
     "Event loop.md",
     "Helper types and functions.md",
     "Macro function.md",
-    "ThreadSafetyAnalysis.md",
     "images/Pasted image 20241130175804.png",
     "word.md",
     "event_base.md",
@@ -268,7 +269,6 @@
     "epoll API.md",
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
-    "Bufferevent and SSL.md",
     "Build event.md",
     "evbuffer.md",
     "README.md",
@@ -277,7 +277,6 @@
     "Memory management.md",
     "Variadic function.md",
     "libevent_structure.md",
-    "Reactor模式.md",
     "images/Pasted image 20241118195605.png",
     "libevent-book/event_states.svg",
     "libevent-book/event_states.png",
