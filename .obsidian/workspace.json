@@ -130,7 +130,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -253,7 +254,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "e35340117c9e52e1",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
     "Reactor pattern.md",
     "Event loop.md",
