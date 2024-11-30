@@ -69,16 +69,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Reactor模式.md",
+                "file": "Macro function.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Reactor模式"
+              "title": "Macro function"
+            }
+          },
+          {
+            "id": "863994ba58cb2035",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.6"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.6"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -109,10 +121,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Event loop.md"
+                "file": "Macro function.md"
               },
               "icon": "lucide-list",
-              "title": "Event loop 的大纲"
+              "title": "Macro function 的大纲"
             }
           },
           {
@@ -265,35 +277,35 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "08822fde902dfb38",
+  "active": "863994ba58cb2035",
   "lastOpenFiles": [
-    "images/Pasted image 20241118195605.png",
-    "Reactor pattern.md",
-    "Reactor模式.md",
-    "Helper types and functions.md",
-    "Variadic function.md",
-    "libevent_structure.md",
-    "Event loop.md",
-    "libevent-book/event_states.svg",
-    "libevent-book/event_states.png",
-    "Memory management.md",
-    "Macro definition.md",
-    "word.md",
-    "TODO Lists.md",
-    "evbuffer.md",
-    "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg",
-    "evconnlistener.md",
-    "DNS with libevent.md",
-    "images/ReactorPattern_-_UML_2_Sequence_Diagram.svg",
-    "Build event.md",
-    "libevent 中文文档_lucifer.pdf",
     "event_base.md",
-    "README.md",
+    "Event loop.md",
+    "Macro definition.md",
     "Macro function.md",
     "epoll API.md",
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
     "Bufferevent and SSL.md",
+    "Build event.md",
+    "evbuffer.md",
+    "README.md",
+    "DNS with libevent.md",
+    "evconnlistener.md",
+    "Helper types and functions.md",
+    "Memory management.md",
+    "Variadic function.md",
+    "libevent_structure.md",
+    "Reactor pattern.md",
+    "Reactor模式.md",
+    "images/Pasted image 20241118195605.png",
+    "libevent-book/event_states.svg",
+    "libevent-book/event_states.png",
+    "word.md",
+    "TODO Lists.md",
+    "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg",
+    "images/ReactorPattern_-_UML_2_Sequence_Diagram.svg",
+    "libevent 中文文档_lucifer.pdf",
     "images/Pasted image 20240923224952.png",
     "CppGuide/articles/程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.md",
     "CppGuide/articles/程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.md",
@@ -310,7 +322,6 @@
     "CppGuide/articles/imgs/zhyz9.webp",
     "CppGuide/articles/imgs/zhyz8.webp",
     "CppGuide/articles/imgs/zhyz7.webp",
-    "CppGuide/articles/imgs/zhyz6.webp",
     "CppGuide/articles/imgs",
     "CppGuide/articles/TeamTalk源码解析",
     "未命名.canvas"
