@@ -30,7 +30,7 @@ int main() {
 ![](images/Pasted%20image%2020241130175804.png)
 
 ## <font color="#8064a2">ACQUIRE</font> <font color="#8064a2">ACQUIRE_SHARED</font>
-<font color="#8064a2">ACQUIRE</font> 和 <font color="#8064a2">ACQUIRE_SHARED</font> 是函数或方法上的属性，用于声明函数获取功能但不释放该功能。给定的功能不得在进入时保留，并且将在退出时保留（对于 <font color="#8064a2">ACQUIRE</font> 是独有的，对于 <font color="#8064a2">ACQUIRE_SHARED</font> 是共享的）。
+<font color="#8064a2">ACQUIRE</font> 和 <font color="#8064a2">ACQUIRE_SHARED</font> 是函数或方法上的属性，用于声明函数获取功能但不释放该功能。(获取锁但不释放锁)，给定的功能不得在进入时保留，并且将在退出时保留（对于 <font color="#8064a2">ACQUIRE</font> 是独有的，对于 <font color="#8064a2">ACQUIRE_SHARED</font> 是共享的）。
 ## <font color="#8064a2">REQUIRES REQUIRES_SHARED </font>
 <font color="#8064a2">REQUIRES</font> 是函数或方法的一个属性，它声明调用线程必须具有对给定功能的独占访问权限。可以指定多个功能。这些功能必须在函数入口处保留，并且在退出时仍必须保留。
 
@@ -38,7 +38,8 @@ int main() {
 ## <font color="#8064a2">RELEASE RELEASE_GENERIC </font>
 <font color="#8064a2">RELEASE</font>  和 <font color="#8064a2">RELEASE_GENERIC</font> 声明函数释放给定的功能。功能必须在进入时保留（<font color="#8064a2">RELEASE</font> 独占、<font color="#8064a2">RELEASE_SHARED</font> 共享、<font color="#8064a2">RELEASE_GENERIC</font> 独占或共享），退出时将不再保留。
 
-
+## <font color="#8064a2">ACQUIRE ACQUIRE</font>
+在资源管理的上下文中，ACQUIRE 和 ACQUIRE 通常是成对出现的，ACQUIRE 是获取资源，RELEASE 是释放资源。例如，线程在访问共享资源之前需要执行 ACQUIRE 操作，而访问完资源之后则需要执行 RELEASE 操作。
 # Test
 
 ~~~c
