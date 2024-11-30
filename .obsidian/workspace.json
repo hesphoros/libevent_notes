@@ -88,9 +88,23 @@
               "icon": "lucide-file",
               "title": "Release Notes 1.7.6"
             }
+          },
+          {
+            "id": "1200158eda1b7bb9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ThreadSafetyAnalysis.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ThreadSafetyAnalysis"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -277,8 +291,9 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "863994ba58cb2035",
+  "active": "e35340117c9e52e1",
   "lastOpenFiles": [
+    "ThreadSafetyAnalysis.md",
     "event_base.md",
     "Event loop.md",
     "Macro definition.md",
