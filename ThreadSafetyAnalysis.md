@@ -35,7 +35,7 @@ int main() {
 <font color="#8064a2">REQUIRES</font> 是函数或方法的一个属性，它声明调用线程必须具有对给定功能的独占访问权限。可以指定多个功能。这些功能必须在函数入口处保留，并且在退出时仍必须保留。
 
 <font color="#8064a2">REQUIRES_SHARED</font> 类似，但仅要求共享访问权限。
-## <font color="#8064a2">RELEASE RELEASE </font>
+## <font color="#8064a2">RELEASE RELEASE_GENERIC </font>
 <font color="#8064a2">RELEASE</font>  和 <font color="#8064a2">RELEASE_GENERIC</font> 声明函数释放给定的功能。功能必须在进入时保留（<font color="#8064a2">RELEASE</font> 独占、<font color="#8064a2">RELEASE_SHARED</font> 共享、<font color="#8064a2">RELEASE_GENERIC</font> 独占或共享），退出时将不再保留。
 
 
