@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "📓",
       "📔",
       "LiListTodo",
       "LiStickyNote",
-      "LiCode",
-      "LiImage"
+      "LiCode"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -73,5 +73,6 @@
   "Reactor pattern.md": "📓",
   "word.md": "📔",
   "images/ReactorPattern_-_UML_2_Sequence_Diagram.svg": "LiImage",
-  "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg": "LiImage"
+  "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg": "LiImage",
+  "ThreadSafetyAnalysis.md": "📓"
 }
