@@ -55,12 +55,14 @@
             "id": "6d913beb98d02d86",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.7.7"
+                "file": "ThreadSafetyAnalysis.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Release Notes 1.7.7"
+              "title": "ThreadSafetyAnalysis"
             }
           }
         ],
@@ -128,7 +130,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -251,7 +254,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "6d913beb98d02d86",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
     "Reactor pattern.md",
     "Event loop.md",
