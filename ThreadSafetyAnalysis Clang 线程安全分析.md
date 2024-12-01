@@ -5,6 +5,69 @@ Clang 线程安全分析是一个 C++ 语言扩展，它对 代码中的潜在�
 
 ## 一个简单的例子
 
+~~~c
+#include <mutex>
+
+/** deposit 存款
+ *  balance 结余
+ *  account 数量
+ *  underlying  潜在的
+ *  acquire     获得
+ *  exclusively 只
+*/
+
+// access
+// 简体中文
+// 使用权
+// 动词
+// 访问, 接驳, 进接
+// 名词
+// 存取, 通路, 进接
+
+ 
+
+
+class Mutex {
+public:
+  void Lock() { }
+  void Unlock() { }
+};
+
+#define GUARDED_BY(x)  //GUARDED_BY 属性声明线程必须先锁定 mu 才能读取或写入 balance，从而确保增量和减量操作是原子的
+#define REQUIRES(x)    //REQUIRES  声明调用线程在调用 withdrawImpl 之前必须锁定 mu。
+
+
+class BankAccount {
+private:
+  Mutex mu;
+  int   balance GUARDED_BY(mu);
+
+    // brief : 存款
+  void depositImpl(int amount) {
+    balance += amount;       // WARNING! Cannot write balance without locking mu. 因为REQUIRES
+  }
+
+
+    // brief : 取钱
+  void withdrawImpl(int amount) REQUIRES(mu) {
+    balance -= amount;       // OK. Caller must have locked mu.
+  }
+
+public:
+  void withdraw(int amount) {
+    mu.Lock();
+    withdrawImpl(amount);    // OK.  We've locked mu.
+  }                          // WARNING!  Failed to unlock mu.
+
+  void transferFrom(BankAccount& b, int amount) {
+    mu.Lock();
+    b.withdrawImpl(amount);  // WARNING!  Calling withdrawImpl() requires locking b.mu.
+    depositImpl(amount);     // OK.  depositImpl() has no requirements.
+    mu.Unlock();
+  }
+};
+~~~
+
 ## <font color="#8064a2">GUARDED_BY</font>
 <font color="#8064a2">GUARDED_BY</font> 是数据成员的一个属性，声明数据成员受给定功能的保护。对数据的读取操作需要共享访问，而写入操作需要独占访问。
 
