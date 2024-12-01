@@ -49,7 +49,8 @@ public:
 };
 ~~~
 
-## <font color="#8064a2">GUARDED_BY</font>
+
+# <font color="#8064a2">GUARDED_BY</font>
 <font color="#8064a2">GUARDED_BY</font> 是数据成员的一个属性，声明数据成员受给定功能的保护。对数据的读取操作需要共享访问，而写入操作需要独占访问。
 
 ## <font color="#8064a2">PT_GUARDED_BY</font>
@@ -150,3 +151,10 @@ void test() {
   c.Unlock();
 }
 ~~~
+
+
+
+
+|     |     |
+| --- | --- |
+|     |     |

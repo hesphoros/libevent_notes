@@ -97,10 +97,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Event loop.md"
+                "file": "ThreadSafetyAnalysis Clang 线程安全分析.md"
               },
               "icon": "lucide-list",
-              "title": "Event loop 的大纲"
+              "title": "ThreadSafetyAnalysis Clang 线程安全分析 的大纲"
             }
           },
           {
@@ -130,7 +130,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -253,7 +254,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "6d913beb98d02d86",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
     "Event loop.md",
     "Bufferevent and SSL.md",
