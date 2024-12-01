@@ -117,31 +117,22 @@ _Previously_: `EXCLUSIVE_LOCKS_REQUIRED`, `SHARED_LOCKS_REQUIRED`
 
 ~~~c
 
+Mutex mu1, mu2;
+int a GUARDED_BY(mu1);
+int b GUARDED_BY(mu2);
 
+void foo() REQUIRES(mu1, mu2) {
+  a = 0;
+  b = 0;
+}
 
+void test() {
+  mu1.Lock();
+  foo();         // Warning!  Requires mu2.
+  mu1.Unlock();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-----
+~~~
 
 # Test
 
