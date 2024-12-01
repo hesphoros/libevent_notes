@@ -22,13 +22,13 @@ private:
   Mutex mu;
   int   balance GUARDED_BY(mu);
 
-    // brief : 存款
+    // brief : 存款实现
   void depositImpl(int amount) {
     balance += amount;       // WARNING! Cannot write balance without locking mu. 因为REQUIRES
   }
 
 
-    // brief : 取钱
+    // brief : 取钱实现
   void withdrawImpl(int amount) REQUIRES(mu) {
     balance -= amount;       // OK. Caller must have locked mu.
   }
