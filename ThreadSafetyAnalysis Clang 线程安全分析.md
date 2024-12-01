@@ -7,26 +7,6 @@ Clang 线程安全分析是一个 C++ 语言扩展，它对 代码中的潜在�
 
 ~~~c
 #include <mutex>
-
-/** deposit 存款
- *  balance 结余
- *  account 数量
- *  underlying  潜在的
- *  acquire     获得
- *  exclusively 只
-*/
-
-// access
-// 简体中文
-// 使用权
-// 动词
-// 访问, 接驳, 进接
-// 名词
-// 存取, 通路, 进接
-
- 
-
-
 class Mutex {
 public:
   void Lock() { }
@@ -59,6 +39,7 @@ public:
     withdrawImpl(amount);    // OK.  We've locked mu.
   }                          // WARNING!  Failed to unlock mu.
 
+  //钱款来源
   void transferFrom(BankAccount& b, int amount) {
     mu.Lock();
     b.withdrawImpl(amount);  // WARNING!  Calling withdrawImpl() requires locking b.mu.
