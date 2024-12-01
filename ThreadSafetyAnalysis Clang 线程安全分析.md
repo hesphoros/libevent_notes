@@ -1,3 +1,5 @@
+# 介绍
+ Clang
 ## <font color="#8064a2">GUARDED_BY</font>
 <font color="#8064a2">GUARDED_BY</font> 是数据成员的一个属性，声明数据成员受给定功能的保护。对数据的读取操作需要共享访问，而写入操作需要独占访问。
 
@@ -8,12 +10,12 @@
 # Test1
 ~~~c
 #include "mutex.h"
-
 #include <memory>
 
 Mutex mu;
-int *p1             GUARDED_BY(mu);
-int *p2             PT_GUARDED_BY(mu);
+int *p1                  
+GUARDED_BY(mu);
+int *p2                  PT_GUARDED_BY(mu);
 std::unique_ptr<int> p3  PT_GUARDED_BY(mu); 
 
 int main() {
