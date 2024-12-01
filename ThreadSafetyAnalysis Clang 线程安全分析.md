@@ -140,6 +140,9 @@ void test() {
  
 _Previously_: `EXCLUSIVE_LOCK_FUNCTION`, `SHARED_LOCK_FUNCTION`, `UNLOCK_FUNCTION`
 
+<font color="#8064a2">ACQUIRE</font> 和 <font color="#8064a2">ACQUIRE_SHARED</font> 是函数或方法上的属性，用于声明函数获取功能但不释放该功能。给定的功能不得在进入时保留，并且将在退出时保留（对于 ACQUIRE 是独有的，对于 ACQUIRE_SHARED 是共享的）。
+
+
 
 ---
 ---
