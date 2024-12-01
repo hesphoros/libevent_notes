@@ -203,7 +203,7 @@ void test() {
 }
 ~~~
 
-## EXCLUDES(…)
-
+## <font color="#8064a2">EXCLUDES(…)</font>
+_Previously_: `LOCKS_EXCLUDED`
 
  
