@@ -107,7 +107,7 @@ int main() {
 
 
 
-
+## <font color="#8064a2">REQUIRES(…), REQUIRES_SHARED(…)</font>
 
 
 
