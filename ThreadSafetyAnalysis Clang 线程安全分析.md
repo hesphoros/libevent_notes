@@ -55,12 +55,7 @@ depositImpl() 方法没有 <font color="#8064a2">REQUIRES</font>，因此分析�
 
 最后，withdraw() 方法中有一个警告，因为它无法解锁 mu。每个锁都必须有相应的解锁，分析将检测双重锁定和双重解锁。允许函数获取锁而不释放它（反之亦然），但必须这样注释（使用 ACQUIRE/RELEASE）。
 
-##  <font color="#8064a2">GUARDED_BY</font>
-<font color="#8064a2">GUARDED_BY</font> 是数据成员的一个属性，声明数据成员受给定功能的保护。对数据的读取操作需要共享访问，而写入操作需要独占访问。
-
-## <font color="#8064a2">PT_GUARDED_BY</font>
-<font color="#8064a2">PT_GUARDED_BY</font> 类似，但旨在用于指针和智能指针。数据成员本身没有约束，但它指向的数据受到给定功能的保护。
-
+ 
 
 # Test1
 ~~~c
@@ -103,8 +98,10 @@ int main() {
 这些属性仅控制线程安全分析做出的假设及其发出的警告。它们不会影响生成的代码或运行时行为。
 由于历史原因，先前版本的线程安全使用了非常以锁为中心的宏名称。这些宏后来被重命名以适应更通用的功能模型。先前的名称仍在使用，并将在适当的位置在之前的标签下提及。
 
+## <font color="#8064a2">GUARDED_BY(c) and PT_GUARDED_BY(c)</font>
+<font color="#8064a2">GUARDED_BY</font>    是数据成员的一个属性，声明数据成员受给定功能的保护。对数据的读取操作需要共享访问，而写入操作需要独占访问。
+<font color="#8064a2">PT_GUARDED_BY</font> 类似，但旨在用于指针和智能指针。数据成员本身没有约束，但它指向的数据受到给定功能的保护。
 
-##  GUARDED_BY(c) and PT_GUARDED_BY(c)
 # Test
 
 ~~~c
