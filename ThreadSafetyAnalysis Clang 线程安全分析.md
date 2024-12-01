@@ -109,10 +109,13 @@ int main() {
 
 ## <font color="#8064a2">REQUIRES(…), REQUIRES_SHARED(…)</font>
 
+_Previously_: `EXCLUSIVE_LOCKS_REQUIRED`, `SHARED_LOCKS_REQUIRED`
 
+<font color="#8064a2">REQUIRES</font> 是函数或方法上的一个属性，它声明调用线程必须对给定的功能具有独占访问权限。可以指定多个功能。这些功能必须在函数入口处保留，并且在退出时仍必须保留。
 
+<font color="#8064a2">REQUIRES_SHARED</font> 类似，但仅需要共享访问权限。
 
-
+~~~c
 
 
 
