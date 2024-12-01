@@ -88,8 +88,7 @@ depositImpl() 方法没有 <font color="#8064a2">REQUIRES</font>，因此分析�
 #include <memory>
 
 Mutex mu;
-int *p1                  
-GUARDED_BY(mu);
+int *p1                  GUARDED_BY(mu);
 int *p2                  PT_GUARDED_BY(mu);
 std::unique_ptr<int> p3  PT_GUARDED_BY(mu); 
 
