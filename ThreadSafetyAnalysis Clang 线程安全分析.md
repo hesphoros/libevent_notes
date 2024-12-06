@@ -338,6 +338,6 @@ _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
         
     - `-Wthread-safety-precise`: Requires that mutex expressions match precisely. //要求互斥表达式精确匹配。
         
-        This warning can be disabled for code which has a lot of aliases.
+        This warning can be disabled for code which has a lot of aliases.      //对于具有大量别名的代码可以禁用此警告。
         
-    - `-Wthread-safety-reference`: Checks when guarded members are passed by reference.
+    - `-Wthread-safety-reference`: Checks when guarded members are passed by reference. //检查受保护成员何时通过引用传递。
