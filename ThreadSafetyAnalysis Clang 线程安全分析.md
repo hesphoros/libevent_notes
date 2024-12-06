@@ -320,3 +320,5 @@ void foo() {
   }
 }
 ~~~
+
+## <font color="#8064a2"> ASSERT_CAPABILITY(…)  ASSERT_SHARED_CAPABILITY(…)</font>
