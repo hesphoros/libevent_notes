@@ -325,3 +325,5 @@ void foo() {
 _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
 这些是函数或方法的属性，用于断言调用线程已拥有给定的功能，例如通过执行运行时测试并在未拥有该功能时终止。
 此注释的存在会导致分析假设在调用注释函数后拥有该功能。有关示例用法，请参阅下面的 mutex.h。
+
+## <font color="#8064a2">GUARDED_VAR  PT_GUARDED_VAR</font>
