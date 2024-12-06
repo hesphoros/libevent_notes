@@ -345,3 +345,8 @@ Negative Capabilities是一项实验性功能，可通过以下方式启用：
 - `-Wthread-safety-negative`: Negative capabilities. Off by default.
 
 # Negative Capabilities
+线程安全分析旨在防止竞争条件和死锁。<font color="#8064a2">GUARDED_BY</font> 和 REQUIRES 属性可确保在读取或写入受保护数据之前保留某种能力，从而防止竞争条件；
+<font color="#8064a2">EXCLUDES</font> 属性可确保不保留互斥锁，从而防止死锁。
+
+
+然而，EXCLUDES 是可选属性，并不提供与 REQUIRES 相同的安全保证。具体来说：
