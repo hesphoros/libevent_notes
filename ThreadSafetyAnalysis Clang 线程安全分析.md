@@ -410,6 +410,5 @@ class FooNeg{
 
 	void bif()  REQUIRES(!mu);
 	
-
-}
+};
 ~~~
