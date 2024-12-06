@@ -348,5 +348,11 @@ Negative Capabilities是一项实验性功能，可通过以下方式启用：
 线程安全分析旨在防止竞争条件和死锁。<font color="#8064a2">GUARDED_BY</font> 和 REQUIRES 属性可确保在读取或写入受保护数据之前保留某种能力，从而防止竞争条件；
 <font color="#8064a2">EXCLUDES</font> 属性可确保不保留互斥锁，从而防止死锁。
 
+然而，EXCLUDES 是可选属性，并不提供与 <font color="#8064a2">REQUIRES</font> 相同的安全保证。具体来说：
+- A function which acquires a capability does not have to exclude it.
+    
+- A function which calls a function that excludes a capability does not have transitively exclude that capability.、
 
-然而，EXCLUDES 是可选属性，并不提供与 REQUIRES 相同的安全保证。具体来说：
+获得某项能力的函数不必排除该能力。
+
+调用排除某项能力的函数的函数不必间接排除该能力。
