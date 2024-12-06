@@ -356,4 +356,5 @@ Negative Capabilities是一项实验性功能，可通过以下方式启用：
 - 获得某项能力的函数不必排除该能力。
 
 - 调用排除某项能力的函数的函数不必间接排除该能力。
-作为结果，EXCLUDES
+
+作为结果，EXCLUDES很容易产生 false negatives:
