@@ -330,3 +330,14 @@ _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
 这些属性的使用已被弃用。
 
 ### Warning flags
+- `-Wthread-safety`: Umbrella flag which turns on the following:
+    
+    - `-Wthread-safety-attributes`: Semantic checks for thread safety attributes. //线程安全属性的语义检查。
+        
+    - `-Wthread-safety-analysis`: The core analysis.
+        
+    - `-Wthread-safety-precise`: Requires that mutex expressions match precisely. //要求互斥表达式精确匹配。
+        
+        This warning can be disabled for code which has a lot of aliases.
+        
+    - `-Wthread-safety-reference`: Checks when guarded members are passed by reference.
