@@ -327,3 +327,4 @@ _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
 此注释的存在会导致分析假设在调用注释函数后拥有该功能。有关示例用法，请参阅下面的 mutex.h。
 
 ## <font color="#8064a2">GUARDED_VAR  PT_GUARDED_VAR</font>
+这些属性的使用已被弃用。
