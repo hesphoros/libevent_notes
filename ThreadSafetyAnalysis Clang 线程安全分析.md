@@ -400,7 +400,12 @@ class FooNeg{
 		mu.Unlock();
 	}
 	void bar(){
-		mu.Lock();        //WARNING! Missing R
+		mu.Lock();        //WARNING! Missing REQUIRES(!mu)
+		//...
+		mu.Unlock();
+	}
+	void baz(){
+		bif();     
 	}
 	
 
