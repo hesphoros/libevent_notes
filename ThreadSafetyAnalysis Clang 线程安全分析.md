@@ -383,3 +383,4 @@ class Foo {
   void bif() EXCLUDES(mu);
 };
 ~~~
+求是一个默认关闭的实验性功能，因为在现有代码中它会产生许多警告。可以通过传递`-Wthread-safety-negative`来启用它。
