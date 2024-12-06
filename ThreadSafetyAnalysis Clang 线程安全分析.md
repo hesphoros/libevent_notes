@@ -387,4 +387,11 @@ Negative requirements 要求是替代的 EXCLUDES，可提供更强的安全保�
 
 例如，使用 REQUIRES(!mu) 而不是 EXCLUDES(mu) 将产生相应的警告：
 
+~~~c
+
+class FooNeg{
+
+	Mute
+
+}
 ~~~
