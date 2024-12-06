@@ -298,30 +298,25 @@ _Previously_: `LOCKABLE`
 
 作用域功能被视为在构造时隐式获取并在析构时释放的功能。它们与构造函数或函数上线程安全属性中命名的一组（常规）功能相关联，这些功能通过值返回（使用 C++17 保证的复制省略）。其他成员函数上的获取类型属性被视为适用于该组关联功能，而 RELEASE 则意味着函数会以任何模式释放所有关联功能。
 
-## TRY_ACQUIRE</font>(<bool>, …) TRY_ACQUIRE_SHARED(<bool>, …)
+## TRY_ACQUIRE(<<font color="#00b050">bool</font>>, …) TRY_ACQUIRE_SHARED(<<font color="#00b050">bool</font>>, …)
 
 Previously:`EXCLUSIVE_TRYLOCK_FUNCTION`, `SHARED_TRYLOCK_FUNCTION`
 
 这些是尝试获取给定能力的函数或方法的属性，并返回表示成功或失败的布尔值。第一个参数必须为 true 或 false，以指定哪个返回值表示成功，其余参数的解释方式与ACQUIRE相同。有关示例用法，请参阅下面的 mutex.h。
 由于分析不支持条件锁定，因此在 try-acquire 函数的返回值上的第一个分支之后，能力被视为已获得。
 
-~~~cpp
-#include "mutex.h"
-
-Mutex m1;
-Mutex m2 ACQUIRED_AFTER(m1);
-
-// Alternative declaration
-// Mutex m2;
-// Mutex m1 ACQUIRED_BEFORE(m2);
+~~~c
+Mutex mu;
+int a GUARDED_BY(mu);
 
 void foo() {
-  m2.Lock();
-  m1.Lock();  // Warning!  m2 must be acquired after m1.
-  m1.Unlock();
-  m2.Unlock();
+  bool success = mu.TryLock();
+  a = 0;         // Warning, mu is not locked.
+  if (success) {
+    a = 0;       // Ok.
+    mu.Unlock();
+  } else {
+    a = 0;       // Warning, mu is not locked.
+  }
 }
 ~~~
-
-
-
