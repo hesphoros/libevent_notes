@@ -71,7 +71,7 @@ depositImpl() 方法没有 <font color="#8064a2">REQUIRES</font>，因此分析�
 
 在程序执行的给定点，给定线程实际持有的能力集是一个运行时概念。静态分析通过计算该集合的近似值（称为能力环境）来工作。能力环境针对每个程序点进行计算，并描述静态地知道在该特定点保留或不保留的能力集。此环境是线程在运行时实际保留的全套能力的保守近似值。
 
-# 参考指南
+# Capabilities参考指南
 
 线程安全分析使用属性来声明线程约束。属性必须附加到命名声明，例如类、方法和数据成员。强烈建议用户为各种属性定义宏；示例定义可以在下面的 mutex.h 中找到。以下文档假定使用宏。
 这些属性仅控制线程安全分析做出的假设及其发出的警告。它们不会影响生成的代码或运行时行为。
@@ -343,3 +343,5 @@ _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
     - `-Wthread-safety-reference`: Checks when guarded members are passed by reference. //检查受保护成员何时通过引用传递。
 Negative Capabilities是一项实验性功能，可通过以下方式启用：
 - `-Wthread-safety-negative`: Negative capabilities. Off by default.
+
+#  Negative Capabilities
