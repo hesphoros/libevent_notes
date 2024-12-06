@@ -358,3 +358,28 @@ Negative Capabilities是一项实验性功能，可通过以下方式启用：
 - 调用排除某项能力的函数的函数不必间接排除该能力。
 
 作为结果，EXCLUDES很容易产生 false negatives:
+~~~c
+
+class Foo {
+  Mutex mu;
+
+  void foo() {
+    mu.Lock();
+    bar();           // No warning.
+    baz();           // No warning.
+    mu.Unlock();
+  }
+
+  void bar() {       // No warning.  (Should have EXCLUDES(mu)).
+    mu.Lock();
+    // ...
+    mu.Unlock();
+  }
+
+  void baz() {
+    bif();           // No warning.  (Should have EXCLUDES(mu)).
+  }
+
+  void bif() EXCLUDES(mu);
+};
+~~~
