@@ -344,4 +344,4 @@ _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
 Negative Capabilities是一项实验性功能，可通过以下方式启用：
 - `-Wthread-safety-negative`: Negative capabilities. Off by default.
 
-#  Negative Capabilities
+# Negative Capabilities
