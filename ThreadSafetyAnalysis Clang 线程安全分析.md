@@ -287,5 +287,21 @@ void foo() {
 ~~~
 
 
-##  CAPABILITY(<<font color="#00b050">string</font>>)
+## <font color="#8064a2">CAPABILITY</font>(<<font color="#00b050">string</font>>)
 _Previously_: `LOCKABLE`
+<font color="#8064a2">CAPABILITY</font> 是类的一个属性，它指定类的对象可用作功能。字符串参数指定错误消息中的功能类型，例如“mutex”。
+
+请参阅上面给出的 Container 示例或 mutex.h 中的 Mutex 类。
+
+## <font color="#8064a2">SCOPED_CAPABILITY</font>
+<font color="#8064a2">SCOPED_CAPABILITY</font> 是实现 <font color="#8064a2">RAII</font> 样式锁定的类的一个属性，其中功能在构造函数中获取，并在析构函数中释放。此类类需要特殊处理，因为构造函数和析构函数通过不同的名称引用功能；请参阅下面 mutex.h 中的 MutexLocker 类。
+
+作用域功能被视为在构造时隐式获取并在析构时释放的功能。它们与构造函数或函数上线程安全属性中命名的一组（常规）功能相关联，这些功能通过值返回（使用 C++17 保证的复制省略）。其他成员函数上的获取类型属性被视为适用于该组关联功能，而 RELEASE 则意味着函数会以任何模式释放所有关联功能。
+
+## TRY_ACQUIRE</font>(<bool>, …) TRY_ACQUIRE_SHARED(<bool>, …)
+
+Previously:`EXCLUSIVE_TRYLOCK_FUNCTION`, `SHARED_TRYLOCK_FUNCTION`
+
+这些是尝试获取给定能力的函数或方法的属性，并返回表示成功或失败的布尔值。第一个参数必须为 true 或 false，以指定哪个返回值表示成功，其余参数的解释方式与ACQUIRE相同。有关示例用法，请参阅下面的 mutex.h。
+由于分析不支持条件锁定，因此在 try-acquire 函数的返回值上的第一个分支之后，能力被视为已获得。
+
