@@ -341,3 +341,5 @@ _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
         This warning can be disabled for code which has a lot of aliases.      //对于具有大量别名的代码可以禁用此警告。
         
     - `-Wthread-safety-reference`: Checks when guarded members are passed by reference. //检查受保护成员何时通过引用传递。
+Negative Capabilities是一项实验性功能，可通过以下方式启用：
+- `-Wthread-safety-negative`: Negative capabilities. Off by default.
