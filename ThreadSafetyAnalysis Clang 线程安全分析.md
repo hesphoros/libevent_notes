@@ -405,8 +405,10 @@ class FooNeg{
 		mu.Unlock();
 	}
 	void baz(){
-		bif();     
+		bif();           //WARNING! Missing REQUIRES(!mu)
 	}
+
+	void bif()  REQUIRES(!mu);
 	
 
 }
