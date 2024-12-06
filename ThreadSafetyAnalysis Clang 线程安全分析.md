@@ -136,7 +136,7 @@ void test() {
 
 ![](images/Pasted%20image%2020241201161933.png)
 
-## <font color="#8064a2">ACQUIRE(…)  ACQUIRE_SHARED(…), RELEASE(…)  RELEASE_SHARED(…)  RELEASE_GENERIC(…)</font>
+## <font color="#8064a2">ACQUIRE(…)  ACQUIRE_SHARED(…) RELEASE(…)  RELEASE_SHARED(…)  RELEASE_GENERIC(…)</font>
  
 _Previously_: `EXCLUSIVE_LOCK_FUNCTION`, `SHARED_LOCK_FUNCTION`, `UNLOCK_FUNCTION`
 
@@ -206,4 +206,86 @@ void test() {
 ## <font color="#8064a2">EXCLUDES(…)</font>
 _Previously_: `LOCKS_EXCLUDED`
 
- we
+<font color="#8064a2">EXCLUDES</font> 是函数或方法上的一个属性，声明调用者不得拥有给定的功能。此注释用于防止死锁。许多互斥锁实现都不是可重入的，因此如果函数再次获取互斥锁，则可能会发生死锁。
+~~~c
+#include "mutex.h"
+
+Mutex mu;
+int a GUARDED_BY(mu);
+
+void clear()EXCLUDES(mu)
+{
+    mu.Lock();
+    a = 0;
+    mu.Unlock();
+}
+
+void reset()
+{
+    mu.Lock();
+    clear();// warning: cannot call function 'clear' while mutex 'mu' is held [-Wthread-safety-analysis]
+    mu.Unlock();
+}
+
+ ~~~
+ 与 <font color="#8064a2">REQUIRES</font> 不同，<font color="#8064a2">EXCLUDES</font> 是可选的。如果属性缺失，分析不会发出警告，这在某些情况下可能会导致误报。此问题在<font color="#8064a2">负面功能</font>中进一步讨论。
+
+## <font color="#8064a2">NO_THREAD_SAFETY_ANALYSIS</font>
+<font color="#8064a2">NO_THREAD_SAFETY_ANALYSIS</font> 是函数或方法上的一个属性，用于关闭该方法的线程安全检查。
+它为以下函数提供了一个逃生出口：
+	(1) 故意线程不安全，或 (2) 线程安全，但过于复杂，无法通过分析理解。(2) 的原因将在下文的已知限制中描述。
+~~~c
+class Counter {
+  Mutex mu;
+  int a GUARDED_BY(mu);
+
+  void unsafeIncrement() NO_THREAD_SAFETY_ANALYSIS { a++; }
+}
+~~~
+与其他属性不同的是，<font color="#8064a2">NO_THREAD_SAFETY_ANALYSIS</font> 不是函数接口的一部分，因此应该放在函数定义中（在 .cc 或 .cpp 文件中），而不是函数声明中（在头文件种）。
+
+## <font color="#8064a2">RETURN_CAPABILITY(c)</font>
+_Previously_: `LOCK_RETURNED`
+
+<font color="#8064a2">RETURN_CAPABILITY</font> 是函数或方法上的一个属性，用于声明函数返回对给定功能的引用。它用于注释返回互斥锁的 <font color="#4bacc6">getter</font> 方法。
+~~~c
+#include "mutex.h"
+
+class MyClass {
+private:
+  Mutex mu;
+  int a GUARDED_BY(mu);
+
+public:
+  Mutex* getMu() RETURN_CAPABILITY(mu) { return &mu; }
+
+  // analysis knows that getMu() == mu
+  void clear() REQUIRES(getMu()) { a = 0; }
+};
+~~~
+
+##  <font color="#8064a2">ACQUIRED_BEFORE(…), ACQUIRED_AFTER(…)</font>
+
+<font color="#8064a2">ACQUIRED_BEFORE</font> 和 <font color="#8064a2">ACQUIRED_AFTER</font> 是成员声明的属性，特别是互斥锁或其他功能的声明。这些声明强制执行必须按照特定顺序获取互斥锁，以防止死锁。
+
+~~~c
+#include "mutex.h"
+
+Mutex m1;
+Mutex m2 ACQUIRED_AFTER(m1);
+
+// Alternative declaration
+// Mutex m2;
+// Mutex m1 ACQUIRED_BEFORE(m2);
+
+void foo() {
+  m2.Lock();
+  m1.Lock();  // Warning!  m2 must be acquired after m1.
+  m1.Unlock();
+  m2.Unlock();
+}
+~~~
+
+
+##  CAPABILITY(<<font color="#00b050">string</font>>)
+_Previously_: `LOCKABLE`
