@@ -383,4 +383,4 @@ class Foo {
   void bif() EXCLUDES(mu);
 };
 ~~~
-Negative requirements是一个默认关闭的实验性功能，因为在现有代码中它会产生许多警告。可以通过传递`-Wthread-safety-negative`来启用它。
+Negative requirements 要求是替代的 EXCLUDES，可提供更强的安全保障。否定要求使用 <font color="#8064a2">REQUIRES</font> 属性与 ! 运算符结合使用，以指示不应保留某项功能。
