@@ -391,7 +391,11 @@ Negative requirements 要求是替代的 EXCLUDES，可提供更强的安全保�
 
 class FooNeg{
 
-	Mute
-
-}
-~~~
+	Mutex mu;
+	void foo() REQUIRES(!mu){ //foo() now require !mu
+		mu.Lock();
+		bar();
+		baz();
+		
+	
+	}
