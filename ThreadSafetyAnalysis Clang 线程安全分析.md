@@ -328,3 +328,5 @@ _Previously:_ `ASSERT_EXCLUSIVE_LOCK`, `ASSERT_SHARED_LOCK`
 
 ## <font color="#8064a2">GUARDED_VAR  PT_GUARDED_VAR</font>
 这些属性的使用已被弃用。
+
+### Warning flags
