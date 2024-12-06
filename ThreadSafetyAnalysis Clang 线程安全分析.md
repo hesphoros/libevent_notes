@@ -305,3 +305,6 @@ Previously:`EXCLUSIVE_TRYLOCK_FUNCTION`, `SHARED_TRYLOCK_FUNCTION`
 这些是尝试获取给定能力的函数或方法的属性，并返回表示成功或失败的布尔值。第一个参数必须为 true 或 false，以指定哪个返回值表示成功，其余参数的解释方式与ACQUIRE相同。有关示例用法，请参阅下面的 mutex.h。
 由于分析不支持条件锁定，因此在 try-acquire 函数的返回值上的第一个分支之后，能力被视为已获得。
 
+~~~c
+ 
+~~~

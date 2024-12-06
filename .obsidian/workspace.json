@@ -85,7 +85,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -208,7 +209,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "08822fde902dfb38",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
     "[Fetching Title.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
