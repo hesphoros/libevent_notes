@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "libevent 概述.md",
+                "file": "libevent_structure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "libevent 概述"
+              "title": "libevent_structure"
             }
           }
         ],
@@ -67,10 +67,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent 概述.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "libevent 概述 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -100,8 +100,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -225,13 +224,14 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "db730313e0ffb1b4",
+  "active": "4900c4ba554a124b",
   "lastOpenFiles": [
+    "Create event.md",
+    "libevent 概述.md",
     "images/Pasted image 20241207235137.png",
     "images/Pasted image 20241207234221.png",
     "images/Pasted image 20241207233733.png",
     "epoll API.md",
-    "libevent 概述.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "word.md",
     "libevent_structure.md",
@@ -249,7 +249,6 @@
     "Macro definition.md",
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
-    "Build event.md",
     "evbuffer.md",
     "README.md",
     "DNS with libevent.md",
@@ -262,7 +261,6 @@
     "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg",
     "images/ReactorPattern_-_UML_2_Sequence_Diagram.svg",
     "libevent 中文文档_lucifer.pdf",
-    "images/Pasted image 20240923224952.png",
     "CppGuide/articles/程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.md",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",
