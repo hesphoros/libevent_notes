@@ -226,6 +226,7 @@
   },
   "active": "4900c4ba554a124b",
   "lastOpenFiles": [
+    "images/Pasted image 20241207234221.png",
     "images/Pasted image 20241207233733.png",
     "epoll API.md",
     "libevent 概述.md",
@@ -269,7 +270,6 @@
     "CppGuide/articles/程序员的烦心事",
     "CppGuide/articles/libevent源码深度剖析",
     "CppGuide/articles/高性能服务器框架设计",
-    "CppGuide/articles/imgs/zhyz9.webp",
     "CppGuide/articles/imgs",
     "CppGuide/articles/TeamTalk源码解析",
     "未命名.canvas"
