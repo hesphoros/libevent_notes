@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Reactor模式.md",
+                "file": "epoll API.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Reactor模式"
+              "title": "epoll API"
             }
           }
         ]
@@ -52,10 +52,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reactor模式.md"
+                "file": "epoll API.md"
               },
               "icon": "lucide-list",
-              "title": "Reactor模式 的大纲"
+              "title": "epoll API 的大纲"
             }
           },
           {
@@ -209,21 +209,22 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e35340117c9e52e1",
+  "active": "08822fde902dfb38",
   "lastOpenFiles": [
-    "word.md",
-    "TODO Lists.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
+    "word.md",
+    "libevent_structure.md",
+    "event_base.md",
+    "Event loop.md",
+    "Reactor pattern.md",
+    "Reactor模式.md",
+    "TODO Lists.md",
     "[Fetching Title.md",
     "Macro function.md",
-    "Reactor pattern.md",
     "images/Pasted image 20241201161933.png",
-    "Event loop.md",
     "Bufferevent and SSL.md",
-    "Reactor模式.md",
     "Helper types and functions.md",
     "images/Pasted image 20241130175804.png",
-    "event_base.md",
     "Macro definition.md",
     "epoll API.md",
     "Bufferevent and evbuffer.md",
@@ -235,7 +236,6 @@
     "evconnlistener.md",
     "Memory management.md",
     "Variadic function.md",
-    "libevent_structure.md",
     "images/Pasted image 20241118195605.png",
     "libevent-book/event_states.svg",
     "libevent-book/event_states.png",
