@@ -27,4 +27,5 @@ while 有活动的事件处理:
 - event_new
 	- 申请一个新的event结构，初始化其事件类型以及事件触发的回调函数接口；事件初始化
 - event_add
-	- 把新申请的event添加到event_base里面，后续调用event_base_dispath函数等待事件触发；事件等待发生
+	- 把新申请的event添加到event_base里面，后续调用event_base_dispatch函数等待事件触发；事件等待发生。
+- event_base_dispatch
