@@ -24,6 +24,7 @@
           {
             "id": "4900c4ba554a124b",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
@@ -31,12 +32,29 @@
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
               "title": "event_base"
             }
+          },
+          {
+            "id": "00a5972cb7579251",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "libevent_structure.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "libevent_structure"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -67,10 +85,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -100,7 +118,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -224,8 +243,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "4900c4ba554a124b",
+  "active": "00a5972cb7579251",
   "lastOpenFiles": [
+    "event_base.md",
     "libevent_structure.md",
     "Create event.md",
     "libevent 概述.md",
@@ -235,7 +255,6 @@
     "epoll API.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "word.md",
-    "event_base.md",
     "Event loop.md",
     "Reactor pattern.md",
     "Reactor模式.md",
