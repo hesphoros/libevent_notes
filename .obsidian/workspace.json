@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "epoll API"
             }
+          },
+          {
+            "id": "4900c4ba554a124b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "libevent 概述.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "libevent 概述"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -209,8 +224,10 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "08822fde902dfb38",
+  "active": "4900c4ba554a124b",
   "lastOpenFiles": [
+    "epoll API.md",
+    "libevent 概述.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "word.md",
     "libevent_structure.md",
@@ -226,7 +243,6 @@
     "Helper types and functions.md",
     "images/Pasted image 20241130175804.png",
     "Macro definition.md",
-    "epoll API.md",
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
     "Build event.md",
@@ -245,7 +261,6 @@
     "images/Pasted image 20240923224952.png",
     "CppGuide/articles/程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.md",
     "CppGuide/articles/程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.md",
-    "CppGuide/articles/程序员必知必会的网络命令/Linuxtcpdump使用介绍.md",
     "images/libevent.png",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",

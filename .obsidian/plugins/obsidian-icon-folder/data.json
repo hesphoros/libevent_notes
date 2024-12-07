@@ -75,5 +75,6 @@
   "images/ReactorPattern_-_UML_2_Sequence_Diagram.svg": "LiImage",
   "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg": "LiImage",
   "ThreadSafetyAnalysis Clang 线程安全分析.md": "📓",
-  "Reactor模式.md": "📓"
+  "Reactor模式.md": "📓",
+  "libevent 概述.md": "📓"
 }
