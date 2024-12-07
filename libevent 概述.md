@@ -16,3 +16,7 @@ while 有活动的事件处理:
 ![](images/Pasted%20image%2020241207233733.png)
 # 常见使用流程
 ![](images/Pasted%20image%2020241207234221.png)
+- event_base_new
+	- 申请libevent最关键的数据结构event_base;该数据结构主要保存了如下几个关键数据：
+		- 网络IO事件
+		- 时间shi'jian
