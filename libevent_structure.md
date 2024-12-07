@@ -17,7 +17,7 @@ struct event_base {
 	//一个指向特定于后端数据的指针，用于描述这个event_base端。
 	const struct eventop *evsel;
 	//一个指向特定于后端数据的指针，用于指向底层事件驱动后端的实现。
-	void *evbase;
+	void *               evbase; 
 
 	/** List of changes to tell backend about at next dispatch.  Only used
 	 * by the O(1) backends. */
