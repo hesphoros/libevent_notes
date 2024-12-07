@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -99,10 +99,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Macro function.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "Macro function 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -257,8 +257,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e6988589e7a106ef",
+  "active": "00a5972cb7579251",
   "lastOpenFiles": [
+    "Macro function.md",
     "libevent_structure.md",
     "event_base.md",
     "Create event.md",
@@ -274,7 +275,6 @@
     "Reactor模式.md",
     "TODO Lists.md",
     "[Fetching Title.md",
-    "Macro function.md",
     "images/Pasted image 20241201161933.png",
     "Bufferevent and SSL.md",
     "Helper types and functions.md",
