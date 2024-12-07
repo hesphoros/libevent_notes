@@ -19,4 +19,10 @@ while 有活动的事件处理:
 - event_base_new
 	- 申请libevent最关键的数据结构event_base;该数据结构主要保存了如下几个关键数据：
 		- 网络IO事件
-		- 时间shi'jian
+		- 时间事件
+		- 信号事件
+		- 活动的事件队列
+		- 信号操作函数接口
+		- IO操作函数接口
+- event_new
+	- 申请一�
