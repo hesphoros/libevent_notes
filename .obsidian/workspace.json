@@ -67,10 +67,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "epoll API.md"
+                "file": "libevent 概述.md"
               },
               "icon": "lucide-list",
-              "title": "epoll API 的大纲"
+              "title": "libevent 概述 的大纲"
             }
           },
           {
@@ -100,7 +100,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -224,8 +225,9 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "4900c4ba554a124b",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
+    "images/Pasted image 20241207235137.png",
     "images/Pasted image 20241207234221.png",
     "images/Pasted image 20241207233733.png",
     "epoll API.md",
@@ -262,7 +264,6 @@
     "libevent 中文文档_lucifer.pdf",
     "images/Pasted image 20240923224952.png",
     "CppGuide/articles/程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.md",
-    "images/libevent.png",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",
     "CppGuide/articles/程序员的简历",
