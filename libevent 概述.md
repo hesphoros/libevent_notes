@@ -29,4 +29,6 @@ while 有活动的事件处理:
 - event_add
 	- 把新申请的event添加到event_base里面，后续调用event_base_dispatch函数等待事件触发；事件等待发生。
 - event_base_dispatch
-	- 等待yong'hu
+	- 等待用户注册的事件触发，处理活动事件列表，调用其对应的用户回调接口
+
+# 整体状态以及关键函数
