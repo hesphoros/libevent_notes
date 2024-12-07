@@ -52,10 +52,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ThreadSafetyAnalysis Clang 线程安全分析.md"
+                "file": "TODO Lists.md"
               },
               "icon": "lucide-list",
-              "title": "ThreadSafetyAnalysis Clang 线程安全分析 的大纲"
+              "title": "TODO Lists 的大纲"
             }
           },
           {
@@ -85,13 +85,11 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 311.5
   },
   "right": {
     "id": "89888e66bdb231a4",
@@ -211,7 +209,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "08822fde902dfb38",
+  "active": "e35340117c9e52e1",
   "lastOpenFiles": [
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "[Fetching Title.md",
