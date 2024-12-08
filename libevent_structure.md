@@ -346,6 +346,9 @@ struct event_config {
 <font color="#8064a2">TAILQ_HEAD</font> 见：[[Macro function]]
 ~~~- **语义清晰**：`entries` 直观地表示这是一个存放“条目”（entries）的集合，符合该结构体的用途，即配置多个条目。~~~
 - **约定俗成**：`entries` 是一个常见的命名约定，许多基于双向链表的数据结构都采用类似的命名，使代码结构统一、可读性强.
+- `TAILQ_HEAD` 是一个宏，用来定义一个双向链表的结构体。宏展开后，`entries` 是一个链表头，类型为 `event_configq`。
+- `event_configq` 是一个类型，代表链表的头。它并不直接存储数据，而是通过 `entries` 来管理链表中的节点。
+- `event_config_entry` 是链表中的节点类型，它代表具体的配置项，每个节点存储一个配置条目的数据。
 ## struct timeval 
 ```c
 /* A time value that is accurate to the nearest
