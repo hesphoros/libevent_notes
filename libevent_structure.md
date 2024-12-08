@@ -344,8 +344,8 @@ struct event_config {
 };
 ```
 <font color="#8064a2">TAILQ_HEAD</font> 见：[[Macro function]]
-~~~- **语义清晰**：`entries` 直观地表示这是一个存放“条目”（entries）的集合，符合该结构体的用途，即配置多个条目。
-- **约定俗成**：`entries` 是一个常见的命名约定，许多基于双向链表的数据结构都采用类似的命名，使代码结构统一、可读性强。
+~~~- **语义清晰**：`entries` 直观地表示这是一个存放“条目”（entries）的集合，符合该结构体的用途，即配置多个条目。~~~
+- **约定俗成**：`entries` 是一个常见的命名约定，许多基于双向链表的数据结构都采用类似的命名，使代码结构统一、可读性强.
 ## struct timeval 
 ```c
 /* A time value that is accurate to the nearest
