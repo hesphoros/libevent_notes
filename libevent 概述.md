@@ -61,3 +61,4 @@ while 有活动的事件处理:
 | event_io_map           | IO事件hash表管理结构                            |
 | min_heap_t             | 时间事件最小堆管理结构                              |
 | struct evcallback_list | event_base 结构体里面的活动队列，主要是一个链表，在queue.h实现 |
+![](images/Pasted%20image%2020241208231220.png)
