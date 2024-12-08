@@ -54,7 +54,7 @@ struct event_config * event_config_new(void)
  要使用这些函数分配<font color="#4bacc6">event_base</font>，先调用`event_config_new()`分配一个`event_config`。然后,对`event_config`调用其它函数，设置所需要的`event_base`特征。最后，调用其它函数，设置所需要的`event_base`特征。最后，调用`event_base_new_with_config()`获取新的`event_base`。完成工作后，使用`event_config_free()`释放`event_config`。
 
 ### <font color="#4bacc6">event_base_new_with_config</font>
-这个函数在new_event_base被调用，传入的参数是event_config，根据cfg的内容来配置event_base
+这个函数在event_base_new被调用，传入的参数是event_config，根据cfg的内容来配置event_base
 
 ```c++
 struct event_base * event_base_new_with_config(const struct event_config *cfg)

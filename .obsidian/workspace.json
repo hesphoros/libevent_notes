@@ -94,9 +94,51 @@
               "icon": "lucide-file",
               "title": "libevent 概述"
             }
+          },
+          {
+            "id": "059361b2e099487b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Helper types and functions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Helper types and functions"
+            }
+          },
+          {
+            "id": "fb92933f5c5ff2b6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Memory management.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Memory management"
+            }
+          },
+          {
+            "id": "f3ddcd3e4070f223",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "12.8.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "12.8"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -127,10 +169,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent_structure.md"
+                "file": "12.8.md"
               },
               "icon": "lucide-list",
-              "title": "libevent_structure 的大纲"
+              "title": "12.8 的大纲"
             }
           },
           {
@@ -160,8 +202,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -285,11 +326,15 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "00a5972cb7579251",
+  "active": "f3ddcd3e4070f223",
   "lastOpenFiles": [
+    "ThreadSafetyAnalysis Clang 线程安全分析.md",
+    "12.8.md",
+    "Memory management.md",
     "event_base.md",
-    "Macro function.md",
     "libevent_structure.md",
+    "Helper types and functions.md",
+    "Macro function.md",
     "libevent 概述.md",
     "images/Pasted image 20241208231220.png",
     "Create event.md",
@@ -297,7 +342,6 @@
     "images/Pasted image 20241207234221.png",
     "images/Pasted image 20241207233733.png",
     "epoll API.md",
-    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "word.md",
     "Event loop.md",
     "Reactor pattern.md",
@@ -306,7 +350,6 @@
     "[Fetching Title.md",
     "images/Pasted image 20241201161933.png",
     "Bufferevent and SSL.md",
-    "Helper types and functions.md",
     "images/Pasted image 20241130175804.png",
     "Macro definition.md",
     "Bufferevent and evbuffer.md",
@@ -315,7 +358,6 @@
     "README.md",
     "DNS with libevent.md",
     "evconnlistener.md",
-    "Memory management.md",
     "Variadic function.md",
     "images/Pasted image 20241118195605.png",
     "libevent-book/event_states.svg",
