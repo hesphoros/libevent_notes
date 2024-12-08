@@ -12,6 +12,7 @@ struct event_config_entry {
 ```
 TAILQ_ENTRY 见：[[Macro function]]
 
+
 [命名约定 - OpenResty C 语言编码风格指南](https://jayce.github.io/openresty-coding-style-guide/book/ch-01-naming-convention.html)
 ## struct <font color="#4bacc6">event_base</font>
 ```c
