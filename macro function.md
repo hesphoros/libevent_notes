@@ -216,6 +216,13 @@ struct {								\
   
 - `tqe_prev`：指向链表中上一个元素的指针的地址。这里使用了一个指向指针的指针，即二级指针，用于在删除元素时修改前一个元素的 `tqe_next` 指针。
 
+
+#### `TAILQ_ENTRY(event_config_entry) next;`
+
+- `TAILQ_ENTRY` 是一个宏，定义了两个指针：`prev` 和 `next`，它们分别指向链表中当前节点的前一个和下一个节点。这是 `libevent` 中用于双向链表操作的基本工具。
+- 这里的 `event_config_entry` 表示链表中的节点类型，而 `next` 则是结构体中的链表连接字段，指向下一个节点。在这个结构体中，`next` 指向下一个 `event_config_entry` 类型的结构体实例。
+- 该字段是链表的一部分，使得每个 `event_config_entry` 可以在链表中进行链接、插入、删除等操作。
+- 
 # <font color="#8064a2">TAILQ_HEAD</font>
 ```c
 #define TAILQ_HEAD(name, type)          \
