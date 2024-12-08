@@ -132,8 +132,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -257,7 +256,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e6988589e7a106ef",
+  "active": "e35340117c9e52e1",
   "lastOpenFiles": [
     "libevent_structure.md",
     "Macro function.md",
