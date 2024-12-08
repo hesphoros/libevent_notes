@@ -50,4 +50,14 @@ while 有活动的事件处理:
 		- 用户通过调用event_add函数把事件加入；如果是IO事件，libevent在底层通过调用epoll/select相应的add函数把事件加入linux内核，后续该事件对应的套接字，有数据到来或者数据发送，产生相应的读写事件；时间事件，就是超时触发；信号事件，就是内核检测到对应的信号产生，递交给用户态，然后libevent通过本身的机制，产生相应的事件。
 	-  激活状态
 		- 如果相应的事件发生，就把事件加入到event_base对应的active queue；然后在event_base_loop函数遍历该队列，调用用户的回调函数进行处理；同时，如果该事件不是持久化事件，则直接调用event_del函数将事件处理；如果是持久化事件，则进入等待状态，等待下一次事件触发。
-- event_base主要提供select/epoll添加、删除IO事件；
+- event_base主要提供select/epoll添加、删除IO事件；event_process_active处理相应的active queue
+
+
+| 数据结构                   | 作用                                       |
+| ---------------------- | ---------------------------------------- |
+| struct event_base      | Libevent关键的数据结构，管理整个事件的添加，输出和响应          |
+| struct event           | IO事件，时间事件，信号事件                           |
+| event_signal_map       | 信号和IO事件共用的管理结构                           |
+| event_io_map           | IO事件hash表管理结构                            |
+| min_heap_t             | 时间事件最小堆管理结构                              |
+| struct evcallback_list | event_base 结构体里面的活动队列，主要是一个链表，在queue.h实现 |
