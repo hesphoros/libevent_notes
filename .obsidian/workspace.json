@@ -82,7 +82,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -113,10 +113,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Macro function.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "Macro function 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -146,7 +146,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -270,14 +271,14 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "366c890f9b8d552c",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
+    "libevent 概述.md",
     "images/Pasted image 20241208231220.png",
     "event_base.md",
     "Macro function.md",
     "libevent_structure.md",
     "Create event.md",
-    "libevent 概述.md",
     "images/Pasted image 20241207235137.png",
     "images/Pasted image 20241207234221.png",
     "images/Pasted image 20241207233733.png",
@@ -306,7 +307,6 @@
     "libevent-book/event_states.svg",
     "libevent-book/event_states.png",
     "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg",
-    "images/ReactorPattern_-_UML_2_Sequence_Diagram.svg",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.md",
     "CppGuide/articles/网络编程",
