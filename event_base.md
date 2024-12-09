@@ -877,12 +877,12 @@ sturct event_base* event_init(void)
 
 -  struct event_io_map io；
 
-IO事件map；总共对应的两种数据结构，其中一种是fd对应的数据；另外一种是fd对应的hash表；
+	IO事件map；总共对应的两种数据结构，其中一种是fd对应的数据；另外一种是fd对应的hash表；
 
-Ø struct event_signal_map sigmap；
+-  struct event_signal_map sigmap；
 
-信号事件map，对应一个数组，以信号的id作为数组下标。
+	信号事件map，对应一个数组，以信号的id作为数组下标。
 
-Ø struct min_heap timeheap;
+-  struct min_heap timeheap;
 
-时间事件最小堆；以event里面ev_timeout作为最小堆的比较基准。
+	时间事件最小堆；以event里面ev_timeout作为最小堆的比较基准。
