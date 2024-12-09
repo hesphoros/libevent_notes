@@ -253,6 +253,21 @@ static const struct eventop *eventops[] = {
 
 ~~~
 
+~~~c
+const struct eventop epollops = {
+	"epoll",
+	epoll_init,
+	epoll_nochangelist_add,
+	epoll_nochangelist_del,
+	epoll_dispatch,
+	epoll_dealloc,//释放初始化释放的资源
+	1, /* need reinit */
+	EV_FEATURE_ET|EV_FEATURE_O1|EV_FEATURE_EARLY_CLOSE,
+	0
+};
+~~~
+
+
 - **内存分配和初始化**：首先，函数通过 `mm_calloc` 安全地分配内存，并将其初始化为零。然后根据传入的配置 `cfg` 设置 `event_base` 结构体中的一些标志和参数。
     
 - **时间和计时器配置**：函数检查是否需要启用精确的计时器，配置单调计时器，并获取当前时间以供后续操作。
