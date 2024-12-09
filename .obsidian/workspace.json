@@ -82,10 +82,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Memory management.md"
+                "file": "event_base.md"
               },
               "icon": "lucide-list",
-              "title": "Memory management 的大纲"
+              "title": "event_base 的大纲"
             }
           },
           {
@@ -269,8 +269,8 @@
           }
         ],
         "direction": "vertical",
-        "x": 178,
-        "y": 20,
+        "x": -1518,
+        "y": 290,
         "width": 1010,
         "height": 698,
         "maximize": false,
@@ -278,8 +278,9 @@
       }
     ]
   },
-  "active": "ac3c08a055c7b5ac",
+  "active": "94795dd2c0c988b6",
   "lastOpenFiles": [
+    "Memory management.md",
     "IO epoll Initialization.md",
     "event_base.md",
     "images/Pasted image 20241210000004.png",
@@ -290,7 +291,6 @@
     "epoll API.md",
     "evconnlistener.md",
     "Helper types and functions.md",
-    "Memory management.md",
     "12.8.md",
     "README.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
