@@ -218,9 +218,39 @@ struct event_base * event_base_new_with_config(const struct event_config *cfg)
 
 
 ```
-
+ 全局变量
 
 ~~~c
+
+/* Array of backends in order of preference. */
+static const struct eventop *eventops[] = {
+#ifdef EVENT__HAVE_EVENT_PORTS
+	&evportops,
+#endif
+#ifdef EVENT__HAVE_WORKING_KQUEUE
+	&kqops,
+#endif
+#ifdef EVENT__HAVE_EPOLL
+	&epollops,
+#endif
+#ifdef EVENT__HAVE_DEVPOLL
+	&devpollops,
+#endif
+#ifdef EVENT__HAVE_POLL
+	&pollops,
+#endif
+#ifdef EVENT__HAVE_SELECT
+	&selectops,
+#endif
+#ifdef _WIN32
+	&win32ops,
+#endif
+#ifdef EVENT__HAVE_WEPOLL
+	&wepollops,
+#endif
+	NULL
+};
+
 ~~~
 
 - **内存分配和初始化**：首先，函数通过 `mm_calloc` 安全地分配内存，并将其初始化为零。然后根据传入的配置 `cfg` 设置 `event_base` 结构体中的一些标志和参数。
