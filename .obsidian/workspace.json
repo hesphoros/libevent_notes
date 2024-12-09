@@ -96,10 +96,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md"
+                "file": "TODO.md"
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "TODO 的大纲"
             }
           },
           {
@@ -294,10 +294,11 @@
       }
     ]
   },
-  "active": "4900c4ba554a124b",
+  "active": "08822fde902dfb38",
   "lastOpenFiles": [
-    "TODO.md",
     "event_base.md",
+    "luevent",
+    "TODO.md",
     "libevent 概述.md",
     "epoll API.md",
     "evconnlistener.md",
@@ -327,7 +328,6 @@
     "Bufferevent Advanced Topics.md",
     "evbuffer.md",
     "DNS with libevent.md",
-    "Variadic function.md",
     "images/Pasted image 20241118195605.png",
     "libevent-book/event_states.svg",
     "libevent-book/event_states.png",
@@ -341,7 +341,6 @@
     "CppGuide/articles/libevent源码深度剖析",
     "CppGuide/articles/高性能服务器框架设计",
     "CppGuide/articles/imgs",
-    "CppGuide/articles/TeamTalk源码解析",
     "未命名.canvas"
   ]
 }
