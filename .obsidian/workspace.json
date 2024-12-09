@@ -94,51 +94,9 @@
               "icon": "lucide-file",
               "title": "libevent 概述"
             }
-          },
-          {
-            "id": "059361b2e099487b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Helper types and functions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Helper types and functions"
-            }
-          },
-          {
-            "id": "fb92933f5c5ff2b6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Memory management.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Memory management"
-            }
-          },
-          {
-            "id": "f3ddcd3e4070f223",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "event_base.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "event_base"
-            }
           }
         ],
-        "currentTab": 8
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -169,10 +127,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md"
+                "file": "libevent 概述.md"
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "libevent 概述 的大纲"
             }
           },
           {
@@ -202,8 +160,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -327,16 +284,16 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "db730313e0ffb1b4",
+  "active": "e35340117c9e52e1",
   "lastOpenFiles": [
+    "Helper types and functions.md",
+    "Memory management.md",
+    "event_base.md",
     "12.8.md",
     "libevent 概述.md",
     "README.md",
-    "event_base.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
-    "Memory management.md",
     "libevent_structure.md",
-    "Helper types and functions.md",
     "Macro function.md",
     "images/Pasted image 20241208231220.png",
     "Create event.md",
