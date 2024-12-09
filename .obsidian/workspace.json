@@ -254,52 +254,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "floating": {
-    "id": "f02c013934464031",
-    "type": "floating",
-    "children": [
-      {
-        "id": "0b11a40f47ad7625",
-        "type": "window",
-        "children": [
-          {
-            "id": "35761750eee1debd",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "4900c4ba554a124b",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "event_base.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "pinned": true,
-                  "icon": "lucide-file",
-                  "title": "event_base"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": -1658,
-        "y": 210,
-        "width": 1010,
-        "height": 698,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
   "active": "ac3c08a055c7b5ac",
   "lastOpenFiles": [
-    "images/Pasted image 20241210000004.png",
     "event_base.md",
     "IO epoll Initialization.md",
+    "images/Pasted image 20241210000004.png",
     "images/Pasted image 20241209235750.png",
     "TODO.md",
     "luevent",
@@ -333,7 +292,6 @@
     "evbuffer.md",
     "images/Pasted image 20241118195605.png",
     "libevent-book/event_states.svg",
-    "libevent-book/event_states.png",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",
