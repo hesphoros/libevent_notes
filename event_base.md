@@ -847,3 +847,6 @@ sturct event_base* event_init(void)
 这个函数的工作与event_base_new（）类似，它将分配的event_base设置成当前的。没有其他方法改变当前event_base。
 本文描述的函数有一些用于操作当前event_base的变体，这些函数与新版本函数的行为类似，只是它们没有event_base参数。
 [![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml14360\wps1.jpg)](http://photo.blog.sina.com.cn/list/blogpic.php?pid=56dee71a4a01d8c590b38&bid=56dee71a0100qdxx&uid=1457448730)
+
+
+# event_base structure code a'na

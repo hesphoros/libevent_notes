@@ -129,12 +129,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "12.8.md",
+                "file": "event_base.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "12.8"
+              "title": "event_base"
             }
           }
         ],
@@ -169,10 +169,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "12.8.md"
+                "file": "event_base.md"
               },
               "icon": "lucide-list",
-              "title": "12.8 的大纲"
+              "title": "event_base 的大纲"
             }
           },
           {
@@ -202,7 +202,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -326,10 +327,10 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "f3ddcd3e4070f223",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
-    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "12.8.md",
+    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "Memory management.md",
     "event_base.md",
     "libevent_structure.md",
