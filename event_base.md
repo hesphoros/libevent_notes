@@ -908,7 +908,7 @@ sturct event_base* event_init(void)
 -  struct eventop* evsel
 
 	存储底层事件处理接口函数，比如select, poll, epoll常见的IO多路复用函数。
-	其中对后端(epoll select)等进行初始化cao
+	其中对后端(epoll select)等进行初始化操作
 
 -  void *evbase
 
