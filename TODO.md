@@ -7,3 +7,4 @@
 	3. lu_event_base_new_with_config
 	4. lu_event_config_free
 4. 封装mm-inernal.h memory_manager.h memory_manager.c
+5. 
