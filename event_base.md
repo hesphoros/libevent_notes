@@ -159,7 +159,7 @@ struct event_base * event_base_new_with_config(const struct event_config *cfg)
 		if (should_check_environment &&
 		    event_is_method_disabled(eventops[i]->name))
 			continue;
-		、、
+		// 所谓后端就是epoll poll select等
 		// 选择该方法作为事件后端
 		base->evsel = eventops[i];
 		// 初始化该事件后端
@@ -218,6 +218,10 @@ struct event_base * event_base_new_with_config(const struct event_config *cfg)
 
 
 ```
+
+
+~~~c
+~~~
 
 - **内存分配和初始化**：首先，函数通过 `mm_calloc` 安全地分配内存，并将其初始化为零。然后根据传入的配置 `cfg` 设置 `event_base` 结构体中的一些标志和参数。
     
