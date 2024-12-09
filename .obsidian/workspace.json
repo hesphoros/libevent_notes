@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -99,10 +99,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent 概述.md"
+                "file": "event_base.md"
               },
               "icon": "lucide-list",
-              "title": "libevent 概述 的大纲"
+              "title": "event_base 的大纲"
             }
           },
           {
@@ -132,7 +132,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -256,12 +257,12 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "366c890f9b8d552c",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
+    "libevent 概述.md",
     "event_base.md",
     "epoll API.md",
     "evconnlistener.md",
-    "libevent 概述.md",
     "Helper types and functions.md",
     "Memory management.md",
     "12.8.md",

@@ -852,3 +852,37 @@ sturct event_base* event_init(void)
 # event_base structure code analyse
 
 ![](images/Pasted%20image%2020241208231220.png)
+
+其中几个重要的数据结构如下：
+
+-  struct eventop* evsel
+
+	存储底层事件处理接口函数，比如select, poll, epoll常见的IO多路复用函数。
+
+-  void *evbase
+
+	存储对应底层事件接口函数需要保存的事件相关数据结构。比如epoll对应的struct epollops。
+
+-  struct eventop *evsigsel
+
+	信号事件对应处理函数指针结构体，主要是添加信号事件函数指针，删除信号事件函数指针，
+
+-  struct evsig_info sig
+
+	保存信号处理函数指针，以及信号处理的socketpair
+
+-  struct evcallback_list *activequeues;
+
+	活动事件列表，注意这里activequeues是一个数组，数组下标代表事件触发的优先级，数组下标越小，优先级越高，同等条件下，越先调用其事件对应的回调函数；
+
+-  struct event_io_map io；
+
+IO事件map；总共对应的两种数据结构，其中一种是fd对应的数据；另外一种是fd对应的hash表；
+
+Ø struct event_signal_map sigmap；
+
+信号事件map，对应一个数组，以信号的id作为数组下标。
+
+Ø struct min_heap timeheap;
+
+时间事件最小堆；以event里面ev_timeout作为最小堆的比较基准。
