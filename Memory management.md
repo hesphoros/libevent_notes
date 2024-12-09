@@ -164,7 +164,7 @@ void * event_mm_calloc_(size_t count, size_t size)
 	}
 
 error:
-	errno = ENOMEM;
+	errno = ENOMEM; //设置错误码
 	return NULL;
 }
 ```
