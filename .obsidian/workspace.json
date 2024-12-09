@@ -297,6 +297,7 @@
   },
   "active": "ac3c08a055c7b5ac",
   "lastOpenFiles": [
+    "images/Pasted image 20241210000004.png",
     "event_base.md",
     "IO epoll Initialization.md",
     "images/Pasted image 20241209235750.png",
@@ -330,7 +331,6 @@
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
     "evbuffer.md",
-    "DNS with libevent.md",
     "images/Pasted image 20241118195605.png",
     "libevent-book/event_states.svg",
     "libevent-book/event_states.png",
