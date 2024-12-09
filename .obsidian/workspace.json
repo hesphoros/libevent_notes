@@ -87,12 +87,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "libevent 概述.md",
+                "file": "event_base.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "libevent 概述"
+              "title": "event_base"
             }
           }
         ],
@@ -127,10 +127,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent 概述.md"
+                "file": "event_base.md"
               },
               "icon": "lucide-list",
-              "title": "libevent 概述 的大纲"
+              "title": "event_base 的大纲"
             }
           },
           {
@@ -284,13 +284,14 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e35340117c9e52e1",
+  "active": "366c890f9b8d552c",
   "lastOpenFiles": [
+    "evconnlistener.md",
+    "libevent 概述.md",
     "Helper types and functions.md",
     "Memory management.md",
     "event_base.md",
     "12.8.md",
-    "libevent 概述.md",
     "README.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "libevent_structure.md",
@@ -315,7 +316,6 @@
     "Bufferevent Advanced Topics.md",
     "evbuffer.md",
     "DNS with libevent.md",
-    "evconnlistener.md",
     "Variadic function.md",
     "images/Pasted image 20241118195605.png",
     "libevent-book/event_states.svg",
