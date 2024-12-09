@@ -38,6 +38,20 @@
             }
           },
           {
+            "id": "94795dd2c0c988b6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
+          },
+          {
             "id": "00a5972cb7579251",
             "type": "leaf",
             "pinned": true,
@@ -68,7 +82,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -99,10 +113,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md"
+                "file": "未命名.md"
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "未命名 的大纲"
             }
           },
           {
@@ -132,8 +146,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -257,10 +270,11 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "db730313e0ffb1b4",
+  "active": "94795dd2c0c988b6",
   "lastOpenFiles": [
-    "libevent 概述.md",
     "event_base.md",
+    "未命名.md",
+    "libevent 概述.md",
     "epoll API.md",
     "evconnlistener.md",
     "Helper types and functions.md",
@@ -295,16 +309,8 @@
     "libevent-book/event_states.png",
     "images/Reactor_Pattern_-_UML_2_Component_Diagram.svg",
     "libevent 中文文档_lucifer.pdf",
-    "CppGuide/articles/程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.md",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",
     "CppGuide/articles/程序员的简历",
     "CppGuide/articles/程序员的薪资与年终奖那些事儿",
-    "CppGuide/articles/程序员的烦心事",
-    "CppGuide/articles/libevent源码深度剖析",
-    "CppGuide/articles/高性能服务器框架设计",
-    "CppGuide/articles/imgs",
-    "CppGuide/articles/TeamTalk源码解析",
-    "未命名.canvas"
-  ]
-}
+    "CppGuid
