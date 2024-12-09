@@ -937,4 +937,6 @@ sturct event_base* event_init(void)
 -  struct min_heap timeheap;
 
 	时间事件最小堆；以event里面ev_timeout作为最小堆的比较基准。
-# event_base structure init 
+# event_base structure Initialization process 
+初始化入口函数为event_base_new，下图展示了event_base_new函数主要调用流程.
+![](images/Pasted%20image%2020241209235750.png)
