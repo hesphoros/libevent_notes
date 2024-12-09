@@ -33,7 +33,7 @@ static void (*mm_free_fn_)(void *p) = NULL;
 - **`mm_malloc_fn_`**:
     
     - **类型**: `void *(*mm_malloc_fn_)(size_t sz)`
-    - **用途**: 指向一个接受 `size_t` 类型大小并返回 `void*` 的内存分配函数，通常类似于 `malloc`。这个指针允许 `libevent` 使用自定义的内存分配实现。
+    - **用途**: 指向一个接受 `size_t` 类型大小并返回 `void*` 的内存分配函数，通常类似于 `malloc`。这个指针允许 `libevent` 使用自定义的内存分配实现。 
 - **`mm_realloc_fn_`**:
     
     - **类型**: `void *(*mm_realloc_fn_)(void *p, size_t sz)`
@@ -42,6 +42,7 @@ static void (*mm_free_fn_)(void *p) = NULL;
     
     - **类型**: `void (*mm_free_fn_)(void *p)`
     - **用途**: 指向一个接受内存块指针并释放内存的函数，类似于 `free`。这个指针允许 `libevent` 使用自定义的内存释放实现。
+- 这种方式提供了高度的灵活性和可定制性，允许应用程序根据需要进行内存管理优化。
 ## <font color="#4bacc6">mm_realloc()</font>
 
 ```c

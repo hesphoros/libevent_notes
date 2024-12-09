@@ -82,10 +82,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md"
+                "file": "Memory management.md"
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "Memory management 的大纲"
             }
           },
           {
@@ -278,11 +278,11 @@
       }
     ]
   },
-  "active": "94795dd2c0c988b6",
+  "active": "ac3c08a055c7b5ac",
   "lastOpenFiles": [
+    "event_base.md",
     "Memory management.md",
     "IO epoll Initialization.md",
-    "event_base.md",
     "images/Pasted image 20241210000004.png",
     "images/Pasted image 20241209235750.png",
     "TODO.md",
