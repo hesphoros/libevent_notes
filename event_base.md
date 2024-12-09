@@ -849,4 +849,5 @@ sturct event_base* event_init(void)
 [![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml14360\wps1.jpg)](http://photo.blog.sina.com.cn/list/blogpic.php?pid=56dee71a4a01d8c590b38&bid=56dee71a0100qdxx&uid=1457448730)
 
 
-# event_base structure code a'na
+# event_base structure code analyse
+
