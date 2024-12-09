@@ -851,3 +851,4 @@ sturct event_base* event_init(void)
 
 # event_base structure code analyse
 
+![](images/Pasted%20image%2020241208231220.png)
