@@ -37,7 +37,8 @@ struct selectop
 # **优先级队列初始化以及使用**
 关键API
 
-| 函数接口                       | 函数说明 |
-| -------------------------- | ---- |
-| event_base_priority_init   |      |
-| event_base_get_npriorities |      |
+| 函数接口                       | 函数说明                                               |
+| -------------------------- | -------------------------------------------------- |
+| event_base_priority_init   | 初始化event_base接口的优先级队列，必须在event_base_dispatch接口之前使用 |
+| event_base_get_npriorities | 获取event_base优先级队列总个数                               |
+| event_priority_set         | 设置某个事件的优先级                                         |
