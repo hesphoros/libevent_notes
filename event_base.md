@@ -1,4 +1,4 @@
-## build default <font color="#f79646">event_base</font>
+zhi## build default <font color="#f79646">event_base</font>
 
 ==event_base_new()==函数分配并且返回一个新的具有默认设置的<font color="#f79646">event_base</font>。函数会检测环境变量，返回一个到event_base的指针。如果发生错误，则返回NULL。选择各种方法时，函数会选择OS支持的最快方法。 
 
