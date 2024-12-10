@@ -115,7 +115,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -278,7 +279,7 @@
       }
     ]
   },
-  "active": "94795dd2c0c988b6",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
     "Memory management.md",
     "evbuffer.md",
