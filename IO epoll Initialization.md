@@ -33,3 +33,6 @@ struct selectop
 ~~~
 
 该结构的初始化流程如下：
+![select初始化](images/Pasted%20image%2020241210233830.png)
+# **优先级队列初始化以及使用**
+关键API
