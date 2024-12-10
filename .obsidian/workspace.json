@@ -65,7 +65,8 @@
               "title": "Create event"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -96,10 +97,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent_structure.md"
+                "file": "Create event.md"
               },
               "icon": "lucide-list",
-              "title": "libevent_structure 的大纲"
+              "title": "Create event 的大纲"
             }
           },
           {
@@ -293,11 +294,11 @@
       }
     ]
   },
-  "active": "94795dd2c0c988b6",
+  "active": "366c890f9b8d552c",
   "lastOpenFiles": [
+    "libevent_structure.md",
     "images/Pasted image 20241210235428.png",
     "Create event.md",
-    "libevent_structure.md",
     "libevent 概述.md",
     "Macro definition.md",
     "TODO.md",
@@ -329,7 +330,6 @@
     "[Fetching Title.md",
     "images/Pasted image 20241201161933.png",
     "Bufferevent and SSL.md",
-    "images/Pasted image 20241130175804.png",
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
     "libevent 中文文档_lucifer.pdf",

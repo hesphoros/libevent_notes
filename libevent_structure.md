@@ -4,7 +4,8 @@
 
 初始化比较简单，主要是申请event内存，然后对event的各个成员赋初值。大致流程如下：
 - event_new
-- 
+- mm_calloc
+- event_assign
 ## struct <font color="#4bacc6">event_config_entry</font>
 libevent 中的事件配置项。
 
