@@ -115,8 +115,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -281,12 +280,13 @@
   },
   "active": "94795dd2c0c988b6",
   "lastOpenFiles": [
+    "12.8.md",
+    "event_base.md",
     "images/Pasted image 20241210234355.png",
     "IO epoll Initialization.md",
     "images/Pasted image 20241210233830.png",
     "Memory management.md",
     "TODO.md",
-    "event_base.md",
     "evbuffer.md",
     "images/Pasted image 20241210000004.png",
     "images/Pasted image 20241209235750.png",
@@ -295,7 +295,6 @@
     "epoll API.md",
     "evconnlistener.md",
     "Helper types and functions.md",
-    "12.8.md",
     "README.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "libevent_structure.md",
@@ -317,7 +316,6 @@
     "Macro definition.md",
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
-    "images/Pasted image 20241118195605.png",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",

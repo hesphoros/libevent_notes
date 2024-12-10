@@ -975,4 +975,5 @@ struct event_signal_map
 每个fd对应一个数组元素，存储对应的fd需要关注的读事件、写事件、错误事件。
 event_base数据结构的成员变量io的初始化流程：
 event_base_new->event_base_new_with_config->evmap_io_initmap_->evmap_singal_initmap_
+
 evmap_signal_initmap_ 函数主要把该数据结构的成员赋值为空，后续添加事件的时候，在申请内存。
