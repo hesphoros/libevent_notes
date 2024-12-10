@@ -5,6 +5,6 @@
   "textFontFamily": "JetBrains Mono",
   "monospaceFontFamily": "JetBrains Mono",
   "nativeMenus": false,
-  "baseFontSize": 16,
+  "baseFontSize": 15,
   "baseFontSizeAction": true
 }
