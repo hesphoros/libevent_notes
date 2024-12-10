@@ -36,3 +36,8 @@ struct selectop
 ![select初始化](images/Pasted%20image%2020241210233830.png)
 # **优先级队列初始化以及使用**
 关键API
+
+| 函数接口                       | 函数说明 |
+| -------------------------- | ---- |
+| event_base_priority_init   |      |
+| event_base_get_npriorities |      |
