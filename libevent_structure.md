@@ -1,5 +1,43 @@
 
 ## struct event
+
+~~~c
+struct event {
+	struct event_callback ev_evcallback;
+
+	/* for managing timeouts */
+	union {
+		TAILQ_ENTRY(event) ev_next_with_common_timeout;
+		size_t min_heap_idx;
+	} ev_timeout_pos;
+	evutil_socket_t ev_fd;
+
+	short ev_events;
+	short ev_res;		/* result passed to event callback */
+
+	struct event_base *ev_base;
+
+	union {
+		/* used for io events */
+		struct {
+			LIST_ENTRY (event) ev_io_next;
+			struct timeval ev_timeout;
+		} ev_io;
+
+		/* used by signal events */
+		struct {
+			LIST_ENTRY (event) ev_signal_next;
+			short ev_ncalls;
+			/* Allows deletes in callback */
+			short *ev_pncalls;
+		} ev_signal;
+	} ev_;
+
+
+	struct timeval ev_timeout;
+};
+
+~~~
 ![](images/Pasted%20image%2020241210235428.png)
 
 初始化比较简单，主要是申请event内存，然后对event的各个成员赋初值。大致流程如下：
