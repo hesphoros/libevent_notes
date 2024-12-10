@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "event_base.md",
+                "file": "IO epoll Initialization.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "event_base"
+              "title": "IO epoll Initialization"
             }
           },
           {
@@ -82,10 +82,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md"
+                "file": "IO epoll Initialization.md"
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "IO epoll Initialization 的大纲"
             }
           },
           {
@@ -282,10 +282,10 @@
   "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
     "Memory management.md",
-    "evbuffer.md",
     "TODO.md",
     "event_base.md",
     "IO epoll Initialization.md",
+    "evbuffer.md",
     "images/Pasted image 20241210000004.png",
     "images/Pasted image 20241209235750.png",
     "luevent",

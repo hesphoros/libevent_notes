@@ -940,16 +940,3 @@ sturct event_base* event_init(void)
 # event_base structure Initialization process 
 初始化入口函数为event_base_new，下图展示了event_base_new函数主要调用流程.
 ![](images/Pasted%20image%2020241209235750.png)
-## IO 复用以及epoll的初始化
-epoll模型关键的epollop数据结构
-~~~c
-struct epollop
-{
-    struct epoll_event *events;
-    int nevents;
-    int epfd;
-#ifdef USING_TIMERFD
-    int timerfd;
-#endif
-};
-~~~
