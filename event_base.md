@@ -974,4 +974,4 @@ struct event_signal_map
 ![](images/Pasted%20image%2020241210234355.png)
 每个fd对应一个数组元素，存储对应的fd需要关注的读事件、写事件、错误事件。
 event_base数据结构的成员变量io的初始化流程：
-ev
+event_base_new->event_base_new_with_config->evmap_io_initmap_->evmap_singal_initmap_
