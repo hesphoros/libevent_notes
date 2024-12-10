@@ -1,11 +1,3 @@
-|        |                                          |                                                                                       |
-| ------ | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| 参数名    | 数据结构                                     | 说明                                                                                    |
-| base   | struct event_base                        | event_base上下文                                                                         |
-| fd     | evutil_socket_t                          | IO事件对应的套接字                                                                            |
-| events | short                                    | IO触发的事件；<br><br>\|   \|   \|<br>\|---\|---\|<br>\|EV_READ\|读事件\|<br>\|EV_WRITE\|写事件\| |
-| cb     | void (*)(evutil_socket_t, short, void *) | IO事件触发的回调函数，最终处理事件函数。                                                                 |
-| arg    | void *                                   | 需要传给回调函数的信息。                                                                          |
 
 
 
@@ -88,6 +80,15 @@ void event_free(struct event *ev)
 所有新创建的事件都处于已初始化和非未决状态，调用event_add（）可以使其成为未决的。
 
 要释放事件，调用event_free（）。对未决或者激活状态的事件调用event_free（）是安全的：在释放事件之前，函数将会使事件成为非激活和非未决的。
+
+| 参数名    | 数据结构                                     | 说明                                                    |
+| ------ | ---------------------------------------- | ----------------------------------------------------- |
+| base   | struct event_base                        | event_base上下文                                         |
+| fd     | evutil_socket_t                          | IO事件对应的套接字                                            |
+| events | short                                    | IO触发的事件；<br><br>\|EV_READ\|读事件\|<br>\|EV_WRITE\|写事件\| |
+| cb     | void (*)(evutil_socket_t, short, void *) | IO事件触发的回调函数，最终处理事件函数。                                 |
+| arg    | void *                                   | 需要传给回调函数的信息。                                          |
+
 
 ## example
  
