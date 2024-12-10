@@ -65,8 +65,7 @@
               "title": "Create event"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -97,10 +96,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Create event.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "Create event 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -294,12 +293,12 @@
       }
     ]
   },
-  "active": "db730313e0ffb1b4",
+  "active": "94795dd2c0c988b6",
   "lastOpenFiles": [
+    "Create event.md",
     "libevent_structure.md",
     "libevent 概述.md",
     "Macro definition.md",
-    "Create event.md",
     "TODO.md",
     "event_base.md",
     "12.8.md",
