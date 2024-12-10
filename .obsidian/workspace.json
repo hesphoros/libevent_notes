@@ -96,10 +96,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent_structure.md"
+                "file": "Memory management.md"
               },
               "icon": "lucide-list",
-              "title": "libevent_structure 的大纲"
+              "title": "Memory management 的大纲"
             }
           },
           {
@@ -293,10 +293,10 @@
       }
     ]
   },
-  "active": "94795dd2c0c988b6",
+  "active": "ac3c08a055c7b5ac",
   "lastOpenFiles": [
-    "Create event.md",
     "libevent_structure.md",
+    "Create event.md",
     "images/Pasted image 20241210235428.png",
     "libevent 概述.md",
     "Macro definition.md",
