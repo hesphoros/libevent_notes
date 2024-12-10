@@ -85,6 +85,13 @@ int evutil_gettimeofday(struct timeval *tv, struct timezone *tz);
 <font color="#8064a2">EV_PERSIST</font>
 <font color="#8064a2">EV_ET</font>
 
+| 宏定义        | 含义                                  |
+| ---------- | ----------------------------------- |
+| EV_SIGNAL  | 信号事件                                |
+| EV_READ    | IO读事件                               |
+| EV_WRITE   | IO写事件                               |
+| EV_PERSIST | 持续事件，事件触发一次后不会被删除，下次触发了还会继续调用回调函数处理 |
+| EV_TIMEOUT | 超时事件                                |
 ~~~c
 /**
 

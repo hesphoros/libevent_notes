@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Create event.md",
+                "file": "libevent_structure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Create event"
+              "title": "libevent_structure"
             }
           },
           {
@@ -130,7 +130,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -295,7 +296,9 @@
   },
   "active": "57c2f6544d4e1c72",
   "lastOpenFiles": [
+    "libevent_structure.md",
     "Create event.md",
+    "Macro definition.md",
     "TODO.md",
     "event_base.md",
     "12.8.md",
@@ -313,7 +316,6 @@
     "Helper types and functions.md",
     "README.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
-    "libevent_structure.md",
     "Macro function.md",
     "images/Pasted image 20241208231220.png",
     "images/Pasted image 20241207235137.png",
@@ -328,7 +330,6 @@
     "images/Pasted image 20241201161933.png",
     "Bufferevent and SSL.md",
     "images/Pasted image 20241130175804.png",
-    "Macro definition.md",
     "Bufferevent and evbuffer.md",
     "Bufferevent Advanced Topics.md",
     "libevent 中文文档_lucifer.pdf",
