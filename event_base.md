@@ -960,6 +960,18 @@ HT_HEAD(event_io_map, event_map_entry);
 
 -  hash表
 
-² 数组表
+-  数组表
 
 现在主要查看数组表event_signal_map这个定义
+~~~c
+struct event_signal_map 
+{
+  void **entries;
+  int nentries;
+};
+~~~
+其对应的数据结构如下所示：
+![](images/Pasted%20image%2020241210234355.png)
+每个fd对应一个数组元素，存储对应的fd需要关注的读事件、写事件、错误事件。
+event_base数据结构的成员变量io的初始化流程：
+ev
