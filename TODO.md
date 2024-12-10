@@ -8,3 +8,7 @@
 	4. lu_event_config_free
 4. 封装mm-inernal.h memory_manager.h memory_manager.c
 
+- [ ] 封装自定义的内存池进行高效的内存管理
+- [ ] 完善lu_event_base_new_with_config
+- [ ] 自定义后端封装
+- [ ] 
