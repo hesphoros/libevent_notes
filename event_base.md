@@ -940,3 +940,26 @@ sturct event_base* event_init(void)
 # event_base structure Initialization process 
 初始化入口函数为event_base_new，下图展示了event_base_new函数主要调用流程.
 ![](images/Pasted%20image%2020241209235750.png)
+# event_base事件管理结构初始化
+struct event_io_map io；
+
+struct event_io_map有如下两种定义
+
+~~~c
+#ifdef EVMAP_USE_HT
+#define HT_NO_CACHE_HASH_VALUES
+#include "ht-internal.h"
+struct event_map_entry;
+HT_HEAD(event_io_map, event_map_entry);
+#else
+#define event_io_map event_signal_map
+#endif
+~~~
+
+主要有两种定义方式：
+
+-  hash表
+
+² 数组表
+
+现在主要查看数组表event_signal_map这个定义
