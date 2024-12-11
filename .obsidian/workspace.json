@@ -57,12 +57,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Create event.md",
+                "file": "libevent 概述.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Create event"
+              "title": "libevent 概述"
             }
           }
         ],
@@ -97,10 +97,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Create event.md"
+                "file": "libevent 概述.md"
               },
               "icon": "lucide-list",
-              "title": "Create event 的大纲"
+              "title": "libevent 概述 的大纲"
             }
           },
           {
@@ -130,8 +130,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -296,11 +295,11 @@
   },
   "active": "366c890f9b8d552c",
   "lastOpenFiles": [
+    "Create event.md",
     "libevent_structure.md",
     "IO事件相关源码分析.md",
     "images/Pasted image 20241211202927.png",
     "images/Pasted image 20241211202902.png",
-    "Create event.md",
     "images/Pasted image 20241211202550.png",
     "Macro definition.md",
     "Memory management.md",
