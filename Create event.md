@@ -256,7 +256,12 @@ int event_del(struct event *ev)
     return event_del_(ev, EVENT_DEL_AUTOBLOCK);
 
 }
+
 ~~~
+
+整体流程
+![](images/Pasted%20image%2020241211202133.png)
+
 
 ![[Pasted image 20240904092708.png]]
 ### event_del_()
