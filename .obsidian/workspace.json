@@ -130,7 +130,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -293,8 +294,10 @@
       }
     ]
   },
-  "active": "1f3a08a01d28cc89",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
+    "images/Pasted image 20241211202927.png",
+    "images/Pasted image 20241211202902.png",
     "Create event.md",
     "IO事件相关源码分析.md",
     "images/Pasted image 20241211202550.png",
@@ -322,7 +325,6 @@
     "Macro function.md",
     "images/Pasted image 20241208231220.png",
     "images/Pasted image 20241207235137.png",
-    "images/Pasted image 20241207234221.png",
     "word.md",
     "Event loop.md",
     "Reactor pattern.md",
@@ -331,7 +333,6 @@
     "[Fetching Title.md",
     "Bufferevent and SSL.md",
     "Bufferevent and evbuffer.md",
-    "Bufferevent Advanced Topics.md",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",
