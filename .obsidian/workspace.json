@@ -57,12 +57,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "libevent 概述.md",
+                "file": "libevent_structure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "libevent 概述"
+              "title": "libevent_structure"
             }
           }
         ],
@@ -97,10 +97,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent 概述.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "libevent 概述 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -130,7 +130,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -293,8 +294,9 @@
       }
     ]
   },
-  "active": "366c890f9b8d552c",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
+    "libevent 概述.md",
     "Create event.md",
     "libevent_structure.md",
     "IO事件相关源码分析.md",
@@ -306,7 +308,6 @@
     "images/Pasted image 20241211202133.png",
     "TODO.md",
     "images/Pasted image 20241210235428.png",
-    "libevent 概述.md",
     "event_base.md",
     "12.8.md",
     "images/Pasted image 20241210234355.png",
