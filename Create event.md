@@ -264,6 +264,14 @@ int event_del(struct event *ev)
 
 
 ![[Pasted image 20240904092708.png]]
+
+evsel->add调用的函数:
+
+1. epoll模型见IO部分
+2. select模型对应的select_add函数，其调用流程大致如下
+3. ![](images/Pasted%20image%2020241211202550.png)
+4. 
+
 ### event_del_()
 ~~~c
 static int event_del_(struct event *ev, int blocking)
