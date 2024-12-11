@@ -66,7 +66,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -97,10 +97,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IO事件相关源码分析.md"
+                "file": "Create event.md"
               },
               "icon": "lucide-list",
-              "title": "IO事件相关源码分析 的大纲"
+              "title": "Create event 的大纲"
             }
           },
           {
@@ -294,17 +294,17 @@
       }
     ]
   },
-  "active": "db730313e0ffb1b4",
+  "active": "366c890f9b8d552c",
   "lastOpenFiles": [
+    "libevent_structure.md",
+    "IO事件相关源码分析.md",
     "images/Pasted image 20241211202927.png",
     "images/Pasted image 20241211202902.png",
     "Create event.md",
-    "IO事件相关源码分析.md",
     "images/Pasted image 20241211202550.png",
     "Macro definition.md",
     "Memory management.md",
     "images/Pasted image 20241211202133.png",
-    "libevent_structure.md",
     "TODO.md",
     "images/Pasted image 20241210235428.png",
     "libevent 概述.md",
@@ -324,7 +324,6 @@
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "Macro function.md",
     "images/Pasted image 20241208231220.png",
-    "images/Pasted image 20241207235137.png",
     "word.md",
     "Event loop.md",
     "Reactor pattern.md",
