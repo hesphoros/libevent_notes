@@ -96,10 +96,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Create event.md"
+                "file": "Memory management.md"
               },
               "icon": "lucide-list",
-              "title": "Create event 的大纲"
+              "title": "Memory management 的大纲"
             }
           },
           {
@@ -129,8 +129,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -293,12 +292,12 @@
       }
     ]
   },
-  "active": "94795dd2c0c988b6",
+  "active": "ac3c08a055c7b5ac",
   "lastOpenFiles": [
+    "Create event.md",
     "Memory management.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "libevent 概述.md",
-    "Create event.md",
     "libevent_structure.md",
     "IO事件相关源码分析.md",
     "images/Pasted image 20241211202927.png",
