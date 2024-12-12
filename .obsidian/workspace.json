@@ -57,12 +57,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "libevent_structure.md",
+                "file": "ThreadSafetyAnalysis Clang 线程安全分析.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "libevent_structure"
+              "title": "ThreadSafetyAnalysis Clang 线程安全分析"
             }
           }
         ],
@@ -97,10 +97,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Memory management.md"
+                "file": "ThreadSafetyAnalysis Clang 线程安全分析.md"
               },
               "icon": "lucide-list",
-              "title": "Memory management 的大纲"
+              "title": "ThreadSafetyAnalysis Clang 线程安全分析 的大纲"
             }
           },
           {
@@ -294,8 +294,9 @@
       }
     ]
   },
-  "active": "ac3c08a055c7b5ac",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
+    "Memory management.md",
     "libevent 概述.md",
     "Create event.md",
     "libevent_structure.md",
@@ -304,7 +305,6 @@
     "images/Pasted image 20241211202902.png",
     "images/Pasted image 20241211202550.png",
     "Macro definition.md",
-    "Memory management.md",
     "images/Pasted image 20241211202133.png",
     "TODO.md",
     "images/Pasted image 20241210235428.png",
