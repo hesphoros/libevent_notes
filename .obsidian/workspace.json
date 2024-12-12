@@ -65,8 +65,7 @@
               "title": "ThreadSafetyAnalysis Clang 线程安全分析"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -97,10 +96,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ThreadSafetyAnalysis Clang 线程安全分析.md"
+                "file": "Create event.md"
               },
               "icon": "lucide-list",
-              "title": "ThreadSafetyAnalysis Clang 线程安全分析 的大纲"
+              "title": "Create event 的大纲"
             }
           },
           {
@@ -294,9 +293,10 @@
       }
     ]
   },
-  "active": "db730313e0ffb1b4",
+  "active": "94795dd2c0c988b6",
   "lastOpenFiles": [
     "Memory management.md",
+    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "libevent 概述.md",
     "Create event.md",
     "libevent_structure.md",
@@ -321,7 +321,6 @@
     "evconnlistener.md",
     "Helper types and functions.md",
     "README.md",
-    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "Macro function.md",
     "images/Pasted image 20241208231220.png",
     "word.md",
