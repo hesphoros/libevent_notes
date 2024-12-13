@@ -63,3 +63,24 @@ void event_warn(const char *fmt, ...)
 ~~~
 - `event_err` 用于记录错误，并在记录后调用 `event_exit` 函数退出程序。
 - `event_warn` 用于记录警告信息，但不会退出程序。
+# **事件退出处理**
+~~~c
+static void event_exit(int errcode)
+{
+    if (fatal_fn) {
+        fatal_fn(errcode);  // 如果设置了自定义的 fatal 回调，调用它
+        exit(errcode);  // 不应该到达这里
+    } else if (errcode == EVENT_ERR_ABORT_) {
+        abort();  // 如果是 `abort` 错误码，调用 `abort`
+    } else {
+        exit(errcode);  // 否则，正常退出
+    }
+}
+~~~
+
+- 如果设置了 `fatal_fn` 回调，则调用该回调，并传递错误码退出程序。
+- 如果错误码是 `EVENT_ERR_ABORT_`，则调用 `abort()` 强制终止程序。
+- 否则，程序正常退出。
+# 变参日志函数
+`event_logv_` 是一个内部函数，用于处理格式化的日志消息：
+~~~
