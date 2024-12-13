@@ -78,5 +78,6 @@
   "libevent 概述.md": "📓",
   "Create event.md": "📓",
   "IO epoll Initialization.md": "📓",
-  "TODO.md": "LiListTodo"
+  "TODO.md": "LiListTodo",
+  "Libevent 日志模块.md": "📓"
 }
