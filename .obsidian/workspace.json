@@ -37,7 +37,8 @@
               "title": "Libevent 日志模块"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -68,10 +69,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent_structure.md"
+                "file": "Libevent 日志模块.md"
               },
               "icon": "lucide-list",
-              "title": "libevent_structure 的大纲"
+              "title": "Libevent 日志模块 的大纲"
             }
           },
           {
@@ -264,11 +265,11 @@
       }
     ]
   },
-  "active": "00a5972cb7579251",
+  "active": "0cd81632a1bbc4e0",
   "lastOpenFiles": [
+    "libevent_structure.md",
     "Libevent 日志模块.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
-    "libevent_structure.md",
     "event_base.md",
     "Create event.md",
     "IO事件相关源码分析.md",

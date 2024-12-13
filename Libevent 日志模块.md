@@ -40,3 +40,4 @@ void event_log(int severity, const char *msg)
 - 如果 `log_fn` 被设置为用户自定义的回调函数，则调用该回调函数。
 - 否则，默认将日志消息输出到标准错误流（`stderr`），并根据 `severity` 值打印不同的日志级别（`debug`, `msg`, `warn`, `err`）。
 # 事件级别日志记录函数
+
