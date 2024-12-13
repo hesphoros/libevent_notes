@@ -133,4 +133,8 @@ EVENT2_EXPORT_SYMBOL ev_uint32_t event_debug_logging_mask_ = DEFAULT_MASK;
 - `event_set_fatal_callback`：允许用户设置一个回调函数，在发生严重错误时调用，用于定制错误处理逻辑。
 
 
-# s
+# some func
+
+`static void event_exit(int errcode) EV_NORETURN;` 是 `libevent` 中的一个静态函数声明，目的是在出现严重错误时退出程序，并且它的 `EV_NORETURN` 属性指示编译器这个函数不会返回。让我们逐步分析这个函数的各个部分。
+
+在 `libevent` 中，`static void event_log(int severity, const char *msg);` 是一个静态的函数声明，用于处理日志记录。它在 `libevent` 的代码中用于根据日志的严重程度输出相应的日志消息。这个函数并不直接暴露给外部，而是作为 `libevent` 内部的一部分用于处理不同级别的日志信息。
