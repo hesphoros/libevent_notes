@@ -127,3 +127,7 @@ EVENT2_EXPORT_SYMBOL ev_uint32_t event_debug_logging_mask_ = DEFAULT_MASK;
 ~~~
 
 - 如果定义了 `EVENT_DEBUG_LOGGING_ENABLED`，则根据编译时的宏（`USE_DEBUG`）决定默认的调试日志掩码。如果没有启用调试日志，则掩码为 0。
+# **回调机制**
+
+- `event_set_log_callback`：允许用户设置自定义的日志回调函数，用于替代默认的日志输出。
+- `event_set_fatal_callback`：允许用户设置一个回调函数，在发生严重错误时调用，用于定制错误处理逻辑。
