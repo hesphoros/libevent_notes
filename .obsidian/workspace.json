@@ -96,10 +96,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Memory management.md"
+                "file": "Create event.md"
               },
               "icon": "lucide-list",
-              "title": "Memory management 的大纲"
+              "title": "Create event 的大纲"
             }
           },
           {
@@ -294,8 +294,8 @@
   },
   "active": "ac3c08a055c7b5ac",
   "lastOpenFiles": [
-    "Create event.md",
     "Memory management.md",
+    "Create event.md",
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "libevent 概述.md",
     "libevent_structure.md",
