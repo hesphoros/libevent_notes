@@ -83,4 +83,47 @@ static void event_exit(int errcode)
 - 否则，程序正常退出。
 # 变参日志函数
 `event_logv_` 是一个内部函数，用于处理格式化的日志消息：
+~~~c
+void event_logv_(int severity, const char *errstr, const char *fmt, va_list ap)
+{
+    char buf[1024];
+    size_t len;
+
+    if (severity == EVENT_LOG_DEBUG && !event_debug_get_logging_mask_())
+        return;
+
+    if (fmt != NULL)
+        evutil_vsnprintf(buf, sizeof(buf), fmt, ap);  // 格式化日志消息
+    else
+        buf[0] = '\0';
+
+    if (errstr) {
+        len = strlen(buf);
+        if (len < sizeof(buf) - 3) {
+            evutil_snprintf(buf + len, sizeof(buf) - len, ": %s", errstr);  // 添加错误描述
+        }
+    }
+
+    event_log(severity, buf);  // 调用实际的日志记录函数
+}
+
 ~~~
+- 这个函数将变长参数 `fmt` 和 `ap` 传递给 `evutil_vsnprintf` 来格式化日志消息。
+- 如果 `errstr` 非空，则将其附加到日志消息后，形成完整的错误描述。
+# 调试日志控制
+调试日志的启用由 `event_debug_logging_mask_` 控制，只有当 `event_debug_get_logging_mask_()` 返回非零值时，调试日志才会被记录。
+
+~~~c
+#ifdef EVENT_DEBUG_LOGGING_ENABLED
+#ifdef USE_DEBUG
+#define DEFAULT_MASK EVENT_DBG_ALL
+#else
+#define DEFAULT_MASK 0
+#endif
+
+EVENT2_EXPORT_SYMBOL ev_uint32_t event_debug_logging_mask_ = DEFAULT_MASK;
+#endif /* EVENT_DEBUG_LOGGING_ENABLED */
+
+~~~
+
+- 如果定义了 `EVENT_DEBUG_LOGGING_ENABLED`，则根据编译时的宏（`USE_DEBUG`）决定默认的调试日志掩码。如果没有启用调试日志，则掩码为 0。
