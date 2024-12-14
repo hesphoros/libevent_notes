@@ -138,3 +138,111 @@ EVENT2_EXPORT_SYMBOL ev_uint32_t event_debug_logging_mask_ = DEFAULT_MASK;
 `static void event_exit(int errcode) EV_NORETURN;` 是 `libevent` 中的一个静态函数声明，目的是在出现严重错误时退出程序，并且它的 `EV_NORETURN` 属性指示编译器这个函数不会返回。让我们逐步分析这个函数的各个部分。
 
 在 `libevent` 中，`static void event_log(int severity, const char *msg);` 是一个静态的函数声明，用于处理日志记录。它在 `libevent` 的代码中用于根据日志的严重程度输出相应的日志消息。这个函数并不直接暴露给外部，而是作为 `libevent` 内部的一部分用于处理不同级别的日志信息。
+
+# 在event中暴露
+~~~c
+/** @name Log severities
+ */
+/**@{*/
+#define EVENT_LOG_DEBUG 0
+#define EVENT_LOG_MSG   1
+#define EVENT_LOG_WARN  2
+#define EVENT_LOG_ERR   3
+/**@}*/
+
+/* Obsolete names: these are deprecated, but older programs might use them.
+ * They violate the reserved-identifier namespace. */
+#define _EVENT_LOG_DEBUG EVENT_LOG_DEBUG
+#define _EVENT_LOG_MSG EVENT_LOG_MSG
+#define _EVENT_LOG_WARN EVENT_LOG_WARN
+#define _EVENT_LOG_ERR EVENT_LOG_ERR
+
+/**
+  A callback function used to intercept Libevent's log messages.
+
+  @see event_set_log_callback
+ */
+typedef void (*event_log_cb)(int severity, const char *msg);
+/**
+  Redirect Libevent's log messages.
+
+  @param cb a function taking two arguments: an integer severity between
+     EVENT_LOG_DEBUG and EVENT_LOG_ERR, and a string.  If cb is NULL,
+	 then the default log is used.
+
+  NOTE: The function you provide *must not* call any other libevent
+  functionality.  Doing so can produce undefined behavior.
+  */
+EVENT2_EXPORT_SYMBOL
+void event_set_log_callback(event_log_cb cb);
+
+/**
+   A function to be called if Libevent encounters a fatal internal error.
+	致命错误回调函数
+   @see event_set_fatal_callback
+ */
+typedef void (*event_fatal_cb)(int err);
+
+/**
+ Override Libevent's behavior in the event of a fatal internal error.
+
+ By default, Libevent will call exit(1) if a programming error makes it
+ impossible to continue correct operation.  This function allows you to supply
+ another callback instead.  Note that if the function is ever invoked,
+ something is wrong with your program, or with Libevent: any subsequent calls
+ to Libevent may result in undefined behavior.
+
+ Libevent will (almost) always log an EVENT_LOG_ERR message before calling
+ this function; look at the last log message to see why Libevent has died.
+ */
+EVENT2_EXPORT_SYMBOL
+void event_set_fatal_callback(event_fatal_cb cb);
+
+#define EVENT_DBG_ALL 0xffffffffu
+#define EVENT_DBG_NONE 0
+
+/**
+ Turn on debugging logs and have them sent to the default log handler.
+
+ This is a global setting; if you are going to call it, you must call this
+ before any calls that create an event-base.  You must call it before any
+ multithreaded use of Libevent.
+
+ Debug logs are verbose.
+
+ @param which Controls which debug messages are turned on.  This option is
+   unused for now; for forward compatibility, you must pass in the constant
+   "EVENT_DBG_ALL" to turn debugging logs on, or "EVENT_DBG_NONE" to turn
+   debugging logs off.
+ */
+EVENT2_EXPORT_SYMBOL
+void event_enable_debug_logging(ev_uint32_t which);
+~~~
+
+~~~c
+
+void
+event_logv_(int severity, const char *errstr, const char *fmt, va_list ap)
+{
+	char buf[1024];
+	size_t len;
+	//`!event_debug_get_logging_mask_()` 是一个逻辑“非”操作，它的作用是检查当前的调试日志掩码是否为(LU_EVENT_DBG_NONE)。
+	if (severity == EVENT_LOG_DEBUG && !event_debug_get_logging_mask_())
+		return;
+
+	if (fmt != NULL)
+		//格式化字符串
+		evutil_vsnprintf(buf, sizeof(buf), fmt, ap);
+	else
+		buf[0] = '\0';
+
+	if (errstr) {
+		len = strlen(buf);
+		if (len < sizeof(buf) - 3) {
+			evutil_snprintf(buf + len, sizeof(buf) - len, ": %s", errstr);
+		}
+	}
+
+	event_log(severity, buf);
+}
+~~~
