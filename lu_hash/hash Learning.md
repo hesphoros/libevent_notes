@@ -4,4 +4,5 @@
 
 
 1. uthash
-2. 
+2. git config --global credential.helper cache
+3. 
