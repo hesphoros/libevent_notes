@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Memory management.md",
+                "file": "Helper types and functions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Memory management"
+              "title": "Helper types and functions"
             }
           },
           {
@@ -254,6 +254,7 @@
   },
   "active": "ff30cd9b1a0573d8",
   "lastOpenFiles": [
+    "Memory management.md",
     "lu_hash/hash Learning.md",
     "Reactor模式.md",
     "libevent_structure.md",
@@ -267,7 +268,6 @@
     "TODO Lists.md",
     "Libevent 日志模块.md",
     "event_base.md",
-    "Memory management.md",
     "libevent 概述.md",
     "images/Pasted image 20241211202927.png",
     "images/Pasted image 20241211202902.png",
