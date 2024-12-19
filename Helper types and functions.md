@@ -465,6 +465,7 @@ ev_ssize_t类型由2.0.2-alpha版本加入。ev_socklen_t类型由2.0.3-alpha版
 #endif   /* Misc.  */
 ~~~
 
+使用do{}while(0) 包装宏
 ## evutil_timerisse()
 ~~~c
 # define timerisset(tvp)   ((tvp)->tv_sec || (tvp)->tv_usec)
