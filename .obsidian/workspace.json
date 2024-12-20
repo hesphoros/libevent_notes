@@ -94,10 +94,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reactor模式.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "Reactor模式 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -127,7 +127,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -251,7 +252,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "00a5972cb7579251",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
     "Reactor模式.md",
     "Helper types and functions.md",
