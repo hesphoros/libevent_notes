@@ -63,8 +63,7 @@
               "title": "epoll API"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -252,11 +251,12 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "ff30cd9b1a0573d8",
+  "active": "00a5972cb7579251",
   "lastOpenFiles": [
+    "Reactor模式.md",
+    "Helper types and functions.md",
     "Memory management.md",
     "lu_hash/hash Learning.md",
-    "Reactor模式.md",
     "libevent_structure.md",
     "lu_hash",
     "epoll API.md",
@@ -285,7 +285,6 @@
     "images/Pasted image 20241209235750.png",
     "luevent",
     "evconnlistener.md",
-    "Helper types and functions.md",
     "README.md",
     "Macro function.md",
     "images/Pasted image 20241208231220.png",
