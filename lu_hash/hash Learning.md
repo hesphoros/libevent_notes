@@ -1,12 +1,2 @@
-SCI写
-参考文献：
 
->
-[6.1   哈希表 - Hello 算法](https://www.hello-algo.com/chapter_hashing/hash_map/)
-[Implementation of Hash Table in C/C++ using Separate Chaining - GeeksforGeeks](https://www.geeksforgeeks.org/implementation-of-hash-table-in-c-using-separate-chaining/#)
-
-
-1. uthash
-2. git config --global credential.helper cache
-
- - [ ] 
+The underlying hash table is implemented by linked lists and red-black trees. When the internal bucket exceeds a given threshold, it automatically converts from a linked list to a red-black tree. The test code is located in main.c
