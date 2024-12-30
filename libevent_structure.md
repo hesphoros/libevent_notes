@@ -37,6 +37,25 @@ struct event {
 	struct timeval ev_timeout;
 };
 
+
+~~~
+
+## struct event_callback
+~~~c
+struct event_callback {
+	TAILQ_ENTRY(event_callback) evcb_active_next;
+	short evcb_flags;
+	ev_uint8_t evcb_pri;	/* smaller numbers are higher priority */
+	ev_uint8_t evcb_closure;
+	/* allows us to adopt for different types of events */
+        union {
+		void (*evcb_callback)(evutil_socket_t, short, void *);
+		void (*evcb_selfcb)(struct event_callback *, void *);
+		void (*evcb_evfinalize)(struct event *, void *);
+		void (*evcb_cbfinalize)(struct event_callback *, void *);
+	} evcb_cb_union;
+	void *evcb_arg;
+};
 ~~~
 ![](images/Pasted%20image%2020241210235428.png)
 
@@ -121,7 +140,7 @@ struct event_base {
 	/** Set if we should start a new instance of the loop immediately. */
     //用于表示是否应该在处理完事件后继续执行循环。
 	int event_continue;
-
+ s
 	/** The currently running priority of events */
     //用于表示当前正在运行的事件优先级。
 	int event_running_priority;
@@ -308,6 +327,86 @@ struct event_base {
 | `th_notify_fn`                | `int (*)(struct event_base *base)`       | 用于从另一个线程唤醒主线程的函数。                              |
 | `weakrand_seed`               | `struct evutil_weakrand_state`           | 存储弱随机数生成器的种子。                                  |
 | `once_events`                 | `LIST_HEAD(once_event_list, event_once)` | 存储尚未触发的事件。                                     |
+|                               |                                          |                                                |
+
+~~~c
+/**
+   A flag passed to event_config_set_flag().
+
+    These flags change the behavior of an allocated event_base.
+
+    @see event_config_set_flag(), event_base_new_with_config(),
+       event_method_feature
+ */
+enum event_base_config_flag {
+	/** Do not allocate a lock for the event base, even if we have
+	    locking set up.
+
+	    Setting this option will make it unsafe and nonfunctional to call
+	    functions on the base concurrently from multiple threads.
+	*/
+	EVENT_BASE_FLAG_NOLOCK = 0x01,
+	/** Do not check the EVENT_* environment variables when configuring
+	    an event_base  */
+	EVENT_BASE_FLAG_IGNORE_ENV = 0x02,
+	/** Windows only: enable the IOCP dispatcher at startup
+
+	    If this flag is set then bufferevent_socket_new() and
+	    evconn_listener_new() will use IOCP-backed implementations
+	    instead of the usual select-based one on Windows.
+
+	    Note: it is experimental feature, and has some bugs.
+	 */
+	EVENT_BASE_FLAG_STARTUP_IOCP = 0x04,
+	/** Instead of checking the current time every time the event loop is
+	    ready to run timeout callbacks, check after each timeout callback.
+	 */
+	EVENT_BASE_FLAG_NO_CACHE_TIME = 0x08,
+
+	/** If we are using the epoll backend, this flag says that it is
+	    safe to use Libevent's internal change-list code to batch up
+	    adds and deletes in order to try to do as few syscalls as
+	    possible.  Setting this flag can make your code run faster, but
+	    it may trigger a Linux bug: it is not safe to use this flag
+	    if you have any fds cloned by dup() or its variants.  Doing so
+	    will produce strange and hard-to-diagnose bugs.
+
+	    This flag can also be activated by setting the
+	    EVENT_EPOLL_USE_CHANGELIST environment variable.
+
+	    This flag has no effect if you wind up using a backend other than
+	    epoll.
+	 */
+	EVENT_BASE_FLAG_EPOLL_USE_CHANGELIST = 0x10,
+
+	/** Ordinarily, Libevent implements its time and timeout code using
+	    the fastest monotonic timer that we have.  If this flag is set,
+	    however, we use less efficient more precise timer, assuming one is
+	    present.
+	 */
+	EVENT_BASE_FLAG_PRECISE_TIMER = 0x20,
+
+	/** With EVENT_BASE_FLAG_PRECISE_TIMER,
+	    epoll backend will use timerfd for more accurate timers, this will
+	    allows to disable this.
+
+	    That said that this is something in between lack of
+	    (CLOCK_MONOTONIC_COARSE) and enabled EVENT_BASE_FLAG_PRECISE_TIMER
+	    (CLOCK_MONOTONIC + timerfd).
+
+	    This flag has no effect if you wind up using a backend other than
+	    epoll and if you do not have EVENT_BASE_FLAG_PRECISE_TIMER enabled.
+	 */
+	EVENT_BASE_FLAG_EPOLL_DISALLOW_TIMERFD = 0x40,
+
+	/** Use signalfd(2) to handle signals over sigaction/signal.
+	 *
+	 * But note, that in some edge cases signalfd() may works differently.
+	 */
+	EVENT_BASE_FLAG_USE_SIGNALFD = 0x80,
+};
+
+~~~
 ## struct <font color="#4bacc6">eventop</font>
 ```c
 /** 用于定义给定事件基础结构的后端的结构体。 */
@@ -1235,4 +1334,56 @@ struct evbuffer_chain {
     - **描述**：通常指向实际的读写内存，属于当前 `evbuffer_chain` 分配的一部分。
     - **作用**：用于存储实际的数据。对于使用 `mmap` 的情况，它可能是只读的，并且会设置 `EVBUFFER_IMMUTABLE` 标志。对于 `sendfile`，它可能指向 `NULL`，因为数据可能在文件中，而不是在内存中。
 
- 
+## event_base_config_flag
+~~~c
+enum event_base_config_flag {
+    /** 不为事件基础结构分配锁，即使我们已经设置了锁机制。
+        设置此选项将使得从多个线程并发调用事件基础结构中的函数变得不安全且无法正常工作。
+    */
+    EVENT_BASE_FLAG_NOLOCK = 0x01,
+
+    /** 在配置事件基础结构时，不检查 EVENT_* 环境变量 */
+    EVENT_BASE_FLAG_IGNORE_ENV = 0x02,
+
+    /** 仅适用于 Windows：启动时启用 IOCP 调度器
+        如果设置此标志，`bufferevent_socket_new()` 和 `evconn_listener_new()` 将使用 IOCP 实现，
+        而不是 Windows 上通常使用的基于 select 的实现。
+
+        注意：这是一个实验性特性，可能存在一些 bug。
+    */
+    EVENT_BASE_FLAG_STARTUP_IOCP = 0x04,
+
+    /** 在事件循环准备运行超时回调时，检查当前时间。  
+        设置此标志后，检查时间将发生在每个超时回调之后，而不是每次准备运行超时回调时。
+    */
+    EVENT_BASE_FLAG_NO_CACHE_TIME = 0x08,
+
+    /** 如果使用 epoll 后端，该标志表示可以安全地使用 Libevent 的内部变更列表代码来批量添加和删除事件，
+        从而尽量减少系统调用的次数。设置此标志可以提高代码运行速度，但如果有任何文件描述符被 `dup()` 或其变体克隆，
+        可能会触发 Linux bug，导致难以诊断的问题。
+
+        如果最终使用的是其他后端，该标志将不起作用。
+    */
+    EVENT_BASE_FLAG_EPOLL_USE_CHANGELIST = 0x10,
+
+    /** 通常，Libevent 使用最快的单调时钟来实现时间和超时的处理。但如果设置此标志，
+        我们将使用一个效率较低但更精确的定时器（假设系统有此定时器）。
+    */
+    EVENT_BASE_FLAG_PRECISE_TIMER = 0x20,
+
+    /** 如果启用了 `EVENT_BASE_FLAG_PRECISE_TIMER`，则 epoll 后端将使用 `timerfd` 来获得更精确的定时器。
+        此标志允许禁用此功能。
+
+        这意味着该设置在没有启用 `EVENT_BASE_FLAG_PRECISE_TIMER` 的情况下类似于缺少精确定时器（CLOCK_MONOTONIC_COARSE），
+        启用时则使用 `CLOCK_MONOTONIC` + `timerfd` 来实现更精确的定时。
+        如果使用的是非 epoll 后端或者没有启用 `EVENT_BASE_FLAG_PRECISE_TIMER`，则此标志无效。
+    */
+    EVENT_BASE_FLAG_EPOLL_DISALLOW_TIMERFD = 0x40,
+
+    /** 使用 `signalfd(2)` 来处理信号，而不是使用 `sigaction` 或 `signal`。
+        需要注意的是，在某些极端情况下，`signalfd()` 的工作方式可能与传统的信号处理机制有所不同。
+    */
+    EVENT_BASE_FLAG_USE_SIGNALFD = 0x80,
+};
+
+~~~

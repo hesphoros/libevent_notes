@@ -8,36 +8,9 @@
         "type": "tabs",
         "children": [
           {
-            "id": "05ca0b5a0e3d3afc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Reactor模式.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Reactor模式"
-            }
-          },
-          {
-            "id": "ff30cd9b1a0573d8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Helper types and functions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Helper types and functions"
-            }
-          },
-          {
             "id": "2e510b3fbf8965e9",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
@@ -45,12 +18,29 @@
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
               "title": "event_base"
             }
+          },
+          {
+            "id": "6c63813f0e736aca",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "libevent_structure.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "libevent_structure"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,10 +71,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md"
+                "file": "libevent_structure.md"
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           },
           {
@@ -114,7 +104,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -238,16 +229,26 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "2e510b3fbf8965e9",
+  "active": "db730313e0ffb1b4",
   "lastOpenFiles": [
-    "Event loop.md",
+    "event_base.md",
+    "libevent_structure.md",
+    "evbuffer.md",
+    "evconnlistener.md",
     "Create event.md",
+    "libevent 概述.md",
+    "Macro function.md",
+    "Macro definition.md",
+    "Memory management.md",
+    "README.md",
+    "Event loop.md",
+    "DNS with libevent.md",
+    "Variadic function.md",
+    "IO epoll Initialization.md",
+    "Helper types and functions.md",
     "epoll API.md",
     "Reactor模式.md",
     "lu_hash/hash Learning.md",
-    "libevent_structure.md",
-    "Helper types and functions.md",
-    "Memory management.md",
     "lu_hash",
     "Bufferevent Advanced Topics.md",
     "Bufferevent and SSL.md",
@@ -255,29 +256,19 @@
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "TODO Lists.md",
     "Libevent 日志模块.md",
-    "event_base.md",
-    "libevent 概述.md",
     "images/Pasted image 20241211202927.png",
     "images/Pasted image 20241211202902.png",
     "images/Pasted image 20241211202550.png",
-    "Macro definition.md",
     "images/Pasted image 20241211202133.png",
     "TODO.md",
     "images/Pasted image 20241210235428.png",
     "12.8.md",
     "images/Pasted image 20241210234355.png",
-    "IO epoll Initialization.md",
     "images/Pasted image 20241210233830.png",
-    "evbuffer.md",
     "images/Pasted image 20241210000004.png",
     "images/Pasted image 20241209235750.png",
     "luevent",
-    "evconnlistener.md",
-    "README.md",
-    "Macro function.md",
     "images/Pasted image 20241208231220.png",
-    "word.md",
-    "Reactor pattern.md",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",

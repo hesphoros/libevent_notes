@@ -351,6 +351,59 @@ int event_config_set_flag(struct event_config *cfg, int flag)
 	return 0;
 }
 ```
+## event_base_config_flag
+~~~c
+enum event_base_config_flag {
+    /** 不为事件基础结构分配锁，即使我们已经设置了锁机制。
+        设置此选项将使得从多个线程并发调用事件基础结构中的函数变得不安全且无法正常工作。
+    */
+    EVENT_BASE_FLAG_NOLOCK = 0x01,
+
+    /** 在配置事件基础结构时，不检查 EVENT_* 环境变量 */
+    EVENT_BASE_FLAG_IGNORE_ENV = 0x02,
+
+    /** 仅适用于 Windows：启动时启用 IOCP 调度器
+        如果设置此标志，`bufferevent_socket_new()` 和 `evconn_listener_new()` 将使用 IOCP 实现，
+        而不是 Windows 上通常使用的基于 select 的实现。
+
+        注意：这是一个实验性特性，可能存在一些 bug。
+    */
+    EVENT_BASE_FLAG_STARTUP_IOCP = 0x04,
+
+    /** 在事件循环准备运行超时回调时，检查当前时间。  
+        设置此标志后，检查时间将发生在每个超时回调之后，而不是每次准备运行超时回调时。
+    */
+    EVENT_BASE_FLAG_NO_CACHE_TIME = 0x08,
+
+    /** 如果使用 epoll 后端，该标志表示可以安全地使用 Libevent 的内部变更列表代码来批量添加和删除事件，
+        从而尽量减少系统调用的次数。设置此标志可以提高代码运行速度，但如果有任何文件描述符被 `dup()` 或其变体克隆，
+        可能会触发 Linux bug，导致难以诊断的问题。
+
+        如果最终使用的是其他后端，该标志将不起作用。
+    */
+    EVENT_BASE_FLAG_EPOLL_USE_CHANGELIST = 0x10,
+
+    /** 通常，Libevent 使用最快的单调时钟来实现时间和超时的处理。但如果设置此标志，
+        我们将使用一个效率较低但更精确的定时器（假设系统有此定时器）。
+    */
+    EVENT_BASE_FLAG_PRECISE_TIMER = 0x20,
+
+    /** 如果启用了 `EVENT_BASE_FLAG_PRECISE_TIMER`，则 epoll 后端将使用 `timerfd` 来获得更精确的定时器。
+        此标志允许禁用此功能。
+
+        这意味着该设置在没有启用 `EVENT_BASE_FLAG_PRECISE_TIMER` 的情况下类似于缺少精确定时器（CLOCK_MONOTONIC_COARSE），
+        启用时则使用 `CLOCK_MONOTONIC` + `timerfd` 来实现更精确的定时。
+        如果使用的是非 epoll 后端或者没有启用 `EVENT_BASE_FLAG_PRECISE_TIMER`，则此标志无效。
+    */
+    EVENT_BASE_FLAG_EPOLL_DISALLOW_TIMERFD = 0x40,
+
+    /** 使用 `signalfd(2)` 来处理信号，而不是使用 `sigaction` 或 `signal`。
+        需要注意的是，在某些极端情况下，`signalfd()` 的工作方式可能与传统的信号处理机制有所不同。
+    */
+    EVENT_BASE_FLAG_USE_SIGNALFD = 0x80,
+};
+
+~~~
 
 | <font color="#8064a2">EVENT_BASE_FLAG_NOLOCK</font>               | 不要为<font color="#4bacc6">event_base</font>分配锁。设置这个选项可以为<font color="#4bacc6">event_bas</font>e节省一点用于锁定和解锁的时间，但是让在多个线程中访<font color="#4bacc6">event_base</font>成为不安全的。                                                                                                                                                                     |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
