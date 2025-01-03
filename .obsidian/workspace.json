@@ -104,8 +104,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -229,7 +228,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "db730313e0ffb1b4",
+  "active": "e35340117c9e52e1",
   "lastOpenFiles": [
     "event_base.md",
     "libevent_structure.md",
