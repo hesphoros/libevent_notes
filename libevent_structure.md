@@ -1045,7 +1045,9 @@ struct bufferevent_private {
 ![](images/Pasted%20image%2020250103195845.png)
 ![](images/Pasted%20image%2020250103195859.png)
 初始化时间堆，ctor代表constructor构造的意思；
+![](images/Pasted%20image%2020250103195935.png)
 
+同样有销毁的函数，min_heap_dtor_
 # struct bufferevent_ops
 `bufferevent_ops` 结构体定义了与 `bufferevent` 类型相关的操作表，用于处理不同类型的 `bufferevent` 实现。这种设计使得 `bufferevent` 可以有多个不同的实现类型，每种类型都有自己专门的操作函数
 ~~~c
