@@ -1070,7 +1070,7 @@ struct bufferevent_private {
 
 
 ![](images/Pasted%20image%2020250103200508.png)![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps2.png)
-
+![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps4.png)
 # struct bufferevent_ops
 `bufferevent_ops` 结构体定义了与 `bufferevent` 类型相关的操作表，用于处理不同类型的 `bufferevent` 实现。这种设计使得 `bufferevent` 可以有多个不同的实现类型，每种类型都有自己专门的操作函数
 ~~~c
