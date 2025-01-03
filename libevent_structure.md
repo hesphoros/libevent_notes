@@ -1067,7 +1067,7 @@ struct bufferevent_private {
 | min_heap_push_       | 插入一个event                       |
 | min_heap_shift_up_   | 向上调整元素位置，一般在堆里面添加（push）了event调用 |
 | min_heap_shift_down_ | 向下调整，在堆里面删除了元素                  |
-
+###  **min_heap_shift_up_
 
 ![](images/Pasted%20image%2020250103200508.png)![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps2.png)
 ![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps4.png)
