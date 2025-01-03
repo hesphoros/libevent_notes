@@ -104,7 +104,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -228,7 +229,7 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "e35340117c9e52e1",
+  "active": "6c63813f0e736aca",
   "lastOpenFiles": [
     "~$bevent 中文文档.doc",
     "libevent 中文文档.doc",
