@@ -1053,6 +1053,19 @@ struct bufferevent_private {
 
 ## 超市调度
 ![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps1.png)
+
+
+时间堆函数的源文件主要在minheap-internal.h文件
+
+|                      |                                 |
+| -------------------- | ------------------------------- |
+| 函数                   | 函数说明                            |
+| min_heap_ctor_       | 最小堆初始化函数                        |
+| min_heap_dtor_       | 堆销毁函数                           |
+| min_heap_top_        | 获取堆顶event                       |
+| min_heap_push_       | 插入一个event                       |
+| min_heap_shift_up_   | 向上调整元素位置，一般在堆里面添加（push）了event调用 |
+| min_heap_shift_down_ | 向下调整，在堆里面删除了元素                  |
 # struct bufferevent_ops
 `bufferevent_ops` 结构体定义了与 `bufferevent` 类型相关的操作表，用于处理不同类型的 `bufferevent` 实现。这种设计使得 `bufferevent` 可以有多个不同的实现类型，每种类型都有自己专门的操作函数
 ~~~c
