@@ -230,6 +230,8 @@
   },
   "active": "e35340117c9e52e1",
   "lastOpenFiles": [
+    "~$bevent 中文文档.doc",
+    "libevent 中文文档.doc",
     "event_base.md",
     "libevent_structure.md",
     "evbuffer.md",
@@ -261,7 +263,6 @@
     "images/Pasted image 20241211202133.png",
     "TODO.md",
     "images/Pasted image 20241210235428.png",
-    "12.8.md",
     "images/Pasted image 20241210234355.png",
     "images/Pasted image 20241210233830.png",
     "images/Pasted image 20241210000004.png",
@@ -275,7 +276,6 @@
     "CppGuide/articles/程序员的薪资与年终奖那些事儿",
     "CppGuide/articles/程序员的烦心事",
     "CppGuide/articles/libevent源码深度剖析",
-    "CppGuide/articles/高性能服务器框架设计",
     "未命名.canvas"
   ]
 }
