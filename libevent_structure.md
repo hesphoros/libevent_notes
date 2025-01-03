@@ -1042,7 +1042,9 @@ struct bufferevent_private {
 - `bufferevent_private` 结构体封装了 `bufferevent` 结构体的实现细节，包括锁、缓冲区、水位、延迟回调、速率限制等。这种设计使得 `bufferevent` 的内部实现与对外接口隔离，提高了代码的模块化和可维护性，同时也提供了更强大的功能来处理网络事件和数据流
 
 # struct min_heap
-
+![](images/Pasted%20image%2020250103195845.png)
+![](images/Pasted%20image%2020250103195859.png)
+初始化时间堆，ctor代表constructor构造的意思；
 
 # struct bufferevent_ops
 `bufferevent_ops` 结构体定义了与 `bufferevent` 类型相关的操作表，用于处理不同类型的 `bufferevent` 实现。这种设计使得 `bufferevent` 可以有多个不同的实现类型，每种类型都有自己专门的操作函数

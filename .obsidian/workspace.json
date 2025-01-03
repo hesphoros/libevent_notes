@@ -231,6 +231,8 @@
   },
   "active": "6c63813f0e736aca",
   "lastOpenFiles": [
+    "images/Pasted image 20250103195859.png",
+    "images/Pasted image 20250103195845.png",
     "~$bevent 中文文档.doc",
     "libevent 中文文档.doc",
     "event_base.md",
@@ -269,14 +271,12 @@
     "images/Pasted image 20241210000004.png",
     "images/Pasted image 20241209235750.png",
     "luevent",
-    "images/Pasted image 20241208231220.png",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",
     "CppGuide/articles/程序员的简历",
     "CppGuide/articles/程序员的薪资与年终奖那些事儿",
     "CppGuide/articles/程序员的烦心事",
-    "CppGuide/articles/libevent源码深度剖析",
     "未命名.canvas"
   ]
 }
