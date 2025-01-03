@@ -1051,11 +1051,12 @@ struct bufferevent_private {
 ## Add time event
 ![](images/Pasted%20image%2020250103200102.png)
 
-## 超市调度
+## 超时调度
 ![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps1.png)
 
 
 时间堆函数的源文件主要在minheap-internal.h文件
+## 事件堆函数
 
 |                      |                                 |
 | -------------------- | ------------------------------- |
