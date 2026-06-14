@@ -328,16 +328,16 @@
           }
         ],
         "direction": "vertical",
-        "x": -1429,
-        "y": 68,
-        "width": 1480,
-        "height": 1040,
+        "x": 168,
+        "y": 9,
+        "width": 1479,
+        "height": 1038,
         "maximize": false,
         "zoom": 0
       }
     ]
   },
-  "active": "502c7e71bb1ed431",
+  "active": "88df3df64ff3d272",
   "lastOpenFiles": [
     "Time Event.md",
     "libevent_structure.md",
