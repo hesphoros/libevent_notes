@@ -5,7 +5,7 @@
 ~~~c
 struct event {
 	struct event_callback ev_evcallback;
-
+    
 	/* for managing timeouts */
 	union {
 		TAILQ_ENTRY(event) ev_next_with_common_timeout;
@@ -35,7 +35,6 @@ struct event {
 
 	struct timeval ev_timeout;
 };
-
 
 ~~~
 
@@ -74,9 +73,9 @@ struct event_callback {
 底层的 `epoll` 只认 `fd`，上层的 Libevent 只认 `event`。`event_io_map` 就是连接这两者的**桥梁**
 
 - **添加事件 (`event_add`)：** 当你调用 `event_add(ev)` 监听一个 socket 时，Libevent 会把这个 `ev->ev_fd` 作为 Key，`ev` 本身作为 Value，**存入** `event_io_map` 中。
-    
+  
 - **事件触发 (`event_base_loop`)：** 当 `epoll_wait` 返回了有事件发生的 `fd` 时，Libevent 内部会调用类似 `evmap_io_active_(base, fd, res)` 的函数，拿着这个 `fd` 去 `event_io_map` 里**查找**对应的 `event` 对象，然后将其放入激活队列中准备执行回调。
-    
+  
 - **删除事件 (`event_del`)：** 当你不想监听了，Libevent 会从 `event_io_map` 中把该 `fd` 对应的记录**擦除**。
 
 `struct event_io_map` 就是 Libevent 内部的**路由表**。它把底层的数字 `fd` 翻译成上层的结构体 `event`，是整个事件分发循环（Event Loop）能高效运转的核心数据结构之一。
@@ -93,7 +92,6 @@ HT_HEAD(event_io_map, event_map_entry);
 #define event_io_map event_signal_map
 #endif
 ```
-``
 ```c
 #define HT_ENTRY(type)                          \
   struct {                                      \
@@ -521,6 +519,9 @@ struct eventop {
 | `need_reinit` | `int`                                                                                     | 标志：如果在 fork 之后需要重新初始化事件基础结构，则设置此标志。                         |
 | `features`    | `enum event_method_feature`                                                               | 支持的事件方法特性的位数组。                                              |
 | `fdinfo_len`  | `size_t`                                                                                  | 每个具有一个或多个活动事件的文件描述符记录的额外信息的长度。该信息作为每个文件描述符的 `evmap` 条目的一部分。 |
+
+---
+
 ## struct <font color="#4bacc6">event_config</font>
 
 ```c
@@ -551,27 +552,25 @@ struct event_config {
 - `TAILQ_HEAD` 是一个宏，用来定义一个双向链表的结构体。宏展开后，`entries` 是一个链表头，类型为 `event_configq`。
 - `event_configq` 是一个类型，代表链表的头。它并不直接存储数据，而是通过 `entries` 来管理链表中的节点。
 - `event_config_entry` 是链表中的节点类型，它代表具体的配置项，每个节点存储一个配置条目的数据。
+
+---
+
 ## struct timeval 
 ```c
 /* A time value that is accurate to the nearest
-
-  microsecond but also has a range of years.  */
-
+ * microsecond but also has a range of years.  */
 struct timeval
-
 {
-
- __time_t tv_sec;   /* Seconds.  */
-
- __suseconds_t tv_usec;  /* Microseconds.  */
-
+    __time_t tv_sec;   /* Seconds.  */
+    __suseconds_t tv_usec;  /* Microseconds.  */
 };
 ```
 
-# struct event_signal_map , evmap_sigal
+## struct event_signal_map , evmap_sigal
 信号事件相关结构体定义如下
 
-# struct evbuffer
+
+## struct evbuffer
 ~~~c
 struct evbuffer {
 
@@ -750,7 +749,7 @@ struct evbuffer {
 |`parent`|`struct bufferevent *`|指向包含此 `evbuffer` 的 `bufferevent` 对象。如果 `evbuffer` 是独立的，则为 `NULL`。|
 
 
-# struct bufferevent
+## struct bufferevent
 ~~~c
 struct bufferevent {
 
@@ -836,44 +835,45 @@ struct bufferevent {
 ~~~
 
 - **`ev_base`**:
-    
+  
     - 指向 `event_base` 结构体，表示 `bufferevent` 所关联的事件基础设施。
 - **`be_ops`**:
-    
+  
     - 指向 `bufferevent_ops` 结构体的指针，用于操作 `bufferevent` 的行为（如读写操作的具体实现）。
 - **`ev_read`**:
-    
+  
     - `struct event` 类型的字段，用于处理读事件。这是一个底层的事件，用于监视文件描述符是否可读，或者监视超时事件。
 - **`ev_write`**:
-    
+  
     - `struct event` 类型的字段，用于处理写事件。这也是一个底层的事件，用于监视文件描述符是否可写，或者监视超时事件。
 - **`input`**:
-    
+  
     - 指向 `evbuffer` 结构体的指针，作为输入缓冲区。`bufferevent` 负责将数据添加到此缓冲区，而用户可以从中读取数据。
 - **`output`**:
-    
+  
     - 指向 `evbuffer` 结构体的指针，作为输出缓冲区。`bufferevent` 负责从此缓冲区读取数据，而用户可以将数据写入该缓冲区。
 - **`wm_read`** 和 **`wm_write`**:
-    
+  
     - `event_watermark` 结构体，定义了读写操作的水印值，用于控制在何时触发读或写事件。
 - **`readcb`** 和 **`writecb`**:
-    
+  
     - 回调函数，用于处理读写操作。当数据可读或可写时，这些回调函数会被调用。
 - **`errorcb`**:
-    
+  
     - 错误回调函数，用于处理 `bufferevent` 发生错误的情况。为了兼容性，虽然应该命名为 `eventcb`，但保留了旧名称。
 - **`cbarg`**:
-    
+  
     - 指向用户定义的数据的指针，这些数据会传递给回调函数。
 - **`timeout_read`** 和 **`timeout_write`**:
-    
+  
     - `struct timeval` 类型的字段，定义了读写操作的超时时间。用于在读取或写入操作超时时触发相应的事件。
 - **`enabled`**:
-    
+  
     - 记录当前启用的事件类型。可以是 `EV_READ`、`EV_WRITE` 或它们的组合。
 - 这个结构体用于 `libevent` 中的缓冲事件处理机制，使得你可以处理异步的 I/O 操作，同时管理数据的读写缓冲区。
 
-# struct bufferevent_private
+## struct bufferevent_private
+
 ~~~c
 
 /** Parts of the bufferevent structure that are shared among all bufferevent
@@ -1035,62 +1035,62 @@ struct bufferevent_private {
 `bufferevent_private` 结构体是 `bufferevent` 结构体的一个扩展部分，包含了用于实现 `bufferevent` 的私有数据和状态。这些成员在 `bufferevent_struct.h` 头文件中并未暴露，旨在实现封装和内部管理。
 
 - **`struct bufferevent bev`**:
-    
+  
     - 这是 `bufferevent` 结构体的基础部分。`bufferevent_private` 通过包含 `bufferevent` 结构体，继承了 `bufferevent` 的所有公开接口和基本功能。
 - **`struct evbuffer_cb_entry *read_watermarks_cb`**:
-    
+  
     - 用于处理输入缓冲区的watermarks回调。这是 `evbuffer` 结构体的回调机制的一部分，用于实现流量控制或其他与数据处理相关的逻辑。
 - **`unsigned own_lock : 1`**:
-    
+  
     - 标记是否在释放 `bufferevent` 时需要释放锁。如果设置了该标志，则 `bufferevent` 的销毁过程将包括锁的释放。
 - **`unsigned readcb_pending : 1`** 和 **`unsigned writecb_pending : 1`**:
-    
+  
     - 分别表示是否有待处理的读回调或写回调。这些标志用于处理延迟的回调函数，确保它们在适当的时间被调用。
 - **`unsigned connecting : 1`**:
-    
+  
     - 指示当前是否正在进行连接操作。这有助于处理与连接状态相关的特殊情况。
 - **`unsigned connection_refused : 1`**:
-    
+  
     - 标记连接是否被拒绝。这是为了绕过 `bufferevent` 抽象的一种技巧，用于处理连接失败的情况。
 - **`short eventcb_pending`**:
-    
+  
     - 如果有延迟的回调并且事件回调待处理，这里保存待处理的事件。
 - **`bufferevent_suspend_flags read_suspended`** 和 **`bufferevent_suspend_flags write_suspended`**:
-    
+  
     - 分别用于指示读取和写入操作是否被暂停。这里使用位域来表示不同的暂停条件。
 - **`int errno_pending`**:
-    
+  
     - 保存当前待处理的 `errno` 错误码，以便在事件回调中使用。
 - **`int dns_error`**:
-    
+  
     - 用于存储与 DNS 解析相关的错误码，特别是用于 `bufferevent_socket_connect_hostname` 的操作。
 - **`struct event_callback deferred`**:
-    
+  
     - 用于实现延迟回调的机制，允许在特定条件满足时才执行回调函数。
 - **`enum bufferevent_options options`**:
-    
+  
     - 存储创建 `bufferevent` 时使用的选项。这可以包括各种配置选项，如缓冲区大小、事件类型等。
 - **`int refcnt`**:
-    
+  
     - 当前 `bufferevent` 的引用计数，用于管理内存和资源的生命周期。
 - **`void *lock`**:
-    
+  
     - 指向用于保护 `bufferevent` 结构体中共享资源的锁。如果为 `NULL`，则表示锁定机制被禁用。
 - **`ev_ssize_t max_single_read`** 和 **`ev_ssize_t max_single_write`**:
-    
+  
     - 限制单次读取或写入操作的最大字节数，以避免在处理大数据量时出现性能问题或其他潜在问题。
 - **`struct bufferevent_rate_limit *rate_limiting`**:
-    
+  
     - 用于实现速率限制的结构体，控制数据的传输速率。
 - **`union { struct sockaddr_in6 in6; struct sockaddr_in in; } conn_address`**:
-    
+  
     - 保存连接地址，用于从服务器获取 IP 地址，即使在连接关闭时也能保留该信息。
 - **`struct evdns_getaddrinfo_request *dns_request`**:
-    
+  
     - 用于 DNS 查询的请求结构体，协助处理域名解析过程。
 - `bufferevent_private` 结构体封装了 `bufferevent` 结构体的实现细节，包括锁、缓冲区、水位、延迟回调、速率限制等。这种设计使得 `bufferevent` 的内部实现与对外接口隔离，提高了代码的模块化和可维护性，同时也提供了更强大的功能来处理网络事件和数据流
 
-# struct min_heap
+## struct min_heap
 
 ## 时间堆函数
 
@@ -1127,7 +1127,11 @@ static inline void	     min_heap_shift_down_(min_heap_t* s, size_t hole_index, s
 | min_heap_push_       | 插入一个event                       |
 | min_heap_shift_up_   | 向上调整元素位置，一般在堆里面添加（push）了event调用 |
 | min_heap_shift_down_ | 向下调整，在堆里面删除了元素                  |
-# struct common_timeout_list
+
+
+## struct common_timeout_list
+
+此结构体
 
 ```c
 /* A list of events waiting on a given 'common' timeout value.  Ordinarily,
@@ -1148,8 +1152,10 @@ struct common_timeout_list {
 };
 ```
 
-# struct bufferevent_ops
+## struct bufferevent_ops
+
 `bufferevent_ops` 结构体定义了与 `bufferevent` 类型相关的操作表，用于处理不同类型的 `bufferevent` 实现。这种设计使得 `bufferevent` 可以有多个不同的实现类型，每种类型都有自己专门的操作函数
+
 ~~~c
 struct bufferevent_ops {
 	/** The name of the bufferevent's type. */
@@ -1202,31 +1208,31 @@ struct bufferevent_ops {
 ~~~
 
 - **`const char *type`**:
-    
+  
     - 这是一个指向字符的指针，用于描述 `bufferevent` 类型的名称。例如，可以是 `"socket"`, `"filter"`, 或 `"pair"`。
 - **`off_t mem_offset`**:
-    
+  
     - 表示 `bufferevent` 结构体在具体实现中的偏移量。这有助于在实际结构体中找到 `bufferevent` 结构体的位置。例如，如果 `bufferevent` 是结构体中的一部分，`mem_offset` 指定了它在结构体中的位置。
 - **`int (*enable)(struct bufferevent *, short)`**:
-    
+  
     - 函数指针，用于启用 `EV_READ` 或 `EV_WRITE` 事件。返回 `0` 表示成功，`-1` 表示失败。这个函数并不需要调整 `enabled` 字段的值。
 - **`int (*disable)(struct bufferevent *, short)`**:
-    
+  
     - 函数指针，用于禁用 `EV_READ` 或 `EV_WRITE` 事件。类似地，返回 `0` 表示成功，`-1` 表示失败。
 - **`void (*unlink)(struct bufferevent *)`**:
-    
+  
     - 函数指针，用于在 `bufferevent` 的引用计数达到 0 时，将其从相关数据结构中分离。这个函数在 `bufferevent` 的引用计数减少到零时被调用。
 - **`void (*destruct)(struct bufferevent *)`**:
-    
+  
     - 函数指针，用于释放 `bufferevent` 使用的任何额外存储或数据结构。这个函数在 `bufferevent` 被销毁时调用。
 - **`int (*adj_timeouts)(struct bufferevent *)`**:
-    
+  
     - 函数指针，用于调整 `bufferevent` 的超时设置。这个函数在 `bufferevent` 的超时设置发生变化时被调用。
 - **`int (*flush)(struct bufferevent *, short, enum bufferevent_flush_mode)`**:
-    
+  
     - 函数指针，用于刷新数据。根据提供的模式（`bufferevent_flush_mode`），该函数会将数据刷新到目标。
 - **`int (*ctrl)(struct bufferevent *, enum bufferevent_ctrl_op, union bufferevent_ctrl_data *)`**:
-    
+  
     - 函数指针，用于访问 `bufferevent` 的各种控制操作。这个函数允许对 `bufferevent` 进行特定的控制操作。
 
 ## extern definition
@@ -1257,9 +1263,8 @@ extern const struct bufferevent_ops bufferevent_ops_pair;
 
 这些宏利用了 `bufferevent` 的操作表指针 `be_ops`，根据其是否匹配已知的类型操作表来判断 `bufferevent` 的类型。
 
+## union <font color="#4bacc6">bufferevent_ctrl_data</font>
 
-
-# union <font color="#4bacc6">bufferevent_ctrl_data</font>
 ## bufferevent_ctrl_op
 ~~~c
 /** Possible operations for a control callback. */
@@ -1307,7 +1312,8 @@ union bufferevent_ctrl_data {
 };
 ~~~
 
-# struct evbuffer_chain
+## struct evbuffer_chain
+
 ~~~c
   
 
@@ -1404,23 +1410,23 @@ struct evbuffer_chain {
 ~~~
 
 - **`struct evbuffer_chain *next`**:
-    
+  
     - **描述**：指向链表中下一个 `evbuffer_chain` 节点的指针。
     - **作用**：允许多个 `evbuffer_chain` 节点通过链表结构连接在一起，从而管理整个缓冲区的数据。
 - **`size_t buffer_len`**:
-    
+  
     - **描述**：表示 `buffer` 字段中总的可用分配空间的大小。
     - **作用**：确定当前链条可以容纳多少数据。
 - **`ev_misalign_t misalign`**:
-    
+  
     - **描述**：表示 `buffer` 开始位置前的未使用空间，或者在发送文件缓冲区时的文件偏移量。
     - **作用**：用于处理缓冲区起始位置的对齐问题，或者在使用 `sendfile` 时，表示文件内容的起始位置。
 - **`size_t off`**:
-    
+  
     - **描述**：表示从 `buffer` 开始位置加上 `misalign` 后可以开始写入的偏移量，或者已经存储在 `buffer` 中的字节数。
     - **作用**：指示当前链条中实际存储数据的结束位置。
 - **`unsigned flags`**:
-    
+  
     - **描述**：用于设置链条的特殊处理标志。
     - **作用**：通过标志字段指定链条的不同属性或行为，例如是否用于文件片段、是否是只读链条等。
     - **具体标志**：
@@ -1433,11 +1439,11 @@ struct evbuffer_chain {
         - `EVBUFFER_DANGLING`：表示链条应该被释放，但不能立即释放，直到解除固定。
         - `EVBUFFER_MULTICAST`：表示链条是另一个链条的引用副本。
 - **`int refcnt`**:
-    
+  
     - **描述**：表示对当前链条的引用计数。
     - **作用**：用于跟踪链条的引用数，以便正确管理内存（例如在链条被销毁之前，确保所有引用都被清除）。
 - **`unsigned char *buffer`**:
-    
+  
     - **描述**：通常指向实际的读写内存，属于当前 `evbuffer_chain` 分配的一部分。
     - **作用**：用于存储实际的数据。对于使用 `mmap` 的情况，它可能是只读的，并且会设置 `EVBUFFER_IMMUTABLE` 标志。对于 `sendfile`，它可能指向 `NULL`，因为数据可能在文件中，而不是在内存中。
 

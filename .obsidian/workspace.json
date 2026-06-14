@@ -4,107 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "dea11f7048285a10",
+        "id": "c69cb3302573b479",
         "type": "tabs",
-        "dimension": 75.06393861892583,
         "children": [
           {
-            "id": "2e510b3fbf8965e9",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "event_base API.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "event_base API"
-            }
-          },
-          {
-            "id": "2ed35e39c0298b62",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "libevent 概述.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "libevent 概述"
-            }
-          },
-          {
-            "id": "912340c6ff77aca0",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Time Event.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Time Event"
-            }
-          },
-          {
-            "id": "25fa316e0eff052c",
+            "id": "070b2b774b4f41c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "libevent_structure.md",
+                "file": "信号事件.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "libevent_structure"
-            }
-          },
-          {
-            "id": "502c7e71bb1ed431",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "libevent_structure.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "libevent_structure"
-            }
-          }
-        ],
-        "currentTab": 4
-      },
-      {
-        "id": "aa965f7505a6b1f5",
-        "type": "tabs",
-        "dimension": 24.93606138107417,
-        "children": [
-          {
-            "id": "db730313e0ffb1b4",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "libevent_structure.md",
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "libevent_structure 的大纲"
+              "title": "信号事件"
             }
           }
         ]
@@ -226,10 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Event loop.md"
+                "file": "信号事件.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Event loop 的大纲"
+              "title": "信号事件 的大纲"
             }
           },
           {
@@ -273,12 +190,11 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 370.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -296,55 +212,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "floating": {
-    "id": "352388e0f6e65d6a",
-    "type": "floating",
-    "children": [
-      {
-        "id": "32a3f1e6135bfed3",
-        "type": "window",
-        "children": [
-          {
-            "id": "c9bd43253b1675df",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "88df3df64ff3d272",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "libevent_structure.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "pinned": true,
-                  "icon": "lucide-file",
-                  "title": "libevent_structure"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 168,
-        "y": 9,
-        "width": 1479,
-        "height": 1038,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "88df3df64ff3d272",
+  "active": "070b2b774b4f41c4",
   "lastOpenFiles": [
-    "Time Event.md",
+    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "libevent_structure.md",
+    "Time Event.md",
+    "event_base API.md",
+    "未命名",
     "未命名.base",
     "信号事件.md",
     "IO事件相关源码分析.md",
-    "event_base API.md",
     "common_timeout_list时间管理结构.md",
     "images/QQ_1781433389518.png",
     "images/QQ_1781433359961.png",
@@ -369,7 +246,6 @@
     "4.md",
     "9.md",
     "信号.md",
-    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "word.md",
     "Reactor模式.md",
     "TODO.md",
@@ -383,7 +259,6 @@
     "CppGuide/articles/网络编程",
     "CppGuide/articles/程序员面试题精讲",
     "CppGuide/articles/程序员的简历",
-    "CppGuide/articles/程序员的薪资与年终奖那些事儿",
     "未命名.canvas"
   ]
 }
