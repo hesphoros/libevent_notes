@@ -39,7 +39,7 @@ while 有活动的事件处理:
 - 时间事件
 	- 用户期望周期处理任务，某个时间点定时任务
 - 信号事件
-	- 用户设置系统产生信号，用户程序需要做的处理；比如有收到SIGTERM信号，SIGPIPE信号
+	- 用户设置系统产生[信号](信号.md)，用户程序需要做的处理；比如有收到SIGTERM信号，SIGPIPE信号
 - event事件
 	- 主要用来保存用户程序关心的事件以及事件对应的回调函数；以及事件对应的状态转换处理
 
@@ -61,4 +61,9 @@ while 有活动的事件处理:
 | event_io_map           | IO事件hash表管理结构                            |
 | min_heap_t             | 时间事件最小堆管理结构                              |
 | struct evcallback_list | event_base 结构体里面的活动队列，主要是一个链表，在queue.h实现 |
+|                        |                                          |
 ![](images/Pasted%20image%2020241208231220.png)
+
+event_base源码分析相关见
+[event_base](event_base.md)
+[libevent_structure](libevent_structure.md)

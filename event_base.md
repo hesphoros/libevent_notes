@@ -1,3 +1,47 @@
+结构体见:[libevent_structure](libevent_structure.md)
+关键的相关事件的处理接口函数和每种事件对应的数据都保存在此结构体中.
+![](images/Pasted%20image%2020241208231220.png)
+
+
+# event_base structure Initialization process 
+初始化入口函数为event_base_new，下图展示了event_base_new函数主要调用流程.
+
+![](images/Pasted%20image%2020241209235750.png)
+
+关于对应`base->evsel`的相关实现为:
+```c
+/* Array of backends in order of preference. */
+static const struct eventop *eventops[] = {
+#ifdef EVENT__HAVE_EVENT_PORTS
+	&evportops,
+#endif
+#ifdef EVENT__HAVE_WORKING_KQUEUE
+	&kqops,
+#endif
+#ifdef EVENT__HAVE_EPOLL
+	&epollops,
+#endif
+#ifdef EVENT__HAVE_DEVPOLL
+	&devpollops,
+#endif
+#ifdef EVENT__HAVE_POLL
+	&pollops,
+#endif
+#ifdef EVENT__HAVE_SELECT
+	&selectops,
+#endif
+#ifdef _WIN32
+	&win32ops,
+#endif
+#ifdef EVENT__HAVE_WEPOLL
+	&wepollops,
+#endif
+	NULL
+};
+```
+
+epoll后端初始化逻辑见:
+[IO epoll Initialization](IO%20epoll%20Initialization.md)
 ## build default <font color="#f79646">event_base</font>
 
 ==event_base_new()==函数分配并且返回一个新的具有默认设置的<font color="#f79646">event_base</font>。函数会检测环境变量，返回一个到event_base的指针。如果发生错误，则返回NULL。选择各种方法时，函数会选择OS支持的最快方法。 
@@ -21,7 +65,8 @@ struct event_base * event_base_new(void)
 ```
 
 ## build complex <font color="#f79646">event_base</font>
-	要对取得什么类型的event_base有更多的控制，就需要使用event_config。event_config是一个容纳event_base配置信息的不透明结构体。需要event_base时，将event_config传递给event_base_new_with_config().
+
+要对取得什么类型的event_base有更多的控制，就需要使用event_config。event_config是一个容纳event_base配置信息的不透明结构体。需要event_base时，将event_config传递给event_base_new_with_config().
 
 这些函数和类型在<event2/event.h>中声明。
 以下代码相关宏函数见：[Macro definition](Macro%20definition.md)
@@ -693,8 +738,7 @@ struct event_base *event_global_current_base_ = NULL;
     
 ```
 6. **释放选择器和锁**： 释放事件选择器和相关的锁与条件变量。
-
-	```c
+```c++
     if (base->evsel != NULL && base->evsel->dealloc != NULL)  
         base->evsel->dealloc(base);  
     ​  
@@ -713,7 +757,7 @@ struct event_base *event_global_current_base_ = NULL;
     EVTHREAD_FREE_LOCK(base->th_base_lock, 0);  
     EVTHREAD_FREE_COND(base->current_event_cond);
 ```
-    
+  
 7. **释放基础对象**： 如果正在释放 `current_base`，则将其设置为 `NULL`，并最终释放 `base`。
 ```c
     
@@ -807,7 +851,7 @@ err:
 ## Reinitializes <font color="#f79646">event_base</font> after <font color="#4bacc6">fork()</font>
 ### <font color="#4bacc6">event_reinit()</font>
 
-	不是所有事件后端都在调用fork（）创建一个新的进程之后可以正确工作。所以，如果在使用fork（）或者其他相关系统调用启动新进程之后，希望在新进程中继续使用event_base，就需要进行重新初始化。
+不是所有事件后端都在调用fork（）创建一个新的进程之后可以正确工作。所以，如果在使用fork（）或者其他相关系统调用启动新进程之后，希望在新进程中继续使用event_base，就需要进行重新初始化。
 ```c
 /* reinitialize the event base after a fork */
 int  event_reinit(struct event_base *base)
@@ -990,10 +1034,10 @@ sturct event_base* event_init(void)
 -  struct min_heap timeheap;
 
 	时间事件最小堆；以event里面ev_timeout作为最小堆的比较基准。
-# event_base structure Initialization process 
-初始化入口函数为event_base_new，下图展示了event_base_new函数主要调用流程.
-![](images/Pasted%20image%2020241209235750.png)
+
+
 # event_base事件管理结构初始化
+## event_io_map有如下两种定义
 struct event_io_map io；
 
 struct event_io_map有如下两种定义

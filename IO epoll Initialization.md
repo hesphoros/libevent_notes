@@ -1,11 +1,12 @@
 # epoll初始化
+epoll 相关API见: [epoll API](epoll%20API.md)
 epoll模型关键的epollop数据结构
 ~~~c
 struct epollop
 {
-    struct epoll_event *events;
-    int nevents;
-    int epfd;
+    struct epoll_event *events;  
+    int                nevents;
+    int                   epfd;
 #ifdef USING_TIMERFD
     int timerfd;
 #endif

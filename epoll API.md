@@ -32,6 +32,7 @@ int epoll_ctl(int epfd, int op, int fd,
             struct epoll_event *event);
 
 
+
 struct epoll_event {
 	 __uint32_t events; /* epoll 事件 */
 	 epoll_data_t data; /* 用户传递的数据 */
@@ -43,8 +44,8 @@ struct epoll_event {
  */
 
 typedef union epoll_data {
-    void *ptr;
-    int fd;
+    void*    ptr;
+    int       fd;
     uint32_t u32;
     uint64_t u64;
 } epoll_data_t;

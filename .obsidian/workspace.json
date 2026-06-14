@@ -24,9 +24,38 @@
             }
           },
           {
-            "id": "6c63813f0e736aca",
+            "id": "2ed35e39c0298b62",
             "type": "leaf",
             "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "libevent 概述.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "libevent 概述"
+            }
+          },
+          {
+            "id": "922412fa3e8ab4e6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "f6648ff01abb83c8",
+            "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
@@ -34,13 +63,40 @@
                 "mode": "source",
                 "source": false
               },
-              "pinned": true,
               "icon": "lucide-file",
               "title": "libevent_structure"
             }
+          },
+          {
+            "id": "1b5c28d0ce3c3156",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IO epoll Initialization.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "IO epoll Initialization"
+            }
+          },
+          {
+            "id": "ab1e2857bf661b61",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "epoll API.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "epoll API"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -72,13 +128,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent_structure.md",
+                "file": "IO epoll Initialization.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "libevent_structure 的大纲"
+              "title": "IO epoll Initialization 的大纲"
             }
           },
           {
@@ -108,8 +164,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -129,7 +184,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Event loop.md",
+                "file": "IO epoll Initialization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +194,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Event loop 的反向链接列表"
+              "title": "IO epoll Initialization 的反向链接列表"
             }
           },
           {
@@ -148,12 +203,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Event loop.md",
+                "file": "IO epoll Initialization.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Event loop 的出链列表"
+              "title": "IO epoll Initialization 的出链列表"
             }
           },
           {
@@ -222,12 +277,11 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -245,47 +299,47 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "db730313e0ffb1b4",
+  "active": "1b5c28d0ce3c3156",
   "lastOpenFiles": [
+    "epoll API.md",
+    "IO epoll Initialization.md",
+    "images/Pasted image 20241209235750.png",
+    "event_base.md",
+    "Create event.md",
+    "Event loop.md",
+    "Memory management.md",
+    "libevent 概述.md",
+    "images/libevent.png",
+    "4.md",
+    "9.md",
+    "README.md",
+    "libevent_structure.md",
+    "images/Pasted image 20241210233830.png",
+    "images/Pasted image 20241210234355.png",
+    "images/Pasted image 20241210235428.png",
+    "images/Pasted image 20241211202133.png",
+    "images/Pasted image 20241211202550.png",
+    "images/Pasted image 20241211202927.png",
+    "images/Pasted image 20250103195845.png",
+    "images/Pasted image 20250103195935.png",
+    "信号.md",
+    "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "未命名.base",
     "Macro definition.md",
-    "event_base.md",
-    "libevent_structure.md",
     "word.md",
-    "libevent 概述.md",
     "Reactor模式.md",
     "TODO.md",
-    "images/Pasted image 20250103200508.png",
-    "images/Pasted image 20250103200102.png",
-    "images/Pasted image 20250103195935.png",
-    "images/Pasted image 20250103195859.png",
-    "images/Pasted image 20250103195845.png",
     "~$bevent 中文文档.doc",
     "libevent 中文文档.doc",
     "evbuffer.md",
     "evconnlistener.md",
-    "Create event.md",
     "Macro function.md",
-    "Memory management.md",
-    "README.md",
-    "Event loop.md",
     "DNS with libevent.md",
     "Variadic function.md",
-    "IO epoll Initialization.md",
     "Helper types and functions.md",
-    "epoll API.md",
     "lu_hash/hash Learning.md",
     "lu_hash",
     "Bufferevent Advanced Topics.md",
-    "Bufferevent and SSL.md",
-    "IO事件相关源码分析.md",
-    "ThreadSafetyAnalysis Clang 线程安全分析.md",
-    "TODO Lists.md",
-    "images/Pasted image 20241211202927.png",
-    "images/Pasted image 20241211202902.png",
-    "images/Pasted image 20241211202550.png",
-    "images/Pasted image 20241211202133.png",
-    "images/Pasted image 20241210235428.png",
     "luevent",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/网络编程",
