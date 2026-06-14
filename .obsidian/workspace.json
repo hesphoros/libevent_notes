@@ -38,8 +38,23 @@
               "icon": "lucide-file",
               "title": "libevent_structure"
             }
+          },
+          {
+            "id": "0ed976eb5e30f162",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "libevent 概述.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "libevent 概述"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -58,7 +73,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byModifiedTime"
+                "sortOrder": "byModifiedTime",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -70,13 +86,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "event_base.md",
+                "file": "libevent 概述.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "event_base 的大纲"
+              "title": "libevent 概述 的大纲"
             }
           },
           {
@@ -106,8 +122,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -243,8 +258,9 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "2e510b3fbf8965e9",
+  "active": "0ed976eb5e30f162",
   "lastOpenFiles": [
+    "event_base.md",
     "libevent_structure.md",
     "images/Pasted image 20250103200508.png",
     "images/Pasted image 20250103200102.png",
@@ -253,7 +269,6 @@
     "images/Pasted image 20250103195845.png",
     "~$bevent 中文文档.doc",
     "libevent 中文文档.doc",
-    "event_base.md",
     "evbuffer.md",
     "evconnlistener.md",
     "Create event.md",
