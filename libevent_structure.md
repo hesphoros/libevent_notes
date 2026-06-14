@@ -384,7 +384,7 @@ struct event_base {
 | `weakrand_seed`               | `struct evutil_weakrand_state`           | 存储弱随机数生成器的种子。                                                                             |
 | `once_events`                 | `LIST_HEAD(once_event_list, event_once)` | 存储尚未触发的事件。                                                                                |
 |                               |                                          |                                                                                           |
-## event_base_config_flag
+## enum event_base_config_flag
 ~~~c
 /**
    A flag passed to event_config_set_flag().
