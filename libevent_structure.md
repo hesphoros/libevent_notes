@@ -1,5 +1,6 @@
 
 ## struct event
+![](images/Pasted%20image%2020241210235428.png)
 
 ~~~c
 struct event {
@@ -16,7 +17,6 @@ struct event {
 	short ev_res;		/* result passed to event callback */
 
 	struct event_base *ev_base;
-
 	union {
 		/* used for io events */
 		struct {
@@ -32,7 +32,6 @@ struct event {
 			short *ev_pncalls;
 		} ev_signal;
 	} ev_;
-
 
 	struct timeval ev_timeout;
 };
@@ -63,6 +62,57 @@ struct event_callback {
 - event_new
 - mm_calloc
 - event_assign
+
+## struct <font color="#4bacc6">event_io_map</font>
+`struct event_io_map`具有两种定义
+
+```c
+#ifdef EVMAP_USE_HT
+#define HT_NO_CACHE_HASH_VALUES
+#include "ht-internal.h"
+struct event_map_entry;
+HT_HEAD(event_io_map, event_map_entry);
+#else
+#define event_io_map event_signal_map
+#endif
+```
+``
+```c
+#define HT_ENTRY(type)                          \
+  struct {                                      \
+    struct type *hte_next;                      \
+    unsigned hte_hash;                          \
+  }
+```
+
+```c
+struct event_map_entry {
+	HT_ENTRY(event_map_entry) map_node;
+	evutil_socket_t fd;
+	union { /* This is a union in case we need to make more things that can
+			   be in the hashtable. */
+		struct evmap_io evmap_io;
+	} ent;
+};
+```
+
+```cpp
+  struct event_io_map {                                                         
+    /* The hash table itself. */                                        
+    struct event_map_entry **hth_table;                                            
+    /* How long is the hash table? */                                   
+    unsigned hth_table_length;                                          
+    /* How many elements does the table contain? */                     
+    unsigned hth_n_entries;                                             
+    /* How many elements will we allow in the table before resizing it? */ 
+    unsigned hth_load_limit;                                            
+    /* Position of hth_table_length in the primes table. */             
+    int hth_prime_idx;                                                  
+  }
+```
+
+结构图
+![](images/QQ_1781431358980.png)
 ## struct <font color="#4bacc6">event_config_entry</font>
 libevent 中的事件配置项。
 
@@ -170,7 +220,7 @@ struct event_base {
 	struct common_timeout_list **common_timeout_queues;
 
     /** The number of entries used in common_timeout_queues */
-    //用于表示已使用的时间outs数量。
+    //用于表示已使用的时间timeouts数量。
 	int n_common_timeouts;
     
 	/** The total size of common_timeout_queues. */
@@ -178,11 +228,9 @@ struct event_base {
 	int n_common_timeouts_allocated;
 
 	/** Mapping from file descriptors to enabled (added) events */
-    //用于存储文件描述符到已添加事件的映射。
 	struct event_io_map io;
 
 	/** Mapping from signal numbers to enabled (added) events. */
-    //用于存储信号编号到已添加事件的映射。
 	struct event_signal_map sigmap;
 
 	/** Priority queue of events with timeouts. */
@@ -295,7 +343,7 @@ struct event_base {
 | `common_timeout_queues`       | `struct common_timeout_list **`          | 存储所有已知的时间timeouts(                                                                        |
 | `n_common_timeouts`           | `int`                                    | 已使用的时间timeouts 数量。                                                                        |
 | `n_common_timeouts_allocated` | `int`                                    | 已分配的时间timeouts 数量。                                                                        |
-| `io`                          | `struct event_io_map`                    | 存储文件描述符到已添加事件的映射。IO 事件 map；总共对应的两种数据结构，其中一种是 fd 对应的数据；另外<br>一种是 fd 对应的 hash 表             |
+| `io`                          | `struct event_io_map`                    | IO 事件 map；总共对应的两种数据结构，其中一种是 fd 对应的数据；另外<br>一种是 fd 对应的 hash 表                              |
 | `sigmap`                      | `struct event_signal_map`                | 存储信号编号到已添加事件的映射。信号事件 map，对应一个数组，以信号的 id 作为数组下标                                            |
 | `timeheap`                    | `struct min_heap`                        | 存储具有超时的事件的优先队列。以 event 里面 ev_timeout 作为最小堆的比较基准                                           |
 | `tv_cache`                    | `struct timeval`                         | 存储当前时间，以避免频繁调用 `gettimeofday/clock_gettime`。                                              |
@@ -807,7 +855,6 @@ struct bufferevent {
 
 # struct bufferevent_private
 ~~~c
-  
 
 /** Parts of the bufferevent structure that are shared among all bufferevent
 
@@ -819,23 +866,14 @@ struct bufferevent_private {
 
     struct bufferevent bev;
 
-  
-
     /** Evbuffer callback to enforce watermarks on input. */
 
     struct evbuffer_cb_entry *read_watermarks_cb;
 
-  
-
     /** If set, we should free the lock when we free the bufferevent. */
-
     unsigned own_lock : 1;
-
   
-
-    /** Flag: set if we have deferred callbacks and a read callback is
-
-     * pending. */
+    /** Flag: set if we have deferred callbacks and a read callback is   * pending. */
 
     unsigned readcb_pending : 1;
 
@@ -1043,7 +1081,6 @@ struct bufferevent_private {
 ![](images/Pasted%20image%2020250103200102.png)
 
 ## 超时调度
-![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps1.png)
 
 
 时间堆函数的源文件主要在minheap-internal.h文件
@@ -1060,8 +1097,7 @@ struct bufferevent_private {
 | min_heap_shift_down_ | 向下调整，在堆里面删除了元素                  |
 ###  min_heap_shift_up_
 
-![](images/Pasted%20image%2020250103200508.png)![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps2.png)
-![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps4.png)
+![700](images/Pasted%20image%2020250103200508.png)
 
 ### min_heap_shift_down_
 ![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps5.png)

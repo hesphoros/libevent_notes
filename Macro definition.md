@@ -6,8 +6,6 @@
 ```c
 /** @name Loop flags
 
-  
-
     These flags control the behavior of event_base_loop().
 
  */
@@ -76,7 +74,6 @@ int evutil_gettimeofday(struct timeval *tv, struct timezone *tz);
 首先，代码中使用了`#ifdef`和`#define`来判断编译器是否支持`gettimeofday`函数。如果支持，则直接使用`gettimeofday`函数。如果不支持，则定义了一个名为`evutil_gettimeofday`的函数，它接受两个参数：`tv`和`tz`，分别表示要设置的时间值和时区信息。
 
 # event definition flag
-
 
 <font color="#8064a2">EV_TIMEOUT</font>
 <font color="#8064a2">EV_READ</font>
@@ -156,13 +153,9 @@ int evutil_gettimeofday(struct timeval *tv, struct timezone *tz);
  
 /**
 	*如果提供了这个选项，那么event_del()将不会在一个线程中阻塞
-	
 	当在另一个线程中等待事件回调完成时。
-	
 	*为了安全地使用这个选项，你可能需要使用event_finalize()或
-	
 	event_free_finalize()，以便安全地删除事件
-	
 	*多线程应用程序。有关更多信息，请参阅这些函数。
 **/
 
@@ -226,17 +219,12 @@ int evutil_gettimeofday(struct timeval *tv, struct timezone *tz);
  
 ~~~c
 #define evtimer_assign(ev, b, cb, arg) \
-
    event_assign((ev), (b), -1, 0, (cb), (arg))
 
 #define evtimer_new(b, cb, arg)     event_new((b), -1, 0, (cb), (arg))
-
-#define evtimer_add(ev, tv)      event_add((ev), (tv))
-
-#define evtimer_del(ev)       event_del(ev)
-
+#define evtimer_add(ev, tv)         event_add((ev), (tv))
+#define evtimer_del(ev)             event_del(ev)
 #define evtimer_pending(ev, tv)     event_pending((ev), EV_TIMEOUT, (tv))
-
 #define evtimer_initialized(ev)     event_initialized(ev)
 ~~~
 

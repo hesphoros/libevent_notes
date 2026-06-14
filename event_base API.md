@@ -41,7 +41,7 @@ static const struct eventop *eventops[] = {
 ```
 
 epoll后端初始化逻辑见:
-[IO epoll Initialization](IO%20epoll%20Initialization.md)
+[IO Initialization (evbase](IO%20Initialization%20(evbase.md)
 ## build default <font color="#f79646">event_base</font>
 
 ==event_base_new()==函数分配并且返回一个新的具有默认设置的<font color="#f79646">event_base</font>。函数会检测环境变量，返回一个到event_base的指针。如果发生错误，则返回NULL。选择各种方法时，函数会选择OS支持的最快方法。 
@@ -1069,8 +1069,7 @@ struct event_signal_map
 ~~~
 其对应的数据结构如下所示：
 ![](images/Pasted%20image%2020241210234355.png)
-每个fd对应一个数组元素，存储对应的fd需要关注的读事件、写事件、错误事件。
-event_base数据结构的成员变量io的初始化流程：
-event_base_new->event_base_new_with_config->evmap_io_initmap_->evmap_singal_initmap_
-
+每个`fd`对应一个数组元素，存储对应的`fd`需要关注的读事件、写事件、错误事件。
+`event_base`数据结构的成员变量io的初始化流程：
+![](images/QQ_1781429104289.png)
 evmap_signal_initmap_ 函数主要把该数据结构的成员赋值为空，后续添加事件的时候，在申请内存。

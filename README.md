@@ -56,13 +56,13 @@ libevent公用头文件都安装在event2目录中，分为三类：
 ## 如何使用libevent
 
 ### 创建event_base
- [event_base](event_base.md)
+ [event_base API](event_base%20API.md)
  
 ## 使用事件循环
  [Event loop](Event%20loop.md)
 
 ## 创建事件
-[Create event](Create%20event.md)
+[event API](event%20API.md)
 
 ## 相关的辅助函数和类型
 [Helper types and functions](Helper%20types%20and%20functions.md)

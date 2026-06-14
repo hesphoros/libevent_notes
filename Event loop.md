@@ -75,9 +75,7 @@ event_base_loop(struct event_base *base, int flags)
 		}
 
 		event_queue_make_later_events_active(base);  // 激活稍后的事件
-
 		clear_time_cache(base);  // 再次清理时间缓存
-
 		res = evsel->dispatch(base, tv_p);  // 调用事件调度函数
 
 		if (res == -1) {  // 检查调度函数是否成功
@@ -117,11 +115,7 @@ done:
   
 
 /** @name Loop flags
-
-  
-
     These flags control the behavior of event_base_loop().
-
  */
 
 /**@{*/
@@ -163,15 +157,13 @@ done:
 
 ## <font color="#4bacc6">event_base_dispatch()</font>
 
+epoll_dispatch select_dispatch 见:[IO 事件响应](IO%20事件响应.md)
+
 ```c
 int
-
 event_base_dispatch(struct event_base *event_base)
-
 {
-
     return (event_base_loop(event_base, 0));
-
 }
 ```
 <font color="#4bacc6">event_base_dispatch（）</font>等同于没有设置标志的<font color="#4bacc6">event_base_loop（）</font>。所以，<font color="#4bacc6">event_base_dispatch（）</font>将一直运行，直到没有已经注册的事件了，或者调用了<font color="#4bacc6">event_base_loopbreak（）</font>或者<font color="#4bacc6">event_base_loopexit（）</font>为止。

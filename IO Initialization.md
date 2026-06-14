@@ -1,13 +1,19 @@
 # epoll初始化
+
 epoll 相关API见: [epoll API](epoll%20API.md)
 epoll模型关键的epollop数据结构
 ~~~c
 struct epollop
 {
+	/* 指向 epoll_event 结构体数组的指针 用于在调用 epoll_wait 时 接收内核返回的、已经就绪的 I/O 事件列表 */
     struct epoll_event *events;  
+    /* 记录 events 数组的最大容量(即最多能同时处理多少个就绪事件) 通常在初始化时分配内存 并作为 epoll_wait 的参数限制返回的事件数量 */
     int                nevents;
+    /* epoll 实例的文件描述符.由 epoll_create 或 epoll_create1 创建，后续的 epoll_ctl 和 epoll_wait 都需要用到它 */
     int                   epfd;
 #ifdef USING_TIMERFD
+	/* 定时器文件描述符（Timer FD） Linux 特有的机制 将定时器转化为文件描述符 
+	 * 从而可以像普通 socket 一样 直接放进 epoll 监控，实现高效、统一的定时器事件管理。 */
     int timerfd;
 #endif
 };
@@ -36,7 +42,6 @@ struct selectop
 该结构的初始化流程如下：
 ![select初始化](images/Pasted%20image%2020241210233830.png)
 # **优先级队列初始化以及使用**
-关键API
 
 | 函数接口                       | 函数说明                                               |
 | -------------------------- | -------------------------------------------------- |
