@@ -39,8 +39,7 @@
               "title": "libevent_structure"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -71,13 +70,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent_structure.md",
+                "file": "event_base.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "libevent_structure 的大纲"
+              "title": "event_base 的大纲"
             }
           },
           {
@@ -244,8 +243,9 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "869dc9587d244b25",
+  "active": "2e510b3fbf8965e9",
   "lastOpenFiles": [
+    "libevent_structure.md",
     "images/Pasted image 20250103200508.png",
     "images/Pasted image 20250103200102.png",
     "images/Pasted image 20250103195935.png",
@@ -254,7 +254,6 @@
     "~$bevent 中文文档.doc",
     "libevent 中文文档.doc",
     "event_base.md",
-    "libevent_structure.md",
     "evbuffer.md",
     "evconnlistener.md",
     "Create event.md",
@@ -284,7 +283,6 @@
     "images/Pasted image 20241211202133.png",
     "TODO.md",
     "images/Pasted image 20241210235428.png",
-    "images/Pasted image 20241210234355.png",
     "luevent",
     "libevent 中文文档_lucifer.pdf",
     "CppGuide/articles/网络编程",
