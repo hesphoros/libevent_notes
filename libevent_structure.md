@@ -85,19 +85,19 @@ TAILQ_ENTRY 见：[[Macro function]]
 - 网络io事件
 - 事件事件
 - 信号事件
-- 活动的队列shi'jian
+- 活动的事件队列
 
 ```c
 struct event_base {
 	//一个指向特定于后端数据的指针，用于描述这个event_base端。
 	const struct eventop *evsel;
-	//一个指向特定于后端数据的指针，用于指向底层事件驱动后端的实现。
+	//一个指向特定于后端数据的指针，用于指向底层事件驱动后端的实现。比如 epool select
 	void *               evbase; 
 
 	/** List of changes to tell backend about at next dispatch.  Only used
 	 * by the O(1) backends. */
     
-    //一个结构体，用于描述在下次调度时需要通知后端更改的事件
+    //用于描述在下次调度时需要通知后端更改的事件 O(1)
 	struct event_changelist changelist;
 	
 	/** Function pointers used to describe the backend that this event_base
