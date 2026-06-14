@@ -80,6 +80,13 @@ TAILQ_ENTRY 见：[[Macro function]]
 
 [命名约定 - OpenResty C 语言编码风格指南](https://jayce.github.io/openresty-coding-style-guide/book/ch-01-naming-convention.html)
 ## struct <font color="#4bacc6">event_base</font>
+
+此结构体保存以下关键数据
+- 网络io事件
+- 事件事件
+- 信号事件
+- 活动的队列shi'jian
+
 ```c
 struct event_base {
 	//一个指向特定于后端数据的指针，用于描述这个event_base端。
