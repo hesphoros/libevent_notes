@@ -64,6 +64,23 @@ struct event_callback {
 - event_assign
 
 ## struct <font color="#4bacc6">event_io_map</font>
+
+`struct event_io_map` 是一个非常关键的**内部映射表（Registry）**。
+
+简单来说，它的核心作用是：**建立“文件描述符（fd）”到“事件对象（struct event）”之间的关联。**
+
+当底层的 `epoll_wait` 告诉你“网络套接字 `fd = 5` 有数据可读了”时，Libevent 必须立刻知道：**“`fd = 5` 对应的是上层的哪一个 `event` 结构体？我该调用哪个回调函数？”** `struct event_io_map` 就是用来快速回答这个问题的。
+
+底层的 `epoll` 只认 `fd`，上层的 Libevent 只认 `event`。`event_io_map` 就是连接这两者的**桥梁**
+
+- **添加事件 (`event_add`)：** 当你调用 `event_add(ev)` 监听一个 socket 时，Libevent 会把这个 `ev->ev_fd` 作为 Key，`ev` 本身作为 Value，**存入** `event_io_map` 中。
+    
+- **事件触发 (`event_base_loop`)：** 当 `epoll_wait` 返回了有事件发生的 `fd` 时，Libevent 内部会调用类似 `evmap_io_active_(base, fd, res)` 的函数，拿着这个 `fd` 去 `event_io_map` 里**查找**对应的 `event` 对象，然后将其放入激活队列中准备执行回调。
+    
+- **删除事件 (`event_del`)：** 当你不想监听了，Libevent 会从 `event_io_map` 中把该 `fd` 对应的记录**擦除**。
+
+`struct event_io_map` 就是 Libevent 内部的**路由表**。它把底层的数字 `fd` 翻译成上层的结构体 `event`，是整个事件分发循环（Event Loop）能高效运转的核心数据结构之一。
+
 `struct event_io_map`具有两种定义
 
 ```c
@@ -550,6 +567,9 @@ struct timeval
 
 };
 ```
+
+# struct event_signal_map , evmap_sigal
+信号事件相关结构体定义如下
 
 # struct evbuffer
 ~~~c
@@ -1071,20 +1091,32 @@ struct bufferevent_private {
 - `bufferevent_private` 结构体封装了 `bufferevent` 结构体的实现细节，包括锁、缓冲区、水位、延迟回调、速率限制等。这种设计使得 `bufferevent` 的内部实现与对外接口隔离，提高了代码的模块化和可维护性，同时也提供了更强大的功能来处理网络事件和数据流
 
 # struct min_heap
-![](images/Pasted%20image%2020250103195845.png)
-![](images/Pasted%20image%2020250103195859.png)
-初始化时间堆，ctor代表constructor构造的意思；
-![](images/Pasted%20image%2020250103195935.png)
 
-同样有销毁的函数，min_heap_dtor_
-## Add time event
-![](images/Pasted%20image%2020250103200102.png)
+## 时间堆函数
 
-## 超时调度
+```c
+typedef struct min_heap
+{
+	struct event** p;
+	size_t n, a;
+} min_heap_t;
 
-
-时间堆函数的源文件主要在minheap-internal.h文件
-## 事件堆函数
+static inline void	     min_heap_ctor_(min_heap_t* s);
+static inline void	     min_heap_dtor_(min_heap_t* s);
+static inline void	     min_heap_elem_init_(struct event* e);
+static inline int	     min_heap_elt_is_top_(const struct event *e);
+static inline int	     min_heap_empty_(min_heap_t* s);
+static inline size_t	     min_heap_size_(min_heap_t* s);
+static inline struct event*  min_heap_top_(min_heap_t* s);
+static inline int	     min_heap_reserve_(min_heap_t* s, size_t n);
+static inline int	     min_heap_push_(min_heap_t* s, struct event* e);
+static inline struct event*  min_heap_pop_(min_heap_t* s);
+static inline int	     min_heap_adjust_(min_heap_t *s, struct event* e);
+static inline int	     min_heap_erase_(min_heap_t* s, struct event* e);
+static inline void	     min_heap_shift_up_(min_heap_t* s, size_t hole_index, struct event* e);
+static inline void	     min_heap_shift_up_unconditional_(min_heap_t* s, size_t hole_index, struct event* e);
+static inline void	     min_heap_shift_down_(min_heap_t* s, size_t hole_index, struct event* e);
+```
 
 |                      |                                 |
 | -------------------- | ------------------------------- |
@@ -1095,14 +1127,26 @@ struct bufferevent_private {
 | min_heap_push_       | 插入一个event                       |
 | min_heap_shift_up_   | 向上调整元素位置，一般在堆里面添加（push）了event调用 |
 | min_heap_shift_down_ | 向下调整，在堆里面删除了元素                  |
-###  min_heap_shift_up_
+# struct common_timeout_list
 
-![700](images/Pasted%20image%2020250103200508.png)
-
-### min_heap_shift_down_
-![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps5.png)
-![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps6.png)
-![](file:///C:\Users\Administrator\AppData\Local\Temp\ksohtml20928\wps7.png)
+```c
+/* A list of events waiting on a given 'common' timeout value.  Ordinarily,
+ * events waiting for a timeout wait on a minheap.  Sometimes, however, a
+ * queue can be faster.
+ **/
+struct common_timeout_list {
+	/* List of events currently waiting in the queue. */
+	struct event_list events;
+	/* 'magic' timeval used to indicate the duration of events in this
+	 * queue. */
+	struct timeval duration;
+	/* Event that triggers whenever one of the events in the queue is
+	 * ready to activate */
+	struct event timeout_event;
+	/* The event_base that this timeout list is part of */
+	struct event_base *base;
+};
+```
 
 # struct bufferevent_ops
 `bufferevent_ops` 结构体定义了与 `bufferevent` 类型相关的操作表，用于处理不同类型的 `bufferevent` 实现。这种设计使得 `bufferevent` 可以有多个不同的实现类型，每种类型都有自己专门的操作函数

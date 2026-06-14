@@ -6,7 +6,7 @@
       {
         "id": "dea11f7048285a10",
         "type": "tabs",
-        "dimension": 70.01278772378517,
+        "dimension": 75.06393861892583,
         "children": [
           {
             "id": "2e510b3fbf8965e9",
@@ -55,14 +55,42 @@
               "icon": "lucide-file",
               "title": "Time Event"
             }
+          },
+          {
+            "id": "25fa316e0eff052c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "libevent_structure.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "libevent_structure"
+            }
+          },
+          {
+            "id": "502c7e71bb1ed431",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "libevent_structure.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "libevent_structure"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       },
       {
         "id": "aa965f7505a6b1f5",
         "type": "tabs",
-        "dimension": 29.987212276214837,
+        "dimension": 24.93606138107417,
         "children": [
           {
             "id": "db730313e0ffb1b4",
@@ -70,13 +98,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Time Event.md",
+                "file": "libevent_structure.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Time Event 的大纲"
+              "title": "libevent_structure 的大纲"
             }
           }
         ]
@@ -111,7 +139,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "event_signal_map",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -132,7 +160,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -152,7 +181,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Time Event.md",
+                "file": "libevent_structure.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -162,7 +191,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Time Event 的反向链接列表"
+              "title": "libevent_structure 的反向链接列表"
             }
           },
           {
@@ -171,12 +200,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Time Event.md",
+                "file": "libevent_structure.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Time Event 的出链列表"
+              "title": "libevent_structure 的出链列表"
             }
           },
           {
@@ -309,31 +338,34 @@
       }
     ]
   },
-  "active": "912340c6ff77aca0",
+  "active": "25fa316e0eff052c",
   "lastOpenFiles": [
+    "信号事件.md",
     "libevent_structure.md",
-    "Time Event.md",
-    "event_base API.md",
-    "event API.md",
+    "IO事件相关源码分析.md",
     "未命名.base",
-    "images/QQ_1781431358980.png",
-    "README.md",
+    "event_base API.md",
+    "Time Event.md",
+    "common_timeout_list时间管理结构.md",
+    "images/QQ_1781433389518.png",
+    "images/QQ_1781433359961.png",
+    "images/QQ_1781433317561.png",
+    "images/QQ_1781433241255.png",
     "libevent 概述.md",
+    "images/QQ_1781432098671.png",
+    "images/QQ_1781432037462.png",
+    "images/QQ_1781431963455.png",
+    "images/QQ_1781431950839.png",
+    "images/Pasted image 20260614181208.png",
+    "images/QQ_1781431916807.png",
+    "event API.md",
+    "README.md",
     "Event loop.md",
     "IO Initialization.md",
     "Macro definition.md",
     "激活事件加入活动队列.md",
-    "images/QQ_1781430585694.png",
-    "images/QQ_1781430545267.png",
-    "images/QQ_1781430497280.png",
-    "images/QQ_1781430466130.png",
     "IO 事件响应.md",
-    "images/QQ_1781430372532.png",
-    "images/QQ_1781430355400.png",
-    "images/QQ_1781429104289.png",
-    "images/QQ_1781429080312.png",
     "epoll API.md",
-    "images/Pasted image 20241209235750.png",
     "Memory management.md",
     "4.md",
     "9.md",
@@ -346,10 +378,6 @@
     "libevent 中文文档.doc",
     "evbuffer.md",
     "evconnlistener.md",
-    "Macro function.md",
-    "DNS with libevent.md",
-    "Variadic function.md",
-    "Helper types and functions.md",
     "lu_hash",
     "luevent",
     "libevent 中文文档_lucifer.pdf",
