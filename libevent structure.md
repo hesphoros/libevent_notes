@@ -8,8 +8,9 @@ struct event {
     
 	/* for managing timeouts */
 	union {
+		////如果大量事件的超时时间完全相同，为了优化性能，Libevent 会把它们串成一个**双向链表**。
 		TAILQ_ENTRY(event) ev_next_with_common_timeout;
-		size_t min_heap_idx;
+		size_t min_heap_idx;//普通超时/离散超时
 	} ev_timeout_pos;
 	evutil_socket_t ev_fd;
 
@@ -80,7 +81,7 @@ struct event_callback {
 
 `struct event_io_map` 就是 Libevent 内部的**路由表**。它把底层的数字 `fd` 翻译成上层的结构体 `event`，是整个事件分发循环（Event Loop）能高效运转的核心数据结构之一。
 
-`struct event_io_map`具有两种定义,这是因为TODO
+`struct event_io_map`具有两种定义
 
 
 
@@ -116,7 +117,7 @@ struct event_map_entry {
 ```cpp
   struct event_io_map {                                                         
     /* The hash table itself. */                                        
-    struct event_map_entry **hth_table;                                            
+    struct event_map_entry **hth_table;                                         
     /* How long is the hash table? */                                   
     unsigned hth_table_length;                                          
     /* How many elements does the table contain? */                     
@@ -131,7 +132,16 @@ struct event_map_entry {
 结构图
 ![](images/QQ_1781431358980.png)
 
+此结构体根据编译宏的不同，它有两重身份:
+
+**身份一：信号映射表（Signal Map）** 无论在什么系统下，它都用来将**信号编号**（比如 `SIGINT`、`SIGTERM`）映射到对应的 `struct event` 链表上。当系统捕捉到某个信号时，Libevent 通过它快速找到是谁订阅了这个信号。
+
+**身份二：I/O 映射表（IO Map）** 注意看注释中的这句话：*“If EVMAP_USE_HT is not defined, this structure is also used as event_io_map”*。 意思是说：**如果没有启用哈希表（Hash Table），那么上一问提到的 `event_io_map` 底层其实就是这个 `event_signal_map` 结构体！** 此时，它负责将 **FD（文件描述符）** 映射到事件链表。
+
+
+
 ## struct <font color="#4bacc6">event_config_entry</font>
+
 libevent 中的事件配置项。
 
 通过使用 `event_config_entry` 结构体，可以在 libevent 中定义和管理多个事件配置项，并按照链表的方式进行链接和访问。每个配置项都包含一个要避免使用的网络通信方法
@@ -607,6 +617,38 @@ struct event_signal_map {
 
 ![1008](images/QQ_1781534201185.png)
 ![](images/QQ_1781534354436.png)
+
+event_signal_map.这个结构体的设计非常精简，只有两个成员，但实现了一个**动态扩容的指针数组**。
+
+#### ① `void entries;` （二级指针/指针数组）
+
+这是一个指向指针数组的指针。数组里的每一个元素都是一个 `void *` 指针：
+
+- **作为 Signal Map 时**：数组的**下标**就是信号编号（如 `signum`）。`entries[SIGINT]` 指向一个专门管理该信号的结构体（`struct evmap_signal`）。
+- **作为 IO Map 时**：数组的**下标**就是文件描述符（如 `fd`）。`entries[fd]` 指向一个专门管理该 FD 的结构体（`struct evmap_io`）。
+- 如果某个信号或 FD 没有被监听，对应的 `entries[i]` 就会被设置为 `NULL`。
+
+#### ② `int nentries;` （当前数组容量）
+
+记录当前 `entries` 数组一共可以容纳多少个元素。 因为信号数量（或 FD 数量）是动态增加的，当用户新添加的 `fd` 超过当前的 `nentries` 时，Libevent 会调用 `realloc` 对 `entries` 数组进行**动态扩容**，并更新 `nentries` 的值。
+
+#### 为什么如此设计
+
+##### 追求极致的 O(1) 性能
+
+在 Linux/Unix 系统中，信号编号（通常 $1 \sim 64$）和文件描述符（从 $0$ 开始递增的整数）都是**连续且较小的非负整数**。
+
+使用这种“动态数组”的设计，Libevent 在处理事件时：
+
+- 想找 `fd = 5` 的事件？直接访问 `entries[5]`。
+- 想找 `SIGINT (2)` 的事件？直接访问 `entries[2]`。
+
+不需要任何复杂的哈希计算或树形查找，**一步到位，时间复杂度是纯粹的 O(1)**。
+
+注释中提到的 `EVMAP_USE_HT`（Use Hash Table）是一个编译开关。
+
+- **在 Windows 上**，由于 FD（Socket 句柄）数值极大且离散，Libevent 会定义 `EVMAP_USE_HT`，此时 `event_io_map` 底层会切换为哈希表（避免数组开得太大浪费内存）。
+- **在 Linux 上**，通常不定义该宏，直接复用这个 `event_signal_map` 作为 `event_io_map`，享受数组带来的极速响应
 
 ## struct <font color="#4bacc6">evbuffer</font>
 
@@ -1603,65 +1645,65 @@ static unsigned event_io_map_N_PRIMES =
     (unsigned)(sizeof(event_io_map_PRIMES)/sizeof(event_io_map_PRIMES[0])) - 1;     
   /* Expand the internal table of 'head' until it is large enough to    \
    * hold 'size' elements.  Return 0 on success, -1 on allocation       \
-   * failure. */                                                        \
-  int                                                                   \
-  event_io_map_HT_GROW(struct event_io_map *head, unsigned size)                      \
-  {                                                                     \
-    unsigned new_len, new_load_limit;                                   \
-    int prime_idx;                                                      \
-    struct event_map_entry **new_table;                                            \
-    if (head->hth_prime_idx == (int)event_io_map_N_PRIMES)                    \
-      return 0;                                                         \
-    if (head->hth_load_limit > size)                                    \
-      return 0;                                                         \
-    prime_idx = head->hth_prime_idx;                                    \
-    do {                                                                \
-      new_len = event_io_map_PRIMES[++prime_idx];                             \
-      new_load_limit = (unsigned)(load*new_len);                        \
-    } while (new_load_limit <= size &&                                  \
-             prime_idx < (int)name##_N_PRIMES);                         \
-    if ((new_table = mallocfn(new_len*sizeof(struct type*)))) {         \
-      unsigned b;                                                       \
-      memset(new_table, 0, new_len*sizeof(struct type*));               \
-      for (b = 0; b < head->hth_table_length; ++b) {                    \
-        struct type *elm, *next;                                        \
-        unsigned b2;                                                    \
-        elm = head->hth_table[b];                                       \
-        while (elm) {                                                   \
-          next = elm->field.hte_next;                                   \
-          b2 = HT_ELT_HASH_(elm, field, hashfn) % new_len;              \
-          elm->field.hte_next = new_table[b2];                          \
-          new_table[b2] = elm;                                          \
-          elm = next;                                                   \
-        }                                                               \
-      }                                                                 \
-      if (head->hth_table)                                              \
-        freefn(head->hth_table);                                        \
-      head->hth_table = new_table;                                      \
-    } else {                                                            \
-      unsigned b, b2;                                                   \
-      new_table = reallocfn(head->hth_table, new_len*sizeof(struct type*)); \
-      if (!new_table) return -1;                                        \
-      memset(new_table + head->hth_table_length, 0,                     \
-             (new_len - head->hth_table_length)*sizeof(struct type*));  \
-      for (b=0; b < head->hth_table_length; ++b) {                      \
-        struct type *e, **pE;                                           \
-        for (pE = &new_table[b], e = *pE; e != NULL; e = *pE) {         \
-          b2 = HT_ELT_HASH_(e, field, hashfn) % new_len;                \
-          if (b2 == b) {                                                \
-            pE = &e->field.hte_next;                                    \
-          } else {                                                      \
-            *pE = e->field.hte_next;                                    \
-            e->field.hte_next = new_table[b2];                          \
-            new_table[b2] = e;                                          \
-          }                                                             \
-        }                                                               \
-      }                                                                 \
-      head->hth_table = new_table;                                      \
-    }                                                                   \
-    head->hth_table_length = new_len;                                   \
-    head->hth_prime_idx = prime_idx;                                    \
-    head->hth_load_limit = new_load_limit;                              \
-    return 0;                                                           \
+   * failure. */                                                        
+  int                                                                   
+  event_io_map_HT_GROW(struct event_io_map *head, unsigned size)                      
+  {                                                                     
+    unsigned new_len, new_load_limit;                                   
+    int prime_idx;                                                      
+    struct event_map_entry **new_table;                                            
+    if (head->hth_prime_idx == (int)event_io_map_N_PRIMES)                    
+      return 0;                                                         
+    if (head->hth_load_limit > size)                                    
+      return 0;                                                         
+    prime_idx = head->hth_prime_idx;                                   
+    do {                                                                
+      new_len = event_io_map_PRIMES[++prime_idx];                             
+      new_load_limit = (unsigned)(load*new_len);                        
+    } while (new_load_limit <= size &&                                  
+             prime_idx < (int)name##_N_PRIMES);                         
+    if ((new_table = mallocfn(new_len*sizeof(struct type*)))) {         
+      unsigned b;                                                       
+      memset(new_table, 0, new_len*sizeof(struct type*));               
+      for (b = 0; b < head->hth_table_length; ++b) {                   
+        struct type *elm, *next;                                        
+        unsigned b2;                                                    
+        elm = head->hth_table[b];                                       
+        while (elm) {                                                   
+          next = elm->field.hte_next;                                   
+          b2 = HT_ELT_HASH_(elm, field, hashfn) % new_len;              
+          elm->field.hte_next = new_table[b2];                          
+          new_table[b2] = elm;                                          
+          elm = next;                                                   
+        }                                                               
+      }                                                                 
+      if (head->hth_table)                                              
+        freefn(head->hth_table);                                        
+      head->hth_table = new_table;                                      
+    } else {                                                            
+      unsigned b, b2;                                                   
+      new_table = reallocfn(head->hth_table, new_len*sizeof(struct event_map_entry*)); 
+      if (!new_table) return -1;                                        
+      memset(new_table + head->hth_table_length, 0,                     
+             (new_len - head->hth_table_length)*sizeof(struct event_map_entry*));  
+      for (b=0; b < head->hth_table_length; ++b) {                      
+        struct type *e, **pE;                                           
+        for (pE = &new_table[b], e = *pE; e != NULL; e = *pE) {        
+          b2 = HT_ELT_HASH_(e, field, hashfn) % new_len;                
+          if (b2 == b) {                                               
+            pE = &e->field.hte_next;                                    
+          } else {                                                      
+            *pE = e->field.hte_next;                                    
+            e->field.hte_next = new_table[b2];                          
+            new_table[b2] = e;                                          
+          }                                                             
+        }                                                               
+      }                                                                 
+      head->hth_table = new_table;                                     
+    }                                                                   
+    head->hth_table_length = new_len;                                   
+    head->hth_prime_idx = prime_idx;                                    
+    head->hth_load_limit = new_load_limit;                              
+    return 0;                                                           
   }                                                
 ```
