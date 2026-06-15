@@ -607,161 +607,90 @@ struct event_signal_map {
 
 ![1008](images/QQ_1781534201185.png)
 ![](images/QQ_1781534354436.png)
-## struct evbuffer
+
+## struct <font color="#4bacc6">evbuffer</font>
+
 ~~~c
 struct evbuffer {
+	/** The first chain in this buffer's linked list of chains. */
+	struct evbuffer_chain *first;
+	/** The last chain in this buffer's linked list of chains. */
+	struct evbuffer_chain *last;
 
-    /** The first chain in this buffer's linked list of chains. */
+	/** Pointer to the next pointer pointing at the 'last_with_data' chain.
+	 *
+	 * To unpack:
+	 *
+	 * The last_with_data chain is the last chain that has any data in it.
+	 * If all chains in the buffer are empty, it is the first chain.
+	 * If the buffer has no chains, it is NULL.
+	 *
+	 * The last_with_datap pointer points at _whatever 'next' pointer_
+	 * pointing at the last_with_data chain. If the last_with_data chain
+	 * is the first chain, or it is NULL, then the last_with_datap pointer
+	 * is &buf->first.
+	 */
+	struct evbuffer_chain **last_with_datap;
 
-    struct evbuffer_chain *first;
+	/** Total amount of bytes stored in all chains.*/
+	size_t total_len;
+	/** Maximum bytes per one read */
+	size_t max_read;
 
-    /** The last chain in this buffer's linked list of chains. */
-
-    struct evbuffer_chain *last;
-
-  
-
-    /** Pointer to the next pointer pointing at the 'last_with_data' chain.
-
-     *
-
-     * To unpack:
-
-     *
-
-     * The last_with_data chain is the last chain that has any data in it.
-
-     * If all chains in the buffer are empty, it is the first chain.
-
-     * If the buffer has no chains, it is NULL.
-
-     *
-
-     * The last_with_datap pointer points at _whatever 'next' pointer_
-
-     * pointing at the last_with_data chain. If the last_with_data chain
-
-     * is the first chain, or it is NULL, then the last_with_datap pointer
-
-     * is &buf->first.
-
-     */
-
-    struct evbuffer_chain **last_with_datap;
-
-  
-
-    /** Total amount of bytes stored in all chains.*/
-
-    size_t total_len;
-
-  
-
-    /** Number of bytes we have added to the buffer since we last tried to
-
-     * invoke callbacks. */
-
-    size_t n_add_for_cb;
-
-    /** Number of bytes we have removed from the buffer since we last
-
-     * tried to invoke callbacks. */
-
-    size_t n_del_for_cb;
-
-  
+	/** Number of bytes we have added to the buffer since we last tried to
+	 * invoke callbacks. */
+	size_t n_add_for_cb;
+	/** Number of bytes we have removed from the buffer since we last
+	 * tried to invoke callbacks. */
+	size_t n_del_for_cb;
 
 #ifndef EVENT__DISABLE_THREAD_SUPPORT
-
-    /** A lock used to mediate access to this buffer. */
-
-    void *lock;
-
+	/** A lock used to mediate access to this buffer. */
+	void *lock;
 #endif
-
-    /** True iff we should free the lock field when we free this
-
-     * evbuffer. */
-
-    unsigned own_lock : 1;
-
-    /** True iff we should not allow changes to the front of the buffer
-
-     * (drains or prepends). */
-
-    unsigned freeze_start : 1;
-
-    /** True iff we should not allow changes to the end of the buffer
-
-     * (appends) */
-
-    unsigned freeze_end : 1;
-
-    /** True iff this evbuffer's callbacks are not invoked immediately
-
-     * upon a change in the buffer, but instead are deferred to be invoked
-
-     * from the event_base's loop.  Useful for preventing enormous stack
-
-     * overflows when we have mutually recursive callbacks, and for
-
-     * serializing callbacks in a single thread. */
-
-    unsigned deferred_cbs : 1;
-
+	/** True iff we should free the lock field when we free this
+	 * evbuffer. */
+	unsigned own_lock : 1;
+	/** True iff we should not allow changes to the front of the buffer
+	 * (drains or prepends). */
+	unsigned freeze_start : 1;
+	/** True iff we should not allow changes to the end of the buffer
+	 * (appends) */
+	unsigned freeze_end : 1;
+	/** True iff this evbuffer's callbacks are not invoked immediately
+	 * upon a change in the buffer, but instead are deferred to be invoked
+	 * from the event_base's loop.	Useful for preventing enormous stack
+	 * overflows when we have mutually recursive callbacks, and for
+	 * serializing callbacks in a single thread. */
+	unsigned deferred_cbs : 1;
 #ifdef _WIN32
-
-    /** True iff this buffer is set up for overlapped IO. */
-
-    unsigned is_overlapped : 1;
-
+	/** True iff this buffer is set up for overlapped IO. */
+	unsigned is_overlapped : 1;
 #endif
+	/** Zero or more EVBUFFER_FLAG_* bits */
+	ev_uint32_t flags;
 
-    /** Zero or more EVBUFFER_FLAG_* bits */
+	/** Used to implement deferred callbacks. */
+	struct event_base *cb_queue;
 
-    ev_uint32_t flags;
+	/** A reference count on this evbuffer.	 When the reference count
+	 * reaches 0, the buffer is destroyed.	Manipulated with
+	 * evbuffer_incref and evbuffer_decref_and_unlock and
+	 * evbuffer_free. */
+	int refcnt;
 
-  
+	/** A struct event_callback handle to make all of this buffer's callbacks
+	 * invoked from the event loop. */
+	struct event_callback deferred;
 
-    /** Used to implement deferred callbacks. */
+	/** A doubly-linked-list of callback functions */
+	LIST_HEAD(evbuffer_cb_queue, evbuffer_cb_entry) callbacks;
 
-    struct event_base *cb_queue;
-
-  
-
-    /** A reference count on this evbuffer.  When the reference count
-
-     * reaches 0, the buffer is destroyed.  Manipulated with
-
-     * evbuffer_incref and evbuffer_decref_and_unlock and
-
-     * evbuffer_free. */
-
-    int refcnt;
-
-  
-
-    /** A struct event_callback handle to make all of this buffer's callbacks
-
-     * invoked from the event loop. */
-
-    struct event_callback deferred;
-
-  
-
-    /** A doubly-linked-list of callback functions */
-
-    LIST_HEAD(evbuffer_cb_queue, evbuffer_cb_entry) callbacks;
-
-  
-
-    /** The parent bufferevent object this evbuffer belongs to.
-
-     * NULL if the evbuffer stands alone. */
-
-    struct bufferevent *parent;
-
+	/** The parent bufferevent object this evbuffer belongs to.
+	 * NULL if the evbuffer stands alone. */
+	struct bufferevent *parent;
 };
+
 ~~~
 
 |字段名称|类型|说明|
@@ -791,81 +720,42 @@ struct evbuffer {
 struct bufferevent {
 
     /** Event base for which this bufferevent was created. */
-
     struct event_base *ev_base;
-
+    
     /** Pointer to a table of function pointers to set up how this
-
         bufferevent behaves. */
-
     const struct bufferevent_ops *be_ops;
 
-  
-
     /** A read event that triggers when a timeout has happened or a socket
-
         is ready to read data.  Only used by some subtypes of
-
         bufferevent. */
-
     struct event ev_read;
 
     /** A write event that triggers when a timeout has happened or a socket
-
         is ready to write data.  Only used by some subtypes of
-
         bufferevent. */
-
     struct event ev_write;
 
-  
-
     /** An input buffer. Only the bufferevent is allowed to add data to
-
         this buffer, though the user is allowed to drain it. */
-
     struct evbuffer *input;
 
-  
-
     /** An input buffer. Only the bufferevent is allowed to drain data
-
         from this buffer, though the user is allowed to add it. */
-
     struct evbuffer *output;
-
-  
-
     struct event_watermark wm_read;
-
     struct event_watermark wm_write;
-
-  
-
     bufferevent_data_cb readcb;
-
     bufferevent_data_cb writecb;
-
     /* This should be called 'eventcb', but renaming it would break
-
      * backward compatibility */
-
     bufferevent_event_cb errorcb;
-
     void *cbarg;
-
-  
-
     struct timeval timeout_read;
-
     struct timeval timeout_write;
 
-  
-
     /** Events that are currently enabled: currently EV_READ and EV_WRITE
-
         are supported. */
-
     short enabled;
 
 };
@@ -920,150 +810,87 @@ struct bufferevent {
 struct bufferevent_private {
 
     /** The underlying bufferevent structure. */
-
     struct bufferevent bev;
 
     /** Evbuffer callback to enforce watermarks on input. */
-
     struct evbuffer_cb_entry *read_watermarks_cb;
 
     /** If set, we should free the lock when we free the bufferevent. */
     unsigned own_lock : 1;
   
     /** Flag: set if we have deferred callbacks and a read callback is   * pending. */
-
     unsigned readcb_pending : 1;
-
+    
     /** Flag: set if we have deferred callbacks and a write callback is
-
      * pending. */
-
     unsigned writecb_pending : 1;
 
     /** Flag: set if we are currently busy connecting. */
-
     unsigned connecting : 1;
 
     /** Flag: set if a connect failed prematurely; this is a hack for
-
      * getting around the bufferevent abstraction. */
-
     unsigned connection_refused : 1;
 
     /** Set to the events pending if we have deferred callbacks and
-
      * an events callback is pending. */
-
     short eventcb_pending;
-
   
 
     /** If set, read is suspended until one or more conditions are over.
-
      * The actual value here is a bitfield of those conditions; see the
-
      * BEV_SUSPEND_* flags above. */
-
     bufferevent_suspend_flags read_suspended;
 
-  
-
     /** If set, writing is suspended until one or more conditions are over.
-
      * The actual value here is a bitfield of those conditions; see the
-
      * BEV_SUSPEND_* flags above. */
-
     bufferevent_suspend_flags write_suspended;
 
-  
-
     /** Set to the current socket errno if we have deferred callbacks and
-
      * an events callback is pending. */
-
     int errno_pending;
-
-  
-
+    
     /** The DNS error code for bufferevent_socket_connect_hostname */
-
     int dns_error;
 
-  
-
     /** Used to implement deferred callbacks */
-
     struct event_callback deferred;
 
-  
-
     /** The options this bufferevent was constructed with */
-
     enum bufferevent_options options;
 
-  
-
-    /** Current reference count for this bufferevent. */
-
+      /** Current reference count for this bufferevent. */
     int refcnt;
 
-  
-
     /** Lock for this bufferevent.  Shared by the inbuf and the outbuf.
-
      * If NULL, locking is disabled. */
-
     void *lock;
 
-  
-
     /** No matter how big our bucket gets, don't try to read more than this
-
      * much in a single read operation. */
-
     ev_ssize_t max_single_read;
 
-  
-
     /** No matter how big our bucket gets, don't try to write more than this
-
      * much in a single write operation. */
-
     ev_ssize_t max_single_write;
 
-  
-
     /** Rate-limiting information for this bufferevent */
-
     struct bufferevent_rate_limit *rate_limiting;
 
-  
 
     /* Saved conn_addr, to extract IP address from it.
-
      *
-
      * Because some servers may reset/close connection without waiting clients,
-
      * in that case we can't extract IP address even in close_cb.
-
      * So we need to save it, just after we connected to remote server, or
-
      * after resolving (to avoid extra dns requests during retrying, since UDP
-
      * is slow) */
-
     union {
-
         struct sockaddr_in6 in6;
-
         struct sockaddr_in in;
-
     } conn_address;
-
-  
-
+    
     struct evdns_getaddrinfo_request *dns_request;
 
 };
@@ -1137,21 +964,21 @@ typedef struct min_heap
 	size_t n, a;
 } min_heap_t;
 
-static inline void	     min_heap_ctor_(min_heap_t* s);
-static inline void	     min_heap_dtor_(min_heap_t* s);
-static inline void	     min_heap_elem_init_(struct event* e);
-static inline int	     min_heap_elt_is_top_(const struct event *e);
-static inline int	     min_heap_empty_(min_heap_t* s);
+static inline void	         min_heap_ctor_(min_heap_t* s);
+static inline void	         min_heap_dtor_(min_heap_t* s);
+static inline void	         min_heap_elem_init_(struct event* e);
+static inline int	         min_heap_elt_is_top_(const struct event *e);
+static inline int	         min_heap_empty_(min_heap_t* s);
 static inline size_t	     min_heap_size_(min_heap_t* s);
 static inline struct event*  min_heap_top_(min_heap_t* s);
-static inline int	     min_heap_reserve_(min_heap_t* s, size_t n);
-static inline int	     min_heap_push_(min_heap_t* s, struct event* e);
+static inline int	         min_heap_reserve_(min_heap_t* s, size_t n);
+static inline int	         min_heap_push_(min_heap_t* s, struct event* e);
 static inline struct event*  min_heap_pop_(min_heap_t* s);
-static inline int	     min_heap_adjust_(min_heap_t *s, struct event* e);
-static inline int	     min_heap_erase_(min_heap_t* s, struct event* e);
-static inline void	     min_heap_shift_up_(min_heap_t* s, size_t hole_index, struct event* e);
-static inline void	     min_heap_shift_up_unconditional_(min_heap_t* s, size_t hole_index, struct event* e);
-static inline void	     min_heap_shift_down_(min_heap_t* s, size_t hole_index, struct event* e);
+static inline int	         min_heap_adjust_(min_heap_t *s, struct event* e);
+static inline int	         min_heap_erase_(min_heap_t* s, struct event* e);
+static inline void	         min_heap_shift_up_(min_heap_t* s, size_t hole_index, struct event* e);
+static inline void	         min_heap_shift_up_unconditional_(min_heap_t* s, size_t hole_index, struct event* e);
+static inline void	         min_heap_shift_down_(min_heap_t* s, size_t hole_index, struct event* e);
 ```
 
 |                      |                                 |
@@ -1167,6 +994,7 @@ static inline void	     min_heap_shift_down_(min_heap_t* s, size_t hole_index, s
 
 ## struct common_timeout_list
 
+TODO:
 此结构体
 
 ```c
@@ -1483,7 +1311,7 @@ struct evbuffer_chain {
     - **描述**：通常指向实际的读写内存，属于当前 `evbuffer_chain` 分配的一部分。
     - **作用**：用于存储实际的数据。对于使用 `mmap` 的情况，它可能是只读的，并且会设置 `EVBUFFER_IMMUTABLE` 标志。对于 `sendfile`，它可能指向 `NULL`，因为数据可能在文件中，而不是在内存中。
 
-## event_base_config_flag
+## enum event_base_config_flag
 ~~~c
 enum event_base_config_flag {
     /** 不为事件基础结构分配锁，即使我们已经设置了锁机制。
@@ -1536,3 +1364,304 @@ enum event_base_config_flag {
 };
 
 ~~~
+
+
+## Signle List
+![563](images/QQ_1781536501791.png)
+
+### 访问链表接口
+
+| 宏定义        | 含义                 |
+| ------------- | -------------------- |
+| SLIST_FIRST   | 链表第一个节点       |
+| SLIST_END     | 链表结束（空指针）   |
+| SLIST_EMPTY   | 单向链表是否为空     |
+| SLIST_NEXT    | 某个节点的下一个节点 |
+| SLIST_FOREACH | 遍历单向链表         |
+
+### 操作链表接口
+
+| 宏定义             | 接口                       |
+| ------------------ | -------------------------- |
+| SLIST_INIT         | 链表初始化                 |
+| SLIST_INSERT_AFTER | 在某个节点后面新增一个节点 |
+| SLIST_INSERT_HEAD  | 头结点插入一个节点         |
+| SLIST_REMOVE_HEAD  | 在头结点删除一个节点       |
+
+## List
+
+![](images/QQ_1781536643817.png)
+
+### 定义List 接口
+
+| 宏定义                | 含义             |
+| --------------------- | ---------------- |
+| LIST_HEAD             | 定义List数据结构 |
+| LIST_HEAD_INITIALIZER | 初始化List信息   |
+| LIST_ENTRY            | 定义List节点     |
+
+### 访问List接口
+
+| 宏定义       | 含义                 |
+| ------------ | -------------------- |
+| LIST_FIRST   | 链表第一个节点       |
+| LIST_END     | 链表结束（空指针）   |
+| LIST_EMPTY   | 单向链表是否为空     |
+| LIST_NEXT    | 某个节点的下一个节点 |
+| LIST_FOREACH | 遍历链表             |
+
+### 操作List接口
+
+| 宏定义             | 含义                         |
+| ------------------ | ---------------------------- |
+| LIST_INIT          | 初始化链表头，使链表为空     |
+| LIST_INSERT_AFTER  | 在指定节点之后插入新节点     |
+| LIST_INSERT_BEFORE | 在指定节点之前插入新节点     |
+| LIST_INSERT_HEAD   | 在链表头部插入新节点         |
+| LIST_REMOVE        | 从链表中移除指定节点         |
+| LIST_REPLACE       | 用新节点替换链表中的指定节点 |
+
+## Simple Queue
+
+![](images/QQ_1781536886192.png)
+
+### 定义simple queue接口
+
+| 宏定义                   | 含义                        |
+| ------------------------ | --------------------------- |
+| SIMPLEQ_HEAD             | 定义一个SimpleQueue数据结构 |
+| SIMPLEQ_HEAD_INITIALIZER | 给SimpleQueue初始化         |
+| SIMPLEQ_ENTRY            | 定义SimpleQueue节点         |
+
+### 访问simple queu接口
+
+| 宏定义          | 含义                 |
+| --------------- | -------------------- |
+| SIMPLEQ_FIRST   | SimpleQ头结点        |
+| SIMPLEQ_END     | SimpleQ的NULL节点    |
+| SIMPLEQ_EMPTY   | 判断SimpleQ是否为空  |
+| SIMPLEQ_NEXT    | 当前节点的下一个节点 |
+| SIMPLEQ_FOREACH | 遍历SimpleQ所有节点  |
+
+### 操作simple queue接口
+
+| 接口                 | 含义                          |
+| -------------------- | ----------------------------- |
+| SIMPLEQ_INIT         | 初始化SimpleQueue             |
+| SIMPLEQ_INSERT_HEAD  | 在SimpleQueue头部插入一个节点 |
+| SIMPLEQ_INSERT_TAIL  | 在SimpleQueue尾部插入一个节点 |
+| SIMPLEQ_INSERT_AFTER | 在一个节点后面新增节点        |
+| SIMPLEQ_REMOVE_HEAD  | 移除头结点                    |
+
+## Tail Queue 结构
+![](images/QQ_1781537009523.png)
+
+### 定义TAILQ接口
+
+| 宏定义                 | 含义                    |
+| ---------------------- | ----------------------- |
+| TAILQ_HEAD             | 定义一个TAILQ的数据结构 |
+| TAILQ_HEAD_INITIALIZER | 初始化TAILQ链表         |
+| TAILQ_ENTRY            | 定义一个TAILQ节点       |
+
+### 访问TAILQ接口
+
+| 宏定义                | 含义               |
+| --------------------- | ------------------ |
+| TAILQ_FIRST           | 获取TAILQ的头结点  |
+| TAILQ_END             | NULL               |
+| TAILQ_NEXT            | 下一个节点         |
+| TAILQ_LAST            | 链表的最后一个节点 |
+| TAILQ_PREV            | 前一个节点         |
+| TAILQ_EMPTY           | 链表是否为空       |
+| TAILQ_FOREACH         | 遍历所有节点       |
+| TAILQ_FOREACH_REVERSE | 反向遍历所有节点   |
+
+### 操作TAILQ接口
+
+| 宏定义              | 含义                       |
+| ------------------- | -------------------------- |
+| TAILQ_INIT          | 初始化链表                 |
+| TAILQ_INSERT_HEAD   | 在头插入一个节点           |
+| TAILQ_INSERT_TAIL   | 在尾部插入一个节点         |
+| TAILQ_INSERT_AFTER  | 在一个节点后面新增一个节点 |
+| TAILQ_INSERT_BEFORE | 在一个节点前面新增一个节点 |
+| TAILQ_REMOVE        | 删除节点                   |
+| TAILQ_REPLACE       | 替换某个节点               |
+
+## event_io_map hash相关函数
+
+### event_io_map 初始化
+```c
+static inline void event_io_map_HT_INIT(struct event_io_map * head){
+    head->hth_table_length = 0;
+    head->hth_table        = NULL;
+    head->hth_n_entries    = 0;
+    head->hth_load_limit   = 0;
+    head->hth_prime_idx    = -1;
+}
+```
+
+### event_io_map 插入一条数据
+
+```c
+static inline void
+	event_io_map_HT_INSERT(
+		struct event_io_map* head,
+		struct event_map_entry* elm
+	)
+{
+    struct event_map_entry **p;
+    if (!head->hth_table || head->hth_n_entries >= head->hth_load_limit) 
+      event_io_map_HT_GROW(head, head->hth_n_entries+1);                      
+    ++head->hth_n_entries;
+    HT_SET_HASH_(elm, field, hashfn);
+    p = &HT_BUCKET_(head, field, elm, hashfn);
+    elm->field.hte_next = *p;                                           
+    *p = elm;                                                           
+}
+```
+
+### event_io_map 查找数据
+
+```c
+static inline struct event_map_entry* event_io_map_HT_FIND(const event_io_map* head,struct event_map_entry* elm)
+{
+	struct event_map_entry **p;
+	struct event_io_map *h = (struct event_io_map*)head;
+	HT_SET_HASH_(elm,map_node,hashfn);
+	p = event_io_map_HT_FIND_P_(h,elm);
+	return p ? *p : NULL;
+}
+```
+
+```c
+static inline struct event_map_entry** 
+	event_io_map_HT_FIND_P_(struct event_io_map *head,struct event_map_entry * elm){
+	
+	struct event_map_entry **p;                                                    
+    if (!head->hth_table)                                               
+		return NULL;                                                      
+    p = &HT_BUCKET_(head, field, elm, hashfn);				
+    while (*p) {                                                        
+      if (eqfn(*p, elm))                                                
+        return p;                                                       
+      p = &(*p)->field.hte_next;                                        
+    }                                                                   
+    return p;                                                           
+}
+```
+
+### event_io_map删除数据
+
+```c
+  /* Remove any element matching 'elm' from the table 'head'.  If such  \
+   * an element is found, return it; otherwise return NULL. */          
+  static inline struct event_map_entry *                                           
+  event_io_map_HT_REMOVE(struct event_io_map *head, struct event_map_entry *elm)                 
+  {                                                                     
+    struct event_map_entry **p, *r;
+    HT_SET_HASH_(elm, field, hashfn);
+    p = name##_HT_FIND_P_(head,elm);
+    if (!p || !*p)
+      return NULL;
+    r = *p;
+    *p = r->field.hte_next;
+    r->field.hte_next = NULL;
+    --head->hth_n_entries;
+    return r;                                                           
+  }                                                                     
+```
+
+### event_io_map clear
+```c
+  /* Free all storage held by 'head'.  Does not free 'head' itself, or  \
+   * individual elements. */                                            
+  void event_io_map_HT_CLEAR(struct event_io_map *head)                                    
+  {                                                                     
+    if (head->hth_table)                                                
+      freefn(head->hth_table);                                          
+    event_io_map_HT_INIT(head);                                               
+  }   
+```
+
+### event_io_maphash表扩容
+```c
+  static unsigned event_io_map_PRIMES[] = {                                   
+    53, 97, 193, 389,
+    769, 1543, 3079, 6151,
+    12289, 24593, 49157, 98317,
+    196613, 393241, 786433, 1572869,                                    
+    3145739, 6291469, 12582917, 25165843,
+    50331653, 100663319, 201326611, 402653189,
+    805306457, 1610612741
+  }; 
+```
+
+```c
+static unsigned event_io_map_N_PRIMES =                                     
+    (unsigned)(sizeof(event_io_map_PRIMES)/sizeof(event_io_map_PRIMES[0])) - 1;     
+  /* Expand the internal table of 'head' until it is large enough to    \
+   * hold 'size' elements.  Return 0 on success, -1 on allocation       \
+   * failure. */                                                        \
+  int                                                                   \
+  event_io_map_HT_GROW(struct event_io_map *head, unsigned size)                      \
+  {                                                                     \
+    unsigned new_len, new_load_limit;                                   \
+    int prime_idx;                                                      \
+    struct event_map_entry **new_table;                                            \
+    if (head->hth_prime_idx == (int)event_io_map_N_PRIMES)                    \
+      return 0;                                                         \
+    if (head->hth_load_limit > size)                                    \
+      return 0;                                                         \
+    prime_idx = head->hth_prime_idx;                                    \
+    do {                                                                \
+      new_len = event_io_map_PRIMES[++prime_idx];                             \
+      new_load_limit = (unsigned)(load*new_len);                        \
+    } while (new_load_limit <= size &&                                  \
+             prime_idx < (int)name##_N_PRIMES);                         \
+    if ((new_table = mallocfn(new_len*sizeof(struct type*)))) {         \
+      unsigned b;                                                       \
+      memset(new_table, 0, new_len*sizeof(struct type*));               \
+      for (b = 0; b < head->hth_table_length; ++b) {                    \
+        struct type *elm, *next;                                        \
+        unsigned b2;                                                    \
+        elm = head->hth_table[b];                                       \
+        while (elm) {                                                   \
+          next = elm->field.hte_next;                                   \
+          b2 = HT_ELT_HASH_(elm, field, hashfn) % new_len;              \
+          elm->field.hte_next = new_table[b2];                          \
+          new_table[b2] = elm;                                          \
+          elm = next;                                                   \
+        }                                                               \
+      }                                                                 \
+      if (head->hth_table)                                              \
+        freefn(head->hth_table);                                        \
+      head->hth_table = new_table;                                      \
+    } else {                                                            \
+      unsigned b, b2;                                                   \
+      new_table = reallocfn(head->hth_table, new_len*sizeof(struct type*)); \
+      if (!new_table) return -1;                                        \
+      memset(new_table + head->hth_table_length, 0,                     \
+             (new_len - head->hth_table_length)*sizeof(struct type*));  \
+      for (b=0; b < head->hth_table_length; ++b) {                      \
+        struct type *e, **pE;                                           \
+        for (pE = &new_table[b], e = *pE; e != NULL; e = *pE) {         \
+          b2 = HT_ELT_HASH_(e, field, hashfn) % new_len;                \
+          if (b2 == b) {                                                \
+            pE = &e->field.hte_next;                                    \
+          } else {                                                      \
+            *pE = e->field.hte_next;                                    \
+            e->field.hte_next = new_table[b2];                          \
+            new_table[b2] = e;                                          \
+          }                                                             \
+        }                                                               \
+      }                                                                 \
+      head->hth_table = new_table;                                      \
+    }                                                                   \
+    head->hth_table_length = new_len;                                   \
+    head->hth_prime_idx = prime_idx;                                    \
+    head->hth_load_limit = new_load_limit;                              \
+    return 0;                                                           \
+  }                                                
+```
