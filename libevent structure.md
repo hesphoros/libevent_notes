@@ -80,7 +80,9 @@ struct event_callback {
 
 `struct event_io_map` 就是 Libevent 内部的**路由表**。它把底层的数字 `fd` 翻译成上层的结构体 `event`，是整个事件分发循环（Event Loop）能高效运转的核心数据结构之一。
 
-`struct event_io_map`具有两种定义
+`struct event_io_map`具有两种定义,这是因为TODO
+
+
 
 ```c
 #ifdef EVMAP_USE_HT
@@ -128,6 +130,7 @@ struct event_map_entry {
 
 结构图
 ![](images/QQ_1781431358980.png)
+
 ## struct <font color="#4bacc6">event_config_entry</font>
 libevent 中的事件配置项。
 
@@ -569,7 +572,41 @@ struct timeval
 ## struct event_signal_map , evmap_sigal
 信号事件相关结构体定义如下
 
+```c
+struct eveent_dlist {
+	struct event* lh_first;
+}
+```
 
+
+```c
+/* An entry for an evmap_signal list: notes all the events that want to know
+   when a signal triggers. */
+struct evmap_signal {
+	struct event_dlist events;
+};
+```
+
+
+```c
+/* Used to map signal numbers to a list of events.  If EVMAP_USE_HT is not
+   defined, this structure is also used as event_io_map, which maps fds to a
+   list of events.
+*/
+struct event_signal_map {
+	/* An array of evmap_io * or of evmap_signal *; empty entries are
+	 * set to NULL. */
+	void **entries;
+	/* The number of entries available in entries */
+	int nentries;
+};
+
+```
+
+对应event_signal_map表结构如下
+
+![1008](images/QQ_1781534201185.png)
+![](images/QQ_1781534354436.png)
 ## struct evbuffer
 ~~~c
 struct evbuffer {
@@ -1092,7 +1129,6 @@ struct bufferevent_private {
 
 ## struct min_heap
 
-## 时间堆函数
 
 ```c
 typedef struct min_heap

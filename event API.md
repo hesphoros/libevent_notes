@@ -1,4 +1,4 @@
-struct event:[libevent_structure](libevent_structure.md)
+struct event:[libevent structure](libevent%20structure.md)
 
 ![](images/Pasted%20image%2020240904112623.png)
  libevent的基本操作单元是事件。每个事件代表一组条件的集合，这些条件包括：

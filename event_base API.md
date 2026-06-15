@@ -1,4 +1,4 @@
-结构体见:[libevent_structure](libevent_structure.md)
+结构体见:[libevent structure](libevent%20structure.md)
 关键的相关事件的处理接口函数和每种事件对应的数据都保存在此结构体中.
 ![](images/Pasted%20image%2020241208231220.png)
 

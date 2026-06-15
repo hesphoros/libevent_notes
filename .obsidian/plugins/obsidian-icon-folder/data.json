@@ -35,7 +35,6 @@
   },
   "event_base.md": "📓",
   "Variadic function.md": "📓",
-  "libevent_structure.md": "📓",
   "Event loop.md": "📓",
   "Macro definition.md": "📓",
   "Macro function.md": "📓",
@@ -79,5 +78,6 @@
   "Create event.md": "📓",
   "IO epoll Initialization.md": "📓",
   "TODO.md": "LiListTodo",
-  "Libevent 日志模块.md": "📓"
+  "Libevent 日志模块.md": "📓",
+  "libevent structure.md": "📓"
 }
