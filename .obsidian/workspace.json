@@ -214,6 +214,8 @@
   },
   "active": "5919032256039d87",
   "lastOpenFiles": [
+    "About SysQueue/images/Pasted image 20260616222149.png",
+    "About SysQueue/images",
     "信号事件.md",
     "事件总体小结.md",
     "libevent 概述.md",
@@ -255,11 +257,9 @@
     "ThreadSafetyAnalysis Clang 线程安全分析.md",
     "Time Event.md",
     "未命名.base",
-    "IO事件相关源码分析.md",
     "~$bevent 中文文档.doc",
     "libevent 中文文档.doc",
     "lu_hash",
-    "luevent",
     "未命名.canvas"
   ]
 }
