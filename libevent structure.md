@@ -1,4 +1,4 @@
-
+ 
 ## struct event
 ![](images/Pasted%20image%2020241210235428.png)
 
