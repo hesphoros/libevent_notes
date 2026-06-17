@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "About SysQueue/使用二级指针消除特例.md",
+                "file": "TODO Lists.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "使用二级指针消除特例"
+              "title": "TODO Lists"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "About SysQueue/使用二级指针消除特例.md",
+                "file": "TODO Lists.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "使用二级指针消除特例 的大纲"
+              "title": "TODO Lists 的大纲"
             }
           },
           {
@@ -212,28 +212,38 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "5919032256039d87",
+  "active": "e35340117c9e52e1",
   "lastOpenFiles": [
-    "About SysQueue/images/Pasted image 20260616222149.png",
-    "About SysQueue/images",
+    "TODO.md",
+    "TODO Lists.md",
+    "IO Initialization.md",
+    "IO 事件响应.md",
+    "激活事件加入活动队列.md",
+    "IO事件相关源码分析.md",
+    "Time Event.md",
+    "common_timeout_list时间管理结构.md",
+    "event API.md",
+    "event_base API.md",
+    "libevent 概述.md",
     "信号事件.md",
     "事件总体小结.md",
-    "libevent 概述.md",
     "bufferevent分析.md",
-    "About SysQueue/使用二级指针消除特例.md",
+    "evbuffer分析.md",
+    "IO限速源码分析.md",
+    "Zero-Copy 文件传输.md",
+    "evconnlistener_event分析.md",
+    "Reactor pattern.md",
+    "Libevent 日志模块.md",
     "libevent structure.md",
+    "Variadic function.md",
+    "About SysQueue/使用二级指针消除特例.md",
+    "About SysQueue/images/Pasted image 20260616222149.png",
+    "About SysQueue/images",
     "未命名",
     "About SysQueue",
     "macro function.md",
-    "Reactor pattern.md",
-    "evconnlistener_event分析.md",
-    "Variadic function.md",
     "evconnlistener.md",
-    "evbuffer分析.md",
-    "Zero-Copy 文件传输.md",
     "Reactor模式.md",
-    "Libevent 日志模块.md",
-    "IO 事件响应.md",
     "doc/libevent.docx",
     "doc",
     "新建文件夹",
@@ -241,21 +251,11 @@
     "images/QQ_1781536886192.png",
     "images/QQ_1781536643817.png",
     "images/QQ_1781536501791.png",
-    "TODO.md",
-    "信号.md",
-    "Bufferevent and evbuffer.md",
-    "IO限速源码分析.md",
     "images/QQ_1781536047852 1.png",
     "images/QQ_1781536047852.png",
     "images/QQ_1781535915256.png",
     "images/QQ_1781535869295.png",
     "images/QQ_1781535843516.png",
-    "images/QQ_1781535775084.png",
-    "evbuffer.md",
-    "event_base API.md",
-    "README.md",
-    "ThreadSafetyAnalysis Clang 线程安全分析.md",
-    "Time Event.md",
     "未命名.base",
     "~$bevent 中文文档.doc",
     "libevent 中文文档.doc",
