@@ -83,7 +83,18 @@ struct event_callback {
 
 `struct event_io_map`具有两种定义
 
+1. 数组表
 
+```c
+struct event_io_map {
+	void** entries;
+    int   nentries;
+}
+```
+
+
+
+2. 哈希表
 
 ```c
 #ifdef EVMAP_USE_HT
@@ -130,7 +141,8 @@ struct event_map_entry {
 ```
 
 结构图
-![](images/QQ_1781431358980.png)
+
+![](images/QQ_1781708743629.png)
 
 此结构体根据编译宏的不同，它有两重身份:
 
