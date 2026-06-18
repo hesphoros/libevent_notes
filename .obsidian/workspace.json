@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "libevent structure.md",
+                "file": "信号事件.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "libevent structure"
+              "title": "信号事件"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "libevent structure.md",
+                "file": "信号事件.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "libevent structure 的大纲"
+              "title": "信号事件 的大纲"
             }
           },
           {
@@ -214,12 +214,14 @@
   },
   "active": "5919032256039d87",
   "lastOpenFiles": [
-    "IO Initialization.md",
+    "Reactor pattern.md",
+    "TODO Lists.md",
+    "信号事件.md",
     "libevent structure.md",
+    "IO Initialization.md",
     "Variadic function.md",
     "event API.md",
     "images/QQ_1781708743629.png",
-    "TODO Lists.md",
     "TODO.md",
     "IO 事件响应.md",
     "激活事件加入活动队列.md",
@@ -228,14 +230,12 @@
     "common_timeout_list时间管理结构.md",
     "event_base API.md",
     "libevent 概述.md",
-    "信号事件.md",
     "事件总体小结.md",
     "bufferevent分析.md",
     "evbuffer分析.md",
     "IO限速源码分析.md",
     "Zero-Copy 文件传输.md",
     "evconnlistener_event分析.md",
-    "Reactor pattern.md",
     "Libevent 日志模块.md",
     "About SysQueue/使用二级指针消除特例.md",
     "About SysQueue/images/Pasted image 20260616222149.png",
