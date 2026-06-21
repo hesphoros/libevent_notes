@@ -39,7 +39,7 @@ while 有活动的事件处理:
 - 时间事件
 	- 用户期望周期处理任务，某个时间点定时任务
 - 信号事件
-	- 用户设置系统产生[信号](信号.md)，用户程序需要做的处理；比如有收到SIGTERM信号，SIGPIPE信号
+	- 用户设置系统产生[Linux信号](Linux信号.md)，用户程序需要做的处理；比如有收到SIGTERM信号，SIGPIPE信号
 - event事件
 	- 主要用来保存用户程序关心的事件以及事件对应的回调函数；以及事件对应的状态转换处理
 
@@ -67,3 +67,12 @@ while 有活动的事件处理:
 event_base源码分析相关见
 [event_base API](event_base%20API.md)
 [libevent structure](libevent%20structure.md)
+
+event:
+[event API](event%20API.md)
+
+event loop:
+[Event loop](Event%20loop.md)]
+
+evbuffer:
+[evbuffer](evbuffer.md)
