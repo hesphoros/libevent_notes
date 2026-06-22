@@ -29,13 +29,13 @@ select模型关键的selectop数据结构
 ~~~c
 struct selectop 
 {
-  int event_fds;      /* Highest fd in fd set */
-  int event_fdsz;
-  int resize_out_sets;
-  fd_set *event_readset_in;
-  fd_set *event_writeset_in;
-  fd_set *event_readset_out;
-  fd_set *event_writeset_out;
+  int              event_fds;      /* Highest fd in fd set */
+  int             event_fdsz;
+  int        resize_out_sets;
+  fd_set*   event_readset_in;
+  fd_set*  event_writeset_in;
+  fd_set*  event_readset_out;
+  fd_set* event_writeset_out;
 };
 ~~~
 
